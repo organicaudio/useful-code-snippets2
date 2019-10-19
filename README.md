@@ -4,6 +4,11 @@ Push the generated site to GitHub Pages with: ``mkdocs gh-deploy --clean``
 
 Reachable under: [http://crowdsalat.github.io/technotes](http://crowdsalat.github.io/technotes).
 
+## Install
+
+``pip3 install mkdocs``
+``pip3 install mkdocs-gitbook``
+
 ## Commands
 
 * `mkdocs new [dir-name]` - Create a new project.
