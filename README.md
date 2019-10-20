@@ -7,6 +7,7 @@ Reachable under: [http://crowdsalat.github.io/technotes](http://crowdsalat.githu
 ## Install
 
 ``pip3 install mkdocs``
+
 ``pip3 install mkdocs-gitbook``
 
 ## Commands
