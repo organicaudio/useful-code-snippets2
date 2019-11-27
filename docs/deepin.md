@@ -1,6 +1,8 @@
-# deepin 
+## .desktop file
 
-Technotes on deepin and linux in generell.
+``.desktop`` files put applications in the desktop menu. The files are placed in ``/usr/share/applications`` and ``~/.local/share/applications``. 
+
+If the path to exectuable contains spaces it needs to be put in double quotes. Single quotes do not work.
 
 ## remove firefox titlebar
 
