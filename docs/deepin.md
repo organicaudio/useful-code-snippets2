@@ -1,3 +1,7 @@
+# deepin 
+
+Technotes on deepin and linux in generell.
+
 ## .desktop file
 
 ``.desktop`` files put applications in the desktop menu. The files are placed in ``/usr/share/applications`` and ``~/.local/share/applications``. 
