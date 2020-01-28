@@ -1,5 +1,3 @@
-# maven memory aid
-
 ## local vs. remote Repo
 
 maven uses a local and a remote repository. 
