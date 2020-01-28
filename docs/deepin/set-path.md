@@ -2,11 +2,11 @@ Source: https://stackabuse.com/how-to-permanently-set-path-in-linux/
 
 ## decision
 
-variable needed system wide : edit  /etc/profile
+variable needed **system wide** : edit  /etc/profile
 
-variable needed user only: edit ~/profile
+variable needed **user only**: edit ~/profile
 
-variables temporary for terminal session: run ``export PATH="$PATH<path to new binary>"``
+variables **temporary** for terminal session: run ``export PATH="$PATH:<path to new binary>"``
 
 ## how to edit
 The following procedure is ok for all files in the table,  except for the /etc/enviroment file.
