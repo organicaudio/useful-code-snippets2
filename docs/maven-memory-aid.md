@@ -18,7 +18,34 @@ The remote repository can be defined in the the ``~/settings.xml`` or in the ``p
 
 ``mvn deploy`` calls the install command and save the artifacts in the remote repo, which is defined in the ``<distributionManagement>`` xml element in the settings.xml.
 
-In order to resolve dependecies they must exist in the local or the remote repo. The exception are dependencies on projects, which are build together.
+In order to resolve dependencies they must exist in the local or the remote repo. The exception are dependencies on projects, which are build together.
+
+## parent vs. aggregator pom
+
+*Combinations of parent and aggregator poms are possible.*
+
+A aggregator pom allows to build multiple projects.  
+```xml
+...
+<modules>
+    <module>artifactID-A</modules>
+    <module>artifactID-b</modules>
+</modules>
+...
+```
+
+A parent pom is referenced from within a child via the ``<parent>`` element. The child project inherits the dependencies,the plugins and defined repositories. These can be overwritten in the child pom if needed.
+
+```xml
+...
+<parent>
+    <groupId>parentGroupId</groupId>
+    <artifactId>parentID</artifactId>
+    <version>1.0.0</version>
+</parent>
+...
+
+```
 
 ## dependencies vs. dependencyManagement
 
