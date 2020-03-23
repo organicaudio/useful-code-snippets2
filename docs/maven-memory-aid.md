@@ -4,7 +4,7 @@ maven uses a local and a remote repository.
 
 The local repo is located under: ``~/.m2/repository``
 
-The default remote repo is located under: https://repo.maven.apache.org/maven2/
+The default remote repo is located under: [https://repo.maven.apache.org/maven2/](https://repo.maven.apache.org/maven2/)
 
 The remote repository can be defined in the the ``~/settings.xml`` or in the ``pom.xml``.
 
@@ -21,7 +21,7 @@ The remote repository can be defined in the the ``~/settings.xml`` or in the ``p
 In order to resolve dependecies they must exist in the local or the remote repo. The exception are dependencies on projects, which are build together.
 
 ## goals and phases 
-There is a nice overview under: https://www.baeldung.com/maven-goals-phases
+There is a nice overview under: [https://www.baeldung.com/maven-goals-phases](https://www.baeldung.com/maven-goals-phases)
 
 ``mvn help:describe -Dcmd=package`` shows the lifecylce phases of a project and which maven plugins run when.
 
@@ -29,7 +29,7 @@ There is a nice overview under: https://www.baeldung.com/maven-goals-phases
 
 
 ## use case
-Source: https://stackoverflow.com/questions/5901378/what-exactly-is-a-maven-snapshot-and-why-do-we-need-it
+Source: [https://stackoverflow.com/questions/5901378/what-exactly-is-a-maven-snapshot-and-why-do-we-need-it](https://stackoverflow.com/questions/5901378/what-exactly-is-a-maven-snapshot-and-why-do-we-need-it)
 
 
 A snapshot version in maven is one that has not been released.
@@ -41,7 +41,8 @@ The difference between a "real" version and a snapshot version is that snapshots
 Usually, snapshot dependencies should only exist during development and no released version (i.e. no non-snapshot) should have a dependency on a snapshot version.
 
 ## behaviour
-Source: https://stackoverflow.com/questions/5901378/what-exactly-is-a-maven-snapshot-and-why-do-we-need-it
+Source: [https://stackoverflow.com/questions/5901378/what-exactly-is-a-maven-snapshot-and-why-do-we-need-it](https://stackoverflow.com/questions/5901378/what-exactly-is-a-maven-snapshot-and-why-do-we-need-it)
+
 
 
 When you build an application, maven will search for dependencies in the local repository. If a stable version is not found there, it will search the remote repositories (defined in settings.xml or pom.xml) to retrieve this dependency. Then, it will copy it into the local repository, to make it available for the next builds.
