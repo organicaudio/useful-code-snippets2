@@ -1,3 +1,9 @@
+## useful commands
+
+``mvn help:system`` prints system properties and environment variables.
+``mvn help:effective-settings`` print settings.
+``mvn help:effective-pom`` creates a pom which is used after the interpolation, inheritance and use of active profiles.
+
 ## local vs. remote Repo
 
 maven uses a local and a remote repository. 
