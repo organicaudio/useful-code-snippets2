@@ -47,6 +47,29 @@ A parent pom is referenced from within a child via the ``<parent>`` element. The
 
 ```
 
+## importing projects
+
+An alternative to a parent project is to import a project. This mechanism allows to import multiple projects instead of one as is possible via parent pom mechanism. This is accomplished by declaring a pom artifact as a dependency with a scope of "import" in the dependencyManagement section.
+
+```xml
+...
+<dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>maven</groupId>
+        <artifactId>A</artifactId>
+        <version>1.0</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  ...
+
+</project>
+  ...
+```
+
 ## dependencies vs. dependencyManagement
 
 The use of dependencyManagement only makes sense if it is used in a parent pom. It is used to manage the versions of dependencies across multiple projects. Dependencies defined in dependencyManagement are not used during a maven build. To do so they need to be included in dependencies block, but the version tag of the dependency can no be omitted in the dependencies block because it is already defined in dependencyManagement block.
