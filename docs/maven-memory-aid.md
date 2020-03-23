@@ -20,6 +20,14 @@ The remote repository can be defined in the the ``~/settings.xml`` or in the ``p
 
 In order to resolve dependecies they must exist in the local or the remote repo. The exception are dependencies on projects, which are build together.
 
+## dependencies vs. dependencyManagement
+
+The use of dependencyManagement only makes sense if it is used in a parent pom. It is used to manage the versions of dependencies across multiple projects. Dependencies defined in dependencyManagement are not used during a maven build. To do so they need to be included in dependencies block, but the version tag of the dependency can no be omitted in the dependencies block because it is already defined in dependencyManagement block.
+
+## plugin vs. pluginManagement
+
+Works like dependencies/ dependencyManagementsee only for plugins.
+
 ## goals and phases 
 There is a nice overview under: [https://www.baeldung.com/maven-goals-phases](https://www.baeldung.com/maven-goals-phases)
 
