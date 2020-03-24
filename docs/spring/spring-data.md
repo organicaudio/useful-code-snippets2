@@ -135,7 +135,8 @@ Repository detection strategies:
 4. visibility: only **public** repositories
 
 ## auditing
-loggin when entity is created and who created it.
+
+logging when entity is created and who created it.
 
 1. Use Annotation on fields:
    - @CreatedDate
