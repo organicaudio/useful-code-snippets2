@@ -36,7 +36,7 @@ set/overwrite predefined properties:
 Profiles allow configuration based on environment (e.g. to set log-level or urls). They leverage the property-based-configuration feature. 
 When using files a Application.yml is more common to use to leverage profiles than aapplication.properties.
 
-Yaml uses spring.profile to name a profile and --- to mark a ssection and all properties defined in that section belong to the specified profile.
+Yaml uses spring.profile to name a profile and --- to mark a section and all properties defined in that section belong to the specified profile.
 
 ```yaml
 spring:
@@ -50,23 +50,9 @@ server:
   port: 9000
 ```
 
-When using application.properties you need to create one file per profile with the naming scheme: application-<profilename>.properties.
+When using application.properties you need to create one file per profile with the naming scheme: application-<profilename>.properties. You can set active profile via **spring.profiles.active** environment-variable/jvm-property or directly in the properties/yaml file.
 
-You can set active profile via **spring.profiles.active** environment-variable/jvm-property.
-
-## misc
-
-### web stuff
-
-- config of tomcat via 
-  1. property 
-  2. or via @WebFilter, @WebServler, @WebListener
-- MVC is used for ReST as well
-  1. view: mimetype
-  2. controller: Resource Controller (@RestController)
-  3. model: Resource Representation Class
-
-### spring-boot-devtools
+## spring-boot-devtools
 
 spring-boot-devtools help rapid development
 
@@ -76,7 +62,7 @@ spring-boot-devtools help rapid development
   4. added via maven dependecy
   5. Output on console "LiveReload Server is Running"
 
-### packaging
+## packaging
 
 - Standard: Jar with all **dependencies included** (Fat Jar, Shaded Jar) and also **executable**
 - if war needed:
@@ -84,19 +70,33 @@ spring-boot-devtools help rapid development
   2. exclude spring-bootstarter-tomcat from spring-boot-starter-web
 - remember that spring-web and spring-boot-starter-web are different things!
 
-### command line runner
+## CommandLineRunner & ApplicationRunner
 
 - can be used for plain programming stuff like admin tasks.
-- is executed when application is started
-- Class which **implements CommandLineRunner** Interface and **overwrite the run method**
+- are executed when application is started.
+- need to implement the interface and overwrite the run method
+- CommandLineRunner run method got plain string array of arguments as parameter.
+- ApplicationRunner run method got ApplicationArguments Parameter which has convenience methods for typical command line arguments
 
-## spring boot Rest
+## notes on starters 
 
-**TODO**
+
+### spring-boot-web-starter
+
+- config of tomcat via:
+  1. property 
+  2. or via @WebFilter, @WebServler, @WebListener annotated classes
+- MVC pattern is used for ReST as well
+  1. view: mimetype
+  2. controller: Resource Controller (@RestController)
+  3. model: Resource Representation Class
 
 ## spring boot data
 
-**TODO**
-
 - database drivers are configured by properties
 - one database can be autoconfigured
+- Controlling Database Creation:
+  - If spring finds a **data.sql** and a **scheme.sql** on classpath it will use it
+  - To prevent overwrite set the property **spring.jpa.hibernate.ddl-auto=false**
+- In order to run test it is common to add **com.h2database.h2** dependency in maven.
+
