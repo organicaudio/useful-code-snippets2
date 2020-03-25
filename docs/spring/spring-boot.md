@@ -10,16 +10,17 @@ Official resources:
 
 - [HTTPie](https://httpie.org/) is easier than wget or curl.
 - [spring cli](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-cli.html) to quickly develop spring applications with groovy scripts.
-- [Spring initializr](https://start.spring.io/) 
-  - a website to scaffold spring projects 
+- [Spring initializr](https://start.spring.io/)
+  - a website to scaffold spring projects
   - also a backing service
-  - can be used as parent pom 
+  - can be used as parent pom
 
 ## auto configuration
 
 - @EnableAutoConfiguration: configuration classes are scanned dynamically usually based on jars on classpath
 - Conditional Loading: load (predefined) configurations if specified classes are on the classpath
 - Properties: there are default properties for AutoConfiguration classes. May be overwritten.
+- *assumption*: auto config is only relevant for *-spring-boot-starter-* dependencies
 - Good video on insights on [LinkedInLearn](https://www.linkedin.com/learning/spring-boot-2-0-essential-training/spring-boot-autoconfiguration)
 
 ## Property-based configuration
@@ -146,3 +147,33 @@ General note: use **Bcrypt** for  password hashing.
 - use string with json object inside:
   - no implicit marshalling needed (better performance)
   - string objects are readable in console
+
+## actuators
+
+actuators...
+
+- give insight into an application
+- allow monitoring
+- allows to change configuration settings via jmx
+- libraries changed frequently in spring.
+- actuator endpoints can be configured via properties management.endpoint.*
+- **you should activate security (ENDPOINT_ADMIN)**
+- **only for dev** deactivate all actuators by adding management.endoints.web.exposure.include=* property
+
+Predefined endpoints:
+
+1. Health endpoint
+   - application status
+   - status of dependencies (db, etc.)
+2. Info endpoint:
+   - maintainer
+   - git commit
+   - build number
+  
+JXM Functions:
+
+- list of bean
+- state of environment
+- dumps
+- url mappings
+- metrics
