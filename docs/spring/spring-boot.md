@@ -105,3 +105,36 @@ spring-boot-devtools help rapid development
   - If spring finds a **data.sql** and a **scheme.sql** on classpath it will use it
   - To prevent overwrite set the property **spring.jpa.hibernate.ddl-auto=false**
 - In order to run test it is common to add **com.h2database.h2** dependency in maven.
+
+## spring boot security (spring-boot-starter-security)
+
+General note: use **Bcrypt** for  password hashing.
+
+### basic auth
+
+- can be configured by properties
+- **default** when security starter is not configured.
+  - forced for all urls.
+  - Username is: user
+  - password is logged in console at startup
+
+### Form based auth
+
+- configured by:
+  1. extend WebSecurityConfigurerAdapter
+  2. annotate @EnableWebSecurity to activate form-based Auth in favor of BasicAuth
+  3. annotate @Configuration
+- overwrite method *configure* to define where auth is needed
+- you need to be cautious to consider every part of the path
+- you need to allow access to login page
+- AuthenticationManagerBuilder is used to config where passwords are stored (it is possible to save user and password in code)
+- Use thymeleaf to create the authentication html form. Serve it with a @Controller and @GetMapping (Return a String with the Name of the thymeleaf file without file ending)
+
+### Ouath2
+
+- Possible providers are GitHub, Google, Facebook etc.
+- can be configured via properties.
+- or via Java config:
+  - @EnableOAuth2Client is used to config a client
+  - @EnableAuthorizationServer is used to config a server
+- Client dependency spring-boot-starter-oauth2-client
