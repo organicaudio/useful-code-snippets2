@@ -138,3 +138,10 @@ General note: use **Bcrypt** for  password hashing.
   - @EnableOAuth2Client is used to config a client
   - @EnableAuthorizationServer is used to config a server
 - Client dependency spring-boot-starter-oauth2-client
+
+## rabbit mq
+
+- small messages are preferred when using asynchronous messaging (ID instead of entire object)
+- use string with json object inside:
+  - no implicit marshalling needed (better performance)
+  - string objects are readable in console
