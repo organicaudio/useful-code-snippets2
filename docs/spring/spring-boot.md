@@ -20,6 +20,7 @@ Official resources:
 - @EnableAutoConfiguration: configuration classes are scanned dynamically usually based on jars on classpath
 - Conditional Loading: load (predefined) configurations if specified classes are on the classpath
 - Properties: there are default properties for AutoConfiguration classes. May be overwritten.
+- Good video on insights on [LinkedInLearn](https://www.linkedin.com/learning/spring-boot-2-0-essential-training/spring-boot-autoconfiguration)
 
 ## Property-based configuration
 
