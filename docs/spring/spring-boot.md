@@ -131,7 +131,7 @@ General note: use **Bcrypt** for  password hashing.
 - AuthenticationManagerBuilder is used to config where passwords are stored (it is possible to save user and password in code)
 - Use thymeleaf to create the authentication html form. Serve it with a @Controller and @GetMapping (Return a String with the Name of the thymeleaf file without file ending)
 
-### Ouath2
+### OAuth2
 
 - Possible providers are GitHub, Google, Facebook etc.
 - can be configured via properties.
