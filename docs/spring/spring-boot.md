@@ -1,5 +1,11 @@
 # Spring boot 2.0
 
+Official resources:
+
+- An overview of all [Guides](https://spring.io/guides)
+- There are helpful project sites for every spring module under projects in the navbar of [https://spring.io]
+- On the project sites there is always a **Reference Doc** and a **API Doc** per version under learn.
+
 ## Helpful Tools
 
 - [HTTPie](https://httpie.org/) is easier than wget or curl.
@@ -91,7 +97,7 @@ spring-boot-devtools help rapid development
   2. controller: Resource Controller (@RestController)
   3. model: Resource Representation Class
 
-## spring boot data
+## spring boot data (spring-boot-starter-data-*)
 
 - database drivers are configured by properties
 - one database can be autoconfigured
@@ -99,4 +105,3 @@ spring-boot-devtools help rapid development
   - If spring finds a **data.sql** and a **scheme.sql** on classpath it will use it
   - To prevent overwrite set the property **spring.jpa.hibernate.ddl-auto=false**
 - In order to run test it is common to add **com.h2database.h2** dependency in maven.
-
