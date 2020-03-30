@@ -15,6 +15,34 @@ Official resources:
   - also a backing service
   - can be used as parent pom
 
+## initiate example
+
+```java
+package de.example;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.client.RestTemplate;
+
+@SpringBootApplication
+public class ExampleApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(ExampleApplication.class, args);
+    }
+
+}
+```
+
+@SpringBootApplication adds the following annotations:
+
+1. @Configuration: Tags the class as a source of bean definitions for the application context.
+2. @EnableAutoConfiguration: Tells Spring Boot to start adding beans, based on classpath settings, other beans, and various property settings
+3. @ComponentScan: Tells Spring to look for other components, **configurations**, and services in the de.example package.
+
+
 ## auto configuration
 
 - @EnableAutoConfiguration: configuration classes are scanned dynamically usually based on jars on classpath
