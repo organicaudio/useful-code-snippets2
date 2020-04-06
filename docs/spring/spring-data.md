@@ -19,11 +19,11 @@ For each domain object you need:
 
 Query methods allow to search for entities in the database. You do not need to implement the query methods. Spring data will generate the necessary code at startup if the used syntax is correct (does not check semantic at startup) and it will throw an error if it not ok. Query methods **support Optional as return type wrapper**.
 
-You can define query methods by:
+You can use query methods:
 
-1. method signatures following build like **property expressions**
-2. add @Query annotation to method signature
-3. use the standard methods of the repository interfaces
+1. add method signatures which are conform to **property expressions**
+2. add @Query("") annotation to a method signature
+3. use the standard methods of a repository interfaces
 
 *The following examples are valid for use with jpa repository (and therefore relational databases). They may not be used on document based databases such as mongo db.*
 
@@ -74,6 +74,37 @@ public class Student {
     // getter and setter ...
 }
 ```
+
+Valid return types ([source](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-query-return-types)):
+
+- void
+- Primitives
+- Wrapper types
+- T
+- Iterator
+- Collection
+- List
+- Optional
+- Option
+- Stream
+- Streamable
+- Types that implement Streamable and take a Streamable constructor or factory method argument
+- Vavr Seq, List, Map, Set
+- Future
+- CompletableFuture
+- ListenableFuture
+- Slice
+- Page
+- GeoResult
+- GeoResults
+- GeoPage
+- Mono
+- Flux
+- Single
+- Maybe
+- Flowable
+
+
 
 ### @Query annotation
 
