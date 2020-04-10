@@ -3,8 +3,6 @@
 
 ### rest general principles 
 
-https://dzone.com/articles/intro-rest
-
 Representational State Transfer (REST) is a collection of (six) architectural constraints:
 
   1. Client-server architecture
@@ -23,7 +21,8 @@ Hypermedia as the Engine of Application State (HATEOAS): you can find all availa
 
 ### spring rest (via spring mvc)
 
-[Official hands on guide](https://spring.io/guides/tutorials/rest/)
+[Official hands on guide with emphasis on hateoas](https://spring.io/guides/tutorials/rest/)
+[Nice overview of topic related to rest](https://www.baeldung.com/rest-with-spring-series)
 
 - needs **spring-boot-starter-web** as dependecy
 - annotate class with **@RestController** (shorthand for @ResponseBody and @Controller) and **@RequestMapping("/")**
