@@ -1,12 +1,18 @@
 
-## useful commands
+## docker cli useful commands
 
+official overview of [docker cli commands](https://docs.docker.com/engine/reference/commandline/docker/).
 
-[https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/]
+- `docker build . -t crowdsalat/tag-name` creates a image based on a Dockerfile and the context/ working directory and subdirectories
+- `docker run <image>` starts a container from an image
+  - `-it` runs interactively so you can execute commands in container (-t Allocate a pseudo-tty, -i Keep STDIN open )
+  - `-p 1000:1000` maps a port in container on a port on client
+  - `--mount` TODO
+  - `-v` TODO
+- `TODO` connects to a running container
+- `docker ps −a` shows all running docker container on a client
 
-
-`docker run -it <image>`
-`docker ps −a` shows all running docker container on a client
+- `docker volume ls` - list volumes
 
 TODO: [https://bitbucket.org/crowdsalat/security_lab_vpn/src/master/]
 TODO: B5 PSE Vortrag
@@ -24,6 +30,13 @@ TODO: B5 PSE Vortrag
 - `docker build .` is used to build a image based on a dockerfile in the current directory.
 - use `-t <tageName>` to add a tag to the image
 
+Simplistic docker file for java application:
+
+```dockerfile
+FROM openjdk:8-jdk-alpine
+COPY target/*.jar app.jar
+ENTRYPOINT["java", "-jar", "app.jar"]
+```
 
 ### shell form vs. exec form
 
@@ -52,6 +65,19 @@ RUN, CMD and Entrypoint all execute a command, but:
 - **ENTRYPOINT** sets default command to run when container starts, but cannot be overwritten (exec and shell form). You can add a CMD without a command/executable afterwards to add further arguments to the entrypoint command which can be overwritten (only in exec form).
 
 --> Use RUN for new layer and prefer ENTRYPOINT over CMD if you do not need to change arguments.
+
+COPY and ADD copy files to an image and create a new layer, but:
+
+- **COPY** can only be used on local files
+- **ADD** can download any URL and extract tar balls
+
+
+--> use COPY for local files
+
+## dockerfile vs. command line
+
+-p vs EXPORT
+--volume vs. --mount vs. VOLUME
 
 ## connect containers via user-defined networks
 
