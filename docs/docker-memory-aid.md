@@ -5,17 +5,16 @@ official overview of [docker cli commands](https://docs.docker.com/engine/refere
 
 - `docker build . -t crowdsalat/tag-name` creates a image based on a Dockerfile and the context/ working directory and subdirectories
 - `docker run <image>` starts a container from an image
+  - `-d` run as daemon
   - `-it` runs interactively so you can execute commands in container (-t Allocate a pseudo-tty, -i Keep STDIN open )
   - `-p 1000:1000` maps a port in container on a port on client
   - `--mount` TODO
   - `-v` TODO
-- `TODO` connects to a running container
+  - `-e VAR1=bla -e VAR2=blubb` defines environmental variables in the container
+- `docker exec -it container_name bash` connects to a running container with the name container_name
 - `docker ps −a` shows all running docker container on a client
-
+- `docker volume create my_volume` creates volume with name my_volume. Volume is save on host under /var/lib/docker/volumes/my_volume
 - `docker volume ls` - list volumes
-
-TODO: [https://bitbucket.org/crowdsalat/security_lab_vpn/src/master/]
-TODO: B5 PSE Vortrag
 
 ## Dockerfile
 
@@ -71,14 +70,21 @@ COPY and ADD copy files to an image and create a new layer, but:
 - **COPY** can only be used on local files
 - **ADD** can download any URL and extract tar balls
 
-
 --> use COPY for local files
+
+- **ENV** sets a environment variable (`ENV path=/opt/`).
+- **ARG** defines parameters of a docker image which can be overridden when the images is build (e.g. `$ docker build --build-arg arg_name=blubb .`)
 
 ## dockerfile vs. command line
 
--p vs EXPORT
---volume vs. --mount vs. VOLUME
+### -p vs EXPORT
+
+EXPORT does not actually publish the given port. It is a documantation for the user. The user of a image needs to export the port via -p flag when running docker run.
+
+### --volume vs. --mount vs. VOLUME
 
 ## connect containers via user-defined networks
 
 ## volumes
+
+[official documentation](https://docs.docker.com/storage/volumes/)
