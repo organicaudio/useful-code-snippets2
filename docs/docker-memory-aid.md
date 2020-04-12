@@ -27,7 +27,13 @@ official overview of [docker cli commands](https://docs.docker.com/engine/refere
 - `docker exec -it container_name bash` connects to a running container with the name container_name
 - `docker ps −a` shows all running docker container on a client
 - `docker volume create my_volume` creates volume with name my_volume. Volume is save on host under /var/lib/docker/volumes/my_volume
-- `docker volume ls` - list volumes
+- `docker volume ls` list volumes
+- `docker system prune` removes:
+  1. all stopped containers (`docker container prune`)
+  2. all networks not used by at least one container (`docker network prune`)
+  3. all dangling images (`docker image prune`)
+  4. all dangling build cache
+1. remove dedicated resource: `docker <resource> ls` & `docker <resource> rm <id_of_resource>` (resources: container/network/image/volume etc.)
 
 ## Dockerfile
 
