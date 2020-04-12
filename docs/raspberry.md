@@ -40,6 +40,9 @@ sudo reboot
 
 # test setup
 docker run hello-world
+
+# might not  work than use (https://stackoverflow.com/questions/52233182/docker-run-does-not-display-any-output)
+docker run hypriot/armhf-hello-world
 ```
 
 ## docker images for rp
