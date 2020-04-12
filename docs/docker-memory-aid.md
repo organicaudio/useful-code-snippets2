@@ -107,3 +107,30 @@ EXPORT does not actually publish the given port. It is a documantation for the u
 ## volumes
 
 [official documentation](https://docs.docker.com/storage/volumes/)
+
+## user amd groups in container
+
+TODO general information on best practice
+
+To add user and groups to containers:
+
+[Source](https://github.com/mhart/alpine-node/issues/48)
+
+```dockerfile
+# ubuntu as base image
+RUN groupadd -r app && useradd -r app -g app 
+
+# alpine as base image
+RUN addgroup -S app && adduser -S app -Gapp 
+```
+
+To check if commands exists on a base image and which parameters they have just call: 
+
+```shell
+# docker run <baseimage:tag> <command>
+docker run alpine:3.6 adduser
+
+# alternativly
+# docker run <baseimage:tag> <command> -?
+docker run alpine:3.6 adduser -?
+```
