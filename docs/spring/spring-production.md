@@ -8,21 +8,37 @@
 
 ### dockerize spring application
 
+[official docker guide from spring.io](https://spring.io/guides/topicals/spring-boot-docker/). 
+[official docker getting started from spring.io](https://spring.io/guides/gs/spring-boot-docker/). 
 
-There are further options to dockerize an application, but this are my two favorited onse. More infos are collected in the [official docker guide from spring.io](https://spring.io/guides/topicals/spring-boot-docker/). 
 
 
-#### write your own .dockerfile
+1. dockerfile + fatjar
+   - easy setup 
+2. dockerfile + exploded jar
+   - leverages layer system of docker
+3. dockerfile multistage build (build + execution in container)
+   - allows build to run everywhere where docker is installed
+4. google jib (maven + gradle plugins)
+   - no docker installation needed on machine where the build runs
+   - no dockerfile needed
+   - opinionated about usage of docker layers
 
-assumes executable uber jar.
+#### dockerfile + fatjar
 
-- good base image
-- integrate in build
+#### dockerfile + exploeded jar
 
-#### use spotify maven plugin
+#### dockerfile multistage build (build + execution in container)
 
+#### google jib (maven + gradle plugins)
+[google jib](https://github.com/GoogleContainerTools/jib/blob/master/README.md)
+[maven plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#quickstart)
+[gradle plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-gradle-plugin#quickstart)
+
+**You do not need to install docker on the client to create a docker image with jib.**
 
 ### separate application and database
+
 
 ### spring rest
 
