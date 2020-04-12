@@ -6,7 +6,12 @@ Official resources:
 - There are helpful project sites for every spring module under projects in the navbar of [https://spring.io]
 - On the project sites there is always a **Reference Doc** and a **API Doc** per version under learn.
 
-## Helpful Tools
+## helpful commands
+
+- `mvn spring-boot:run` compiles and run spring boot application in exploded form (from target directory)
+-  
+
+## helpful tools
 
 - [HTTPie](https://httpie.org/) is easier than wget or curl.
 - [spring cli](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-cli.html) to quickly develop spring applications with groovy scripts.
