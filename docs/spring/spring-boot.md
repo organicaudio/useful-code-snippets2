@@ -103,7 +103,7 @@ spring-boot-devtools help rapid development
   4. added via maven dependecy
   5. Output on console "LiveReload Server is Running"
 
-Also adds h2 console on http://localhost:8080/h2-console. You may need override the "JDBC URL" with the one from the startup console message from spring boot.
+Also adds h2 console on http://localhost:8080/h2-console. You may need override the "JDBC URL" with the one from the startup console message from spring boot. If you do not use devtools and want the h2 console you need to add spring.h2.console.enabled=true property.
 
 
 ## packaging
