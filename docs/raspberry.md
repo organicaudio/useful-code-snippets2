@@ -47,6 +47,6 @@ docker run hypriot/armhf-hello-world
 
 ## docker images for rp
 
-Docker images which run on the raspberry pi need to be compiled for arm processor architecture.
+In order to run on a rp a docker image need to be compiled for arm processor architecture. You can find a list of supported cpu architectures for docker [here](https://github.com/docker-library/official-images#architectures-other-than-amd64). To find out which architecture your rp has [see](https://de.wikipedia.org/wiki/Raspberry_Pi#Hardware). E.g. a rp 2 mod B uses a ARMv7 architecture.
 
 - [open-jdk](https://hub.docker.com/r/balenalib/raspberry-pi-openjdk)
