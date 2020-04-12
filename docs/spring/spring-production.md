@@ -48,5 +48,6 @@
 
 ### devtools
 
-- always include
-- to deactivate in production ...
+**Developer tools are automatically disabled when running a fully packaged application.** Launch via  `java -jar` or special classloader is considered a production environment so they are deactivated. [source](https://docs.spring.io/spring-boot/docs/1.5.16.RELEASE/reference/html/using-boot-devtools.html).
+
+**This will have effects on several property defaults** like `spring.h2.console.enabled`. For full list [see](https://github.com/spring-projects/spring-boot/blob/v1.5.16.RELEASE/spring-boot-devtools/src/main/java/org/springframework/boot/devtools/env/DevToolsPropertyDefaultsPostProcessor.java).
