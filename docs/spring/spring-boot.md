@@ -2,6 +2,8 @@
 
 Official resources:
 
+- An overview of all spring boot [docs](https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/reference/html/)
+- Overview of all features)[https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/reference/html/spring-boot-features.html]  of spring boot(
 - An overview of all [Guides](https://spring.io/guides)
 - There are helpful project sites for every spring module under projects in the navbar of [https://spring.io]
 - On the project sites there is always a **Reference Doc** and a **API Doc** per version under learn.
