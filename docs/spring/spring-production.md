@@ -26,7 +26,14 @@
 
 #### dockerfile + fatjar
 
-#### dockerfile + exploeded jar
+```Dockerfile
+FROM openjdk:14-jdk-slim
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
+```
+
+#### dockerfile + exploded jar
 
 #### dockerfile multistage build (build + execution in container)
 
