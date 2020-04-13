@@ -1,16 +1,5 @@
 
-### useful images
-
-A list of relatively small images. If present alpine images tend to be the smallest. Docker repositories mostly are organized via the tags (:8-jdk-alpine, :11-jdk-buster etc.).
-
-Java:
-
-- [openjdk:8-jdk-alpine](https://hub.docker.com/_/openjdk/)
-- [openjdk:11-jdk-buster](https://hub.docker.com/_/openjdk/)
-- [openjdk:14-jdk-slim](https://hub.docker.com/_/openjdk/)
-- [adoptopenjdk/openjdk8-openj9:alpine](https://hub.docker.com/r/adoptopenjdk/openjdk8-openj9)
-- [adoptopenjdk/openjdk11:alpine](https://hub.docker.com/r/adoptopenjdk/openjdk11)
-
+ [vs code plugin for docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) is pretty nice.
 
 ## docker cli useful commands
 
@@ -95,6 +84,18 @@ COPY and ADD copy files to an image and create a new layer, but:
 
 - **ENV** sets a environment variable (`ENV path=/opt/`).
 - **ARG** defines parameters of a docker image which can be overridden when the images is build (e.g. `$ docker build --build-arg arg_name=blubb .`)
+
+### useful images
+
+A list of relatively small images. If present alpine images tend to be the smallest. Docker repositories mostly are organized via the tags (:8-jdk-alpine, :11-jdk-buster etc.).
+
+Java:
+
+- [openjdk:8-jdk-alpine](https://hub.docker.com/_/openjdk/)
+- [openjdk:11-jdk-buster](https://hub.docker.com/_/openjdk/)
+- [openjdk:14-jdk-slim](https://hub.docker.com/_/openjdk/)
+- [adoptopenjdk/openjdk8-openj9:alpine](https://hub.docker.com/r/adoptopenjdk/openjdk8-openj9)
+- [adoptopenjdk/openjdk11:alpine](https://hub.docker.com/r/adoptopenjdk/openjdk11)
 
 ## dockerfile vs. command line
 
