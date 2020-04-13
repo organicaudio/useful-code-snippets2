@@ -1,9 +1,7 @@
-# Spring boot 2.0
-
-Official resources:
+## official resources:
 
 - An overview of all spring boot [docs](https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/reference/html/)
-- Overview of all features)[https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/reference/html/spring-boot-features.html]  of spring boot(
+- Overview of all [spring boot features]([)https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/reference/html/spring-boot-features.html)
 - An overview of all [Guides](https://spring.io/guides)
 - There are helpful project sites for every spring module under projects in the navbar of [https://spring.io]
 - On the project sites there is always a **Reference Doc** and a **API Doc** per version under learn.
@@ -11,16 +9,16 @@ Official resources:
 ## helpful commands
 
 - `mvn spring-boot:run` compiles and run spring boot application in exploded form (from target directory)
--  
+- To start a RestMock Server use the following [gist](https://gist.github.com/CrowdSalat/3a732442e96133595245af77dcc4fbb3) and start it with `spring run SpringRestMock.groovy`
 
 ## helpful tools
 
 - [HTTPie](https://httpie.org/) is easier than wget or curl.
 - [spring cli](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-cli.html) to quickly develop spring applications with groovy scripts.
 - [Spring initializr](https://start.spring.io/)
-  - a website to scaffold spring projects
-  - also a backing service
-  - can be used as parent pom
+    - a website to scaffold spring projects
+    - also a backing service
+    - can be used as parent pom
 
 ## initiate example
 
@@ -107,13 +105,12 @@ spring-boot-devtools help rapid development
 
 Also adds h2 console on http://localhost:8080/h2-console. You may need override the "JDBC URL" with the one from the startup console message from spring boot. If you do not use devtools and want the h2 console you need to add spring.h2.console.enabled=true property.
 
-
 ## packaging
 
 - Standard: Jar with all **dependencies included** (Fat Jar, Shaded Jar) and also **executable**
 - if war needed:
-  1. set maven artifact to war
-  2. exclude spring-bootstarter-tomcat from spring-boot-starter-web
+    1. set maven artifact to war
+    2. exclude spring-bootstarter-tomcat from spring-boot-starter-web
 - remember that spring-web and spring-boot-starter-web are different things!
 
 ## CommandLineRunner & ApplicationRunner
@@ -124,26 +121,23 @@ Also adds h2 console on http://localhost:8080/h2-console. You may need override 
 - CommandLineRunner run method got plain string array of arguments as parameter.
 - ApplicationRunner run method got ApplicationArguments Parameter which has convenience methods for typical command line arguments
 
-## notes on starters 
-
-
-### spring-boot-web-starter
+## spring-boot-web-starter
 
 - config of tomcat via:
-  1. property 
-  2. or via @WebFilter, @WebServler, @WebListener annotated classes
+    1. property 
+    2. or via @WebFilter, @WebServler, @WebListener annotated classes
 - MVC pattern is used for ReST as well
-  1. view: mimetype
-  2. controller: Resource Controller (@RestController)
-  3. model: Resource Representation Class
+    1. view: mimetype
+    2. controller: Resource Controller (@RestController)
+    3. model: Resource Representation Class
 
 ## spring boot data (spring-boot-starter-data-*)
 
 - database drivers are configured by properties
 - one database can be autoconfigured
 - Controlling Database Creation:
-  - If spring finds a **data.sql** and a **scheme.sql** on classpath it will use it
-  - To prevent overwrite set the property **spring.jpa.hibernate.ddl-auto=false**
+    - If spring finds a **data.sql** and a **scheme.sql** on classpath it will use it
+    - To prevent overwrite set the property **spring.jpa.hibernate.ddl-auto=false**
 - In order to run test it is common to add **com.h2database.h2** dependency in maven.
 
 ## spring boot security (spring-boot-starter-security)
@@ -154,16 +148,16 @@ General note: use **Bcrypt** for  password hashing.
 
 - can be configured by properties
 - **default** when security starter is not configured.
-  - forced for all urls.
-  - Username is: user
-  - password is logged in console at startup
+    - forced for all urls.
+    - Username is: user
+    - password is logged in console at startup
 
 ### Form based auth
 
 - configured by:
-  1. extend WebSecurityConfigurerAdapter
-  2. annotate @EnableWebSecurity to activate form-based Auth in favor of BasicAuth
-  3. annotate @Configuration
+    1. extend WebSecurityConfigurerAdapter
+    2. annotate @EnableWebSecurity to activate form-based Auth in favor of BasicAuth
+    3. annotate @Configuration
 - overwrite method *configure* to define where auth is needed
 - you need to be cautious to consider every part of the path
 - you need to allow access to login page
@@ -175,16 +169,16 @@ General note: use **Bcrypt** for  password hashing.
 - Possible providers are GitHub, Google, Facebook etc.
 - can be configured via properties.
 - or via Java config:
-  - @EnableOAuth2Client is used to config a client
-  - @EnableAuthorizationServer is used to config a server
+    - @EnableOAuth2Client is used to config a client
+    - @EnableAuthorizationServer is used to config a server
 - Client dependency spring-boot-starter-oauth2-client
 
 ## rabbit mq
 
 - small messages are preferred when using asynchronous messaging (ID instead of entire object)
 - use string with json object inside:
-  - no implicit marshalling needed (better performance)
-  - string objects are readable in console
+    - no implicit marshalling needed (better performance)
+    - string objects are readable in console
 
 ## actuators
 
@@ -201,12 +195,12 @@ actuators...
 Predefined endpoints:
 
 1. Health endpoint
-   - application status
-   - status of dependencies (db, etc.)
+     - application status
+     - status of dependencies (db, etc.)
 2. Info endpoint:
-   - maintainer
-   - git commit
-   - build number
+     - maintainer
+     - git commit
+     - build number
   
 JXM Functions:
 
