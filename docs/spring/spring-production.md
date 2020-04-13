@@ -11,8 +11,6 @@
 [official docker guide from spring.io](https://spring.io/guides/topicals/spring-boot-docker/). 
 [official docker getting started from spring.io](https://spring.io/guides/gs/spring-boot-docker/). 
 
-
-
 1. dockerfile + fatjar
    - easy setup 
 2. dockerfile + exploded jar
@@ -29,13 +27,70 @@
 ```Dockerfile
 FROM openjdk:14-jdk-slim
 ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+COPY ${JAR_FILE} myApp.jar
+ENTRYPOINT ["java","-jar","/myApp.jar"]
 ```
 
 #### dockerfile + exploded jar
 
+- To explode a jar: `jar -xf myapp.jar`
+- to execute a exploded jar you can start
+  - JarLauncher: `java org.springframework.boot.loader.JarLauncher`
+  - Your main class: `java -cp BOOT-INF/classes:BOOT-INF/lib/* de.example.MyApplication`
+
+Dockerfile to use exploded jar: 
+
+```Dockerfile
+FROM openjdk:8-jre-alpine
+ARG DEPENDENCY=target/dependency
+COPY --from=builder ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY --from=builder ${DEPENDENCY}/META-INF /app/META-INF
+COPY --from=builder ${DEPENDENCY}/BOOT-INF/classes /app
+ENTRYPOINT ["java","-cp","app:app/lib/*","de.example.MyApplication"]
+```
+
 #### dockerfile multistage build (build + execution in container)
+
+build jar in multistage build:
+
+```Dockerfile
+FROM openjdk:8-jdk-alpine as build
+WORKDIR /workspace/app
+
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+COPY src src
+
+RUN ./mvnw install -DskipTests
+RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
+
+FROM openjdk:8-jdk-alpine
+VOLUME /tmp
+ARG DEPENDENCY=/workspace/app/target/dependency
+COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
+COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
+ENTRYPOINT ["java","-cp","app:app/lib/*","hello.Application"]
+```
+
+explode jar in multistage build:
+
+```Dockerfile
+FROM openjdk:8-jdk-alpine AS builder
+WORKDIR target/dependency
+ARG APPJAR=target/*.jar
+COPY ${APPJAR} app.jar
+RUN jar -xf ./app.jar
+
+FROM openjdk:8-jre-alpine
+VOLUME /tmp
+ARG DEPENDENCY=target/dependency
+COPY --from=builder ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY --from=builder ${DEPENDENCY}/META-INF /app/META-INF
+COPY --from=builder ${DEPENDENCY}/BOOT-INF/classes /app
+ENTRYPOINT ["java","-cp","app:app/lib/*","com.example.MyApplication"]
+```
 
 #### google jib (maven + gradle plugins)
 [google jib](https://github.com/GoogleContainerTools/jib/blob/master/README.md)
