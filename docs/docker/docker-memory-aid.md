@@ -7,24 +7,27 @@ official overview of [docker cli commands](https://docs.docker.com/engine/refere
 
 - `docker build . -t crowdsalat/tag-name` creates a image based on a Dockerfile and the context/ working directory and subdirectories
 - `docker run <image>` starts a container from an image
-  - `-d` run as daemon
-  - `-it` runs interactively so you can execute commands in container (-t Allocate a pseudo-tty, -i Keep STDIN open )
-  - `-p 1000:1000` maps a port in container on a port on client
-  - `--mount` TODO
-  - `-v` TODO
-  - `-e VAR1=bla -e VAR2=blubb` defines environmental variables in the container
-  - `—rm` remove container after it is stopped.
-  - `—name` add name to the container.
+    - `-d` run as daemon
+    - `-it` runs interactively so you can execute commands in container (-t Allocate a pseudo-tty, -i Keep STDIN open )
+    - `-p 1000:1000` maps a port in container on a port on client
+    - `--mount` TODO
+    - `-v` TODO
+    - `-e VAR1=bla -e VAR2=blubb` defines environmental variables in the container
+    - `—rm` remove container after it is stopped.
+    - `—name` add name to the container.
 - `docker exec -it container_name bash` connects to a running container with the name container_name
 - `docker ps −a` shows all running docker container on a client
-- `docker volume create my_volume` creates volume with name my_volume. Volume is save on host under /var/lib/docker/volumes/my_volume
-- `docker volume ls` list volumes
+- `docker image / container / network / volumes / system`
+      - ls
+      - rm
+      - inspect
 - `docker system prune` removes:
-  1. all stopped containers (`docker container prune`)
-  2. all networks not used by at least one container (`docker network prune`)
-  3. all dangling images (`docker image prune`)
-  4. all dangling build cache
-1. remove dedicated resource: `docker <resource> ls` & `docker <resource> rm <id_of_resource>` (resources: container/network/image/volume etc.)
+    1. all stopped containers (`docker container prune`)
+    2. all networks not used by at least one container (`docker network prune`)
+    3. all dangling images (`docker image prune`)
+    4. all dangling build cache
+- `docker network create --driver bridge <bridgeName>` create a new bridge network
+- `docker volume create <volumeName>` create a new bridge volume
 
 ## Dockerfile
 
@@ -101,15 +104,9 @@ Java:
 
 ### -p vs EXPORT
 
-EXPORT does not actually publish the given port. It is a documantation for the user. The user of a image needs to export the port via -p flag when running docker run.
+EXPORT does not actually publish the given port. It is a documentation for the user. The user of a image needs to export the port via -p flag when running docker run.
 
 ### --volume vs. --mount vs. VOLUME
-
-## connect containers via user-defined networks
-
-## volumes
-
-[official documentation](https://docs.docker.com/storage/volumes/)
 
 ## user amd groups in container
 
