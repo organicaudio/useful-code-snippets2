@@ -24,6 +24,8 @@ official overview of [docker cli commands](https://docs.docker.com/engine/refere
   - `--mount` TODO
   - `-v` TODO
   - `-e VAR1=bla -e VAR2=blubb` defines environmental variables in the container
+  - `—rm` remove container after it is stopped.
+  - `—name` add name to the container.
 - `docker exec -it container_name bash` connects to a running container with the name container_name
 - `docker ps −a` shows all running docker container on a client
 - `docker volume create my_volume` creates volume with name my_volume. Volume is save on host under /var/lib/docker/volumes/my_volume
