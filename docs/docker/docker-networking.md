@@ -13,7 +13,7 @@ Copied from [network driver summary](https://docs.docker.com/network/):
 
 [official doc](https://docs.docker.com/network/bridge/)
 
-A user-defined bridge allow that two containers in this network can access each other via their container name (dns resolution). Container without a explicit network are in the defualt network bridge. The default bridge have no dns server so the containers need to address each other via their ip address. You can get the ip address of a container via `docker instpect <containerName>`.
+A user-defined bridge allow that two containers in this network can access each other via their container name (dns resolution). Container without a explicit network are in the defualt network bridge. The default bridge have no dns server so the containers need to address each other via their ip address. You can get the ip address of a container via `docker inspect <containerName>`.
 
 ```shell
 # create a new bridge network
