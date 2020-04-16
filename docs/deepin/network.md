@@ -41,6 +41,12 @@ nmap -p- <ip_address>
 nmap -p 8080 <ip_address>
 ```
 
+with windows powershell:
+
+```
+tnc google.com -port 80
+```
+
 ### open ports (iptables)
 
 ```shell
