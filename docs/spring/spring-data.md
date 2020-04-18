@@ -15,6 +15,19 @@ For each domain object you need:
 1. entity class
 2. a repository interface which extends Repository<T,ID> or a child of it
 
+## initialize database
+
+The easiest way is to use initializer scripts. Save a the following files under resoures/:
+
+1. schema.sql for defining the table schemas
+2. data.sql for adding data to the tables
+
+If you want to use scheme.sql you should deactivate auto ddl via property `spring.jpa.hibernate.ddl-auto=None`. Auto DDL creates the tables according to the entity classes.
+
+## transactions
+
+In order to activate transactions in spring data you should annotate a service class with @Transactional. All code whcih is called form hence on is transactional. if a exception occurs the whole commit in thr database is rolled back.
+
 ## query methods 
 
 Query methods allow to search for entities in the database. You do not need to implement the query methods. Spring data will generate the necessary code at startup if the used syntax is correct (does not check semantic at startup) and it will throw an error if it not ok. Query methods **support Optional as return type wrapper**.
