@@ -7,9 +7,9 @@
 
 ## logging
 
-In order to explicitly configure logging you need to create a slf4j conform logging configuration, which lies under **resources/**. A [comprehensive documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-logging) on logging is provided by spring.
+In order to explicitly configure logging you need to create a slf4j conform logging configuration, which lies under **resources/**. A [comprehensive documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-logging) on logging is provided by spring. If want to log to a file you need to specify **logging.file.name** or **logging.file.path** property.  
 
-A logback-spring.xml example from [Baeldung](https://www.baeldung.com/spring-boot-logging):
+A **logback-spring.xml** example from [Baeldung](https://www.baeldung.com/spring-boot-logging):
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
