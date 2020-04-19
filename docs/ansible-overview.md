@@ -14,6 +14,8 @@
 ### install
 [official guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-debian)
 
+#### control node:
+
 Add the following line to **/etc/apt/sources.list**:
 
 deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
@@ -23,6 +25,13 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
 sudo apt update
 sudo apt install ansible
 ```
+
+#### managed node
+
+- open ssh port
+- python installed (for most modules)
+- pip installed (for most modules)
+
 
 **Remember that the managed nodes need to have ssh activated and python and pip installed.**
 
