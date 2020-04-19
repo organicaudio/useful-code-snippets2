@@ -95,16 +95,21 @@ install software via playbook:
       package: name='java-1.8.0-openjdk' state=latest
 ```
 
-start docker container:
+start docker container via playbook:
 
 ```yml
 ---
 - hosts: all
   become: true
   vars:
-    default_container_name: hello-world
+    container_name: hello-world
     container_image: hypriot/armhf-hello-world
   tasks:
+  
+  - name: install docker module for python
+    pip:
+      name: docker
+
   - name: pull docker image
     docker_image:
       name: "{{ container_image }}"
@@ -112,8 +117,8 @@ start docker container:
 
   - name: start docker containers
     docker_container:
-      name: "{{ default_container_name }}"
-      image: "{{ default_container_image }}"
+      name: "{{ container_name }}"
+      image: "{{ container_image }}"
       state: present
 ```
 
