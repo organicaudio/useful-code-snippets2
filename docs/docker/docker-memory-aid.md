@@ -60,13 +60,15 @@ shell form:
 
 - syntax: `<instruction> <command>`
 - like calling `/bin/sh -c <command>`
-- variable substitution works e.g. `exec echo $path` 
+- variable substitution works e.g. `exec echo $path`
+- application which is started this way will not receiving interrupt signals (like crlt + c)
 
 exec form:
 
 - syntax: `<instruction> ["executable", "arg1", "arg2", ...]`
 - like calling: `executable` directly, so it must be a valid path (/bin/echo instead of echo)
 - preferred for CMD and ENTRYPOINT
+- no variable replacement ($PATH does not work)
 
 ### dockerfile commands
 
