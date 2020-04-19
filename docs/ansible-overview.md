@@ -1,7 +1,7 @@
 
 ## concepts
 
-- Ansible runs agentless. The remote machine just needs ssh installed.
+- Ansible runs agentless. The remote machine just needs ssh installed (and for many modules python and pip).
 - the machine which got the executables installed is called **control node**
 - the managed machines are called **managed nodes** or informally **hosts**
 - a list of managed nodes is called **inventory** or informally **hostfile**
@@ -23,6 +23,8 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
 sudo apt update
 sudo apt install ansible
 ```
+
+**Remember that the managed nodes need to have ssh activated and python and pip installed.**
 
 ### create inventory
 
