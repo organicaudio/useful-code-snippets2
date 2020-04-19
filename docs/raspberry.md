@@ -50,3 +50,22 @@ docker run hypriot/armhf-hello-world
 In order to run on a rp a docker image need to be compiled for arm processor architecture. You can find a list of supported cpu architectures for docker [here](https://github.com/docker-library/official-images#architectures-other-than-amd64). To find out which architecture your rp has [see](https://de.wikipedia.org/wiki/Raspberry_Pi#Hardware). E.g. a rp 2 mod B uses a ARMv7 architecture.
 
 - [open-jdk](https://hub.docker.com/r/balenalib/raspberry-pi-openjdk)
+
+## install ranchers k3s kubernetes on rp
+
+**the cpu of the rp 2 mod B seems to be to weak to run k3s server. Always on 100% and timeout on kubectl commands**
+
+[Guide](https://opensource.com/article/20/3/kubernetes-raspberry-pi-k3s)
+
+```shell
+# install k3s on rp and start server ('systemd: Starting k3s' will take a looong time)
+curl -sfL https://get.k3s.io | sh -
+
+# after startup test if it runs
+sudo kubectl get nodes
+```
+
+[Uninstall](https://rancher.com/docs/k3s/latest/en/installation/uninstall/):
+
+- server node: `/usr/local/bin/k3s-uninstall.sh`
+- agent node: `/usr/local/bin/k3s-agent-uninstall.sh`
