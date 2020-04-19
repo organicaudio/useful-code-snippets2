@@ -84,6 +84,7 @@ If you do not specify otherwise the ad-hoc will be run by the command module.
 
 - playbooks are defined in yaml format
 - To run a playbook: `ansible-playbook playbook_file.yml`
+- prerequisite for most modules like docker_image or docker_container: **the host has python and pip installed**
 
 install software via playbook:
 
