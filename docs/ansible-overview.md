@@ -108,6 +108,8 @@ start docker container:
       state: present
 ```
 
+**Note: there was an error while using dokcer_image module [No module named ssl_match_hostname](https://github.com/docker/docker-py/issues/1502). The solution was to run `sudo apt-get remove python-configparser`**
+
 ## optional grouping of managed nodes
 
 You can address the all nodes in a group via `ansible optional_group_name -m ping` and a specific node by its name `ansible name_of_node -m ping`
