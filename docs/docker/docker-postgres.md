@@ -1,5 +1,5 @@
 
-## postgress docker image
+## postgres docker image
 
 [Documentation for postgress image](https://hub.docker.com/_/postgres?tab=description)
 [Nice tutorial](https://info.crunchydata.com/blog/easy-postgresql-10-and-pgadmin-4-setup-with-docker)
