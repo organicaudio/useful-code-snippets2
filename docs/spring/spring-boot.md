@@ -60,17 +60,20 @@ public class ExampleApplication {
 
 set/overwrite predefined properties:
 
-- application.properties or application.yml (dev focused)
+- application.properties or application.yml in src/main/resources folder(dev focused)
 - Environment variables
 - command line injections 
 - **Cloud configuration (most common)**
 
+
+**You can define a property file fo the test cases by adding a file to src/test/resources**
+
 ## Bean Configuration
 
-- adding beans to default application class e.g. as inner class (quick and dirty)
+- adding beans to default application class e.g. as inner class
 - adding bean to separate configuration classes (@Import or autoscan)
 - xml based config (legacy)
-- **component scanning (most common)**
+- **component scanning (most common)** and implemented Interfaces
 
 ## profiles
 
