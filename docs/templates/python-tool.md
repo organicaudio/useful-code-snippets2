@@ -2,6 +2,10 @@
 
 [A template for a new tool](https://gist.github.com/CrowdSalat/064b62c15315d4f65e9b44bb2ea7d972)
 
+## create executable
+
+You can create a standalone executable with all needed dependencies with [pipi PyInstaller](https://pypi.org/project/PyInstaller/).
+
 ## shebang
 
 In order to be directly executable via file manager or terminal in linux add a shebang to the script: `#!/usr/bin/env python3`
