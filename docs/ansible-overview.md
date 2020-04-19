@@ -1,0 +1,96 @@
+
+## concepts
+
+- Ansible runs agentless. The remote machine just needs ssh installed.
+- the machine which got the executables installed is called **control node**
+- the managed machines are called **managed nodes** or informally **hosts**
+- a list of managed nodes is called **inventory** or informally **hostfile**
+- a **task** is a single action in ansible
+- a **playbook** is like a shell script for ansible tasks
+- **modules** are the units of code Ansible executes
+
+## up and running
+
+### install
+[official guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-debian)
+
+Add the following line to **/etc/apt/sources.list**:
+
+deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
+
+```shell
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
+sudo apt update
+sudo apt install ansible
+```
+
+### create inventory
+
+[Official guide](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html)
+
+You can add managed nodes in the file **/etc/ansible/hosts** either via the ini format or via the yaml format.
+
+A simple host file in ini format:
+
+```ini
+192.168.0.2 ansible_user=pi
+```
+
+A simple host file in yaml format:
+
+```yaml
+all:
+  hosts:
+    name_of_node:
+      ansible_host: 192.168.0.2
+        ansible_user: pi
+```
+
+Add your public ssh key to the managed nodes ~/.ssh/known_hosts files. Use the `ssh-copy-id` command or copy it manually. Use `ansible all -m ping` to test if all nodes in your inventory are reachable. 
+
+
+## ad-hoc commands
+
+[official guide](https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html#intro-adhoc)
+
+The syntax of a ad-hoc command is as following:
+
+```shell
+# ansible [pattern] -m [module] -a "[module options]"
+
+# use of ping module
+ansible all -m ping
+
+# a exmaple which is run on all hosts 
+ansible all -a "/bin/echo hello"
+```
+
+If you do not specify otherwise the ad-hoc will be run by the command module.
+
+## optional grouping of managed nodes
+
+You can address the all nodes in a group via `ansible optional_group_name -m ping` and a specific node by its name `ansible name_of_node -m ping`
+
+A host file witch uses groups (children) and a node without a group in yaml format:
+
+```yaml
+all:
+  hosts:
+    name_of_node_without_group:
+      ansible_host: 192.168.0.2
+      ansible_user: pi
+  children:
+    group_name1:
+      hosts:
+        name_of_node_g1_1:
+          ansible_host: 192.168.0.3
+          ansible_user: pi
+        name_of_node_g1_2:
+          ansible_host: 192.168.0.4
+          ansible_user: pi
+      group_name2:
+        hosts:
+          name_of_node_g2_1:
+            ansible_host: 192.168.0.5
+            ansible_user: pi
+```
