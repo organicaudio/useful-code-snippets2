@@ -8,6 +8,7 @@
 - start raspberry pi (and connect to lan wire so you can start right away from the remote computer)
 - use ssh to connect to rp
 - use `sudo raspi-config` to configure the rp
+- (optional) install pip: `sudo apt-get install python-pip`
 
 ## power off and restart
 
@@ -23,6 +24,13 @@ sudo shutdown -h now
 
 # restart
 sudo shutdown -r now
+```
+
+## install pip
+
+```shell
+sudo apt-get update
+sudo apt-get install python-pip
 ```
 
 ## install docker on rp
