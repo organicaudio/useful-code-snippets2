@@ -67,6 +67,45 @@ ansible all -a "/bin/echo hello"
 
 If you do not specify otherwise the ad-hoc will be run by the command module.
 
+## playbooks
+
+[official guide](https://docs.ansible.com/ansible/latest/user_guide/playbooks.html#working-with-playbooks)
+
+- playbooks are defined in yaml format
+- To run a playbook: `ansible-playbook playbook_file.yml`
+
+install software via playbook:
+
+```yml
+---
+- hosts: name_of_node
+  tasks:
+    - name: Install Java
+      package: name='java-1.8.0-openjdk' state=latest
+```
+
+start docker container:
+
+```yml
+---
+- hosts: all
+  become: true
+  vars:
+    default_container_name: hello-world
+    container_image: hypriot/armhf-hello-world
+  tasks:
+  - name: pull docker image
+    docker_image:
+      name: "{{ container_image }}"
+      source: pull
+
+  - name: start docker containers
+    docker_container:
+      name: "{{ default_container_name }}"
+      image: "{{ default_container_image }}"
+      state: present
+```
+
 ## optional grouping of managed nodes
 
 You can address the all nodes in a group via `ansible optional_group_name -m ping` and a specific node by its name `ansible name_of_node -m ping`
