@@ -15,7 +15,6 @@ ssh -p 12345 <user>@<ip or url>
 # connect use rsa private key saved under ~/.ssh/ instead of password
 ssh -i ~/.ssh/id_rsa <user>@<ip or url>
 
-
 # ssh tunnel which connects my local port 1025 with the remote port 4000 over the standard ssh port 22
 ssh -L1025:192.168.x.x:4000 -v <user>@<ip or url>
 # can be used via
@@ -24,6 +23,23 @@ ssh -p1025 <user>@192.168.x.x
 ```
 
 [nice explanation of ssh tunnels](https://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot)
+
+### ssh keys
+
+The -i flag can be omitted if the standard file names id_rsa (private key) and id_rsa.pub (public key) are used.
+
+```shell
+#generate a private and public key pair in ~/.ssh/ folder
+ssh-keygen
+
+# copy your public key to a known_host file on a remote machine
+# allows access with your private key instead of a password
+ssh-copy-id -i ~/.ssh/id_rsa user@host
+
+# connect use rsa private key saved under ~/.ssh/ instead of password
+ssh -i ~/.ssh/id_rsa <user>@<ip or url>
+
+```
 
 ### check open ports
 
