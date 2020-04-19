@@ -1,3 +1,4 @@
+# overlook over web evolution
 
 https://www.quora.com/What-are-the-pros-and-cons-of-server-side-rendering-vs-client-side-rendering-with-APIs-What-is-more-popular-when-building-web-apps
 

@@ -1,6 +1,6 @@
-## network stuff
+# network stuff
 
-### ssh
+## ssh
 
 
 ```shell
@@ -24,7 +24,7 @@ ssh -p1025 <user>@192.168.x.x
 
 [nice explanation of ssh tunnels](https://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot)
 
-### ssh keys
+## ssh keys
 
 The -i flag can be omitted if the standard file names id_rsa (private key) and id_rsa.pub (public key) are used.
 
@@ -41,7 +41,7 @@ ssh -i ~/.ssh/id_rsa <user>@<ip or url>
 
 ```
 
-### check open ports
+## check open ports
 
 ```shell
 # local machine: check for open ports and which process is listening on them
@@ -63,7 +63,7 @@ with windows powershell:
 tnc google.com -port 80
 ```
 
-### open ports (iptables)
+## open ports (iptables)
 
 ```shell
 # lists all rules

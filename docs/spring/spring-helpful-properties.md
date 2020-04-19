@@ -1,3 +1,4 @@
+# spring boot useful properties
 
 ```properties
 # show executed sql statement in logs

@@ -1,9 +1,9 @@
+# checklist for spring boot in production
 
-## checklist for spring in production
-
-- flyway manages which sql init script already run on a database 
-- if you set the `spring.profile.active=<activeProfile>` property in the application.properties the property file with the name `application-<activeProfile>.properties` will also be loaded (if exists). It possibly overwrites properties which were set before.
-- (i guess that) if you set spring.profile.active from command line the starting application will first load `application.properties` and afterwards loads `application-<activeProfile>.properties`.
+- activate logging to file and to console
+- dockerize app
+- .... TODO
+- spring-devtools will not run, think about possible consequences.
 
 ## logging
 

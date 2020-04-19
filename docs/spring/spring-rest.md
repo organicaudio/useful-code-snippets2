@@ -1,7 +1,6 @@
+# spring boot rest (with HATEOAS)
 
-## spring boot rest (with HATEOAS)
-
-### rest general principles 
+## rest general principles 
 
 Representational State Transfer (REST) is a collection of (six) architectural constraints:
 
@@ -19,7 +18,7 @@ Representational State Transfer (REST) is a collection of (six) architectural co
 Hypermedia as the Engine of Application State (HATEOAS): you can find all available resources through the publication of links which point to these resources. Like a landing page of a website which leads to all further links on the website.  
 
 
-### spring rest (via spring mvc)
+## spring rest (via spring mvc)
 
 [Official hands on guide with emphasis on hateoas](https://spring.io/guides/tutorials/rest/)
 [Nice overview of topic related to rest](https://www.baeldung.com/rest-with-spring-series)
@@ -45,14 +44,14 @@ Hypermedia as the Engine of Application State (HATEOAS): you can find all availa
   -  @RequestBody binds the parameter to the body of the HTTP (usually used by http post)
   -  note: *@PathParam and @QueryParam,* are the jax-rs annotations
 
-### spring hateoas
+## spring hateoas
 
 - add **spring-boot-starter-hateoas** dependency to add HATEOAS support.
 - use EntityModel<T> or CollectionModel<T> as return type container
 - use Methods from WebMvcLinkBuilder like linkTo() to return _links to relevant operations
 - implement RepresentationModelAssembler and the toModel method for every entity (in order to remove the code from the RestController)
 
-### spring data rest
+## spring data rest
 
 [official documentation](https://docs.spring.io/spring-data/rest/docs/current/reference/html/)
 
@@ -72,6 +71,6 @@ When adding **spring-boot-starter-data-rest** as dependency to your spring boot 
   - ?sort=name,desc
 -  you can configure your custom query methods with @Param and @PathVariable as you would do with regular methods in a RestController
 
-### evolving api
+## evolving api
 
 Add new fields to your JSON representations, but do not take any away (Never delete a column in a database)

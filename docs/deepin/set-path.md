@@ -1,3 +1,5 @@
+# set path variable
+
 Source: https://stackabuse.com/how-to-permanently-set-path-in-linux/
 
 ## decision

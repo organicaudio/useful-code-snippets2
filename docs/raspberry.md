@@ -1,4 +1,3 @@
-
 # raspberry pi
 
 ## installation

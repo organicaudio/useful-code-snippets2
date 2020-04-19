@@ -1,3 +1,4 @@
+# remove titlebar form firefox
 
 There is a bug in deepin that the titlebar in firefox wont disappear even if it is turned off. It is described in this [issue](https://github.com/linuxdeepin/developer-center/issues/1460).
 

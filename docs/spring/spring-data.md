@@ -1,3 +1,4 @@
+# spring boot data
 
 ## Standard use
 
@@ -203,5 +204,3 @@ logging when entity is created and who created it.
 - spring data apache cassandra
 - spring data apache solr (search engine)
 - Community modules listed [under](https://spring.io/projects/spring-data)
-
-

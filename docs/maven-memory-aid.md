@@ -1,3 +1,5 @@
+# maven memory aid
+
 ## useful commands
 
 ``mvn help:system`` prints system properties and environment variables.

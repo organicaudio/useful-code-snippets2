@@ -1,3 +1,4 @@
+# remove titlebar form vscode
 
 To remove the titlebar in vscode:
 
