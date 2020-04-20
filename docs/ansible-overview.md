@@ -58,7 +58,7 @@ all:
   hosts:
     name_of_node:
       ansible_host: 192.168.0.2
-        ansible_user: pi
+      ansible_user: pi
 ```
 
 Add your public ssh key to the managed nodes ~/.ssh/known_hosts files. Use the `ssh-copy-id` command or copy it manually. Use `ansible all -m ping` to test if all nodes in your inventory are reachable. 
@@ -89,6 +89,12 @@ If you do not specify otherwise the ad-hoc will be run by the command module.
 - playbooks are defined in yaml format
 - To run a playbook: `ansible-playbook playbook_file.yml`
 - prerequisite for most modules like docker_image or docker_container: **the host has python and pip installed**
+
+To run a playbook on one host you can:
+
+1. define the host explicitly in the playbook instead of using the all target
+2. define the host field as a external variable (`{{target}}`) and set it via command line (`ansible-playbook playbook.yml --extra-vars "target=pi"`)
+3. run the playbook with a given a specific host file which contains only the one client (`ansible-playbook -i host-pi.yml playbook.yml`)
 
 install software via playbook:
 
