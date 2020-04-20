@@ -6,9 +6,12 @@
 - the machine which got the executables installed is called **control node**
 - the managed machines are called **managed nodes** or informally **hosts**
 - a list of managed nodes is called **inventory** or informally **hostfile**
-- a **task** is a single action in ansible
-- a **playbook** is like a shell script for ansible tasks
-- **modules** are the units of code Ansible executes
+- **modules** are the units of code Ansible executes 
+- a **task** executes a module with very specific arguments
+- a **playbook** is a list of ansible task
+
+
+*playbook and play will often get used synonymously. A playbook is the yaml file which may container one or more plays. A play is seperated by --- in the yaml file)*
 
 ## up and running
 
