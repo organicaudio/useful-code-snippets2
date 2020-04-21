@@ -51,6 +51,8 @@ Hypermedia as the Engine of Application State (HATEOAS): you can find all availa
 - use Methods from WebMvcLinkBuilder like linkTo() to return _links to relevant operations
 - implement RepresentationModelAssembler and the toModel method for every entity (in order to remove the code from the RestController)
 
+*LEGACY: Spring HATEOAS Version 1.0 dropped the [resourceSupport/Resource/Resources/PagedResources group of classes](https://docs.spring.io/spring-hateoas/docs/current/reference/html/#migrate-to-1.0)*
+
 ## spring data rest
 
 [official documentation](https://docs.spring.io/spring-data/rest/docs/current/reference/html/)
