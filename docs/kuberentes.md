@@ -1,17 +1,14 @@
-# Kuberentes
+# Kuberentes 
 
-Kubernetes (K8s) allows to deploy multiple containers on one or multiple host systems. The [offial documentation of k8s](https://kubernetes.io/docs/) is outstanding.
+Kubernetes (K8s) allows to deploy multiple containers on one or multiple host systems. The [offial documentation of k8s](https://kubernetes.io/docs/) is outstanding. There is also a [interactive tutorial]([offcial tutorial](https://kubernetes.io/docs/tutorials/kubernetes-basics/))
+
+outline of features:
+- one master node and multiple worker nodes
+- creates self-healing clusters
+- allows rolling upgrade and rollback
+- secret management and encapsulation via namespaces
 
 ## terms
-
-- kube-scheduler
-    - assign pods (container[s]) to nodes (hosts)
-    - quality of service
-    - policies
-    - user specification
-- one master node and multiple worker nodes
-- allows rolling upgrade and rollback
-- secret management defined via namespaces
 
 Master node:
 - API server
@@ -34,6 +31,7 @@ base objects:
 Pods:
 - are one or multiple containers which
 - share a unique network IP Address
+- "Containers should only be scheduled together in a single Pod if they are tightly coupled and need to share resources such as disk."
 
 controllers allow:
 1. fail over
@@ -41,14 +39,14 @@ controllers allow:
 3. load balancing
 
 Kind of controllers:
-- RepilcaSet: ensures that a specified number of pods is runnning in a node (needs another controller as wrapper)
-- Deployment: declarative describe pods and ReplicaSets
+- RepilcaSet: ensures that a specified number of pods is runnning in a node (needs another controller as wrapper like deployment)
+- Deployment: declarative describe how to create and update instances (self-healing mechanism)
 - DaemonsSets: ensures that all nodes run a specific copy of a pod (1 DaemonSet - 1 Pod - X nodes).
 - Jobs: supervisor for pods which do batch jobs
 - Services: allow communication between deployment controllers
 
 Services:
-- internal: pods can only communicate within k8s cluster over there IP
+- internal: pods can only communicate within k8s cluster over there IP (default behaviour of pods without a service)
 - external: pods can be accessed through the node ip and the so called NodePort
 - load balancer: to expose application to the internet
 
@@ -76,22 +74,29 @@ Namespaces:
 
 [kubectl reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
 
+basic commands:
+- `kubectl cluster-info`
 - `kubectl create -f FILENAME` create objects and controllers from a yaml file
-
-- `kubectl run <pod_name> --image=<image_name>` starts a pod with the given image
-- `kubectl create deployment <deployment_name/pod_name> --image=<image_name>` creates a deployment which starts a pod with the given image
-- `kubectl expose <pod_name> --type=NodePort --port=80` creates a service on port 80 (of the node/host machine)
-
 - `kubectl get all`
     - `kubectl get nodes`
     - `kubectl get services`
     - `kubectl get deployments`
     - `kubectl get rs`
 
+create resources without k8s file:
+- `kubectl run <pod_name> --image=<image_name>` starts a pod with the given image
+- `kubectl create deployment <deployment_name/pod_name> --image=<image_name>` creates a deployment which starts a pod with the given image
+- `kubectl expose <pod_name> --type=NodePort --port=80` creates a service on port 80 (of the node/host machine)
+
+debug pod:
+- `kubectl proxy ` proxy into a cluster even when no services are exposed. Pods are accessible via there pod name or there internal ip address. Terminate with ctrl + c.
+- `kubectl describe <node/pods/deployment>`
+- `kubectl kubectl logs <pod_name>`
+- `kubectl exec <pod_name>` - execute a command on a container in a pod
+- `kubectl exec -ti <pod_name> bash` open bash in container
 ## minicube cli
 
 - `minicube start`
 - `minicube service <pod_name>` shows the service in the browser
 
 ## k8s yaml file
-
