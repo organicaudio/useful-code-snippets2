@@ -26,6 +26,8 @@ asciinema rec ./file.cast
 ## replay a record
 asciinema play ./file.cast
 
+## dumps the content of a record on console
+asciinema cat ./file.cast
 
 ## record and save to web ( you need account to view it)
 asciinema rec
