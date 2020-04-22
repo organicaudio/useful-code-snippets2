@@ -1,6 +1,6 @@
 # Kuberentes
 
-Kubernetes (K8s) allows to deploy multiple containers on one or multiple host systems.
+Kubernetes (K8s) allows to deploy multiple containers on one or multiple host systems. The [offial documentation of k8s](https://kubernetes.io/docs/) is outstanding.
 
 ## terms
 
@@ -10,9 +10,8 @@ Kubernetes (K8s) allows to deploy multiple containers on one or multiple host sy
     - policies
     - user specification
 - one master node and multiple worker nodes
-- allows rolling upgrade and a rollback
+- allows rolling upgrade and rollback
 - secret management defined via namespaces
-
 
 Master node:
 - API server
@@ -26,10 +25,15 @@ Worker node:
 - Docker (or containerd compliant software)
 - kube-proxy (supported modes: user space, iptables, ipvs)
 
-Pods:
-- are one or multipel containers which
-- share a unique network IP Address
+base objects:
+- pod - to run container
+- service - ro access pods
+- volume - to persists data from pods
+- namespace - to separate objects 
 
+Pods:
+- are one or multiple containers which
+- share a unique network IP Address
 
 controllers allow:
 1. fail over
@@ -67,3 +71,27 @@ Namespaces:
 - [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - install [auto completion for kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#enable-kubectl-autocompletion): `kubectl completion bash >/etc/bash_completion.d/kubectl` *might get permission issues with this command. Than write it  to ~/kubectl and mv it with sudo to the target folder*
 - if you want to test stuff on your local machine  [install minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/#before-you-begin). **Note the 'Before you begin' section which shows you how to check for a supervisor.** If you do not have one install one like VirtualBox.
+
+## kubectl cli
+
+[kubectl reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
+
+- `kubectl create -f FILENAME` create objects and controllers from a yaml file
+
+- `kubectl run <pod_name> --image=<image_name>` starts a pod with the given image
+- `kubectl create deployment <deployment_name/pod_name> --image=<image_name>` creates a deployment which starts a pod with the given image
+- `kubectl expose <pod_name> --type=NodePort --port=80` creates a service on port 80 (of the node/host machine)
+
+- `kubectl get all`
+    - `kubectl get nodes`
+    - `kubectl get services`
+    - `kubectl get deployments`
+    - `kubectl get rs`
+
+## minicube cli
+
+- `minicube start`
+- `minicube service <pod_name>` shows the service in the browser
+
+## k8s yaml file
+
