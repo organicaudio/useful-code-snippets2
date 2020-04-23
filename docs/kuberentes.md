@@ -82,7 +82,7 @@ Namespaces:
 
 basic commands:
 - `kubectl cluster-info` list masternodes and worker nodes
-- `kubectl create -f FILENAME` create objects and controllers from a yaml file
+- `kubectl apply -f FILENAME` create/updates the defined objects in the given yaml file.
 - `kubectl get all`
     - `kubectl get nodes`
     - `kubectl get services`
@@ -93,7 +93,6 @@ basic commands:
 update pod:
 - `kubectl set image deployments/<POD_NAME> <POD_NAME>=<IMAGE>:<VERSIONTAG>` set image of a pod to a newer version
 - `rubectl rollout undo deployments/<POD_NAME> ` rollback to previous version
-
 
 create resources without k8s file:
 - `kubectl run <POD_NAME> --image=<IMAGE>` starts a pod with the given image
@@ -114,3 +113,11 @@ debug pod:
 - `minicube service <POD_NAME>` shows the service in the browser
 
 ## k8s yaml file
+
+[Overview](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/)
+
+Required fields:
+- apiVersion: kubernetes API version you use
+- kind: type of object (e.g. Deployment, Pod)
+- metadata: fields that allow to uniquely identify the object (name, UID, optional namespace)
+- spec: the state you desire for the object. The spec fields are different for ever object and can be look up under [kubernetes api reference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
