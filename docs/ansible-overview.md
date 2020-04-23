@@ -8,8 +8,7 @@
 - a list of managed nodes is called **inventory** or informally **hostfile**
 - **modules** are the units of code Ansible executes 
 - a **task** executes a module with very specific arguments
-- a **playbook** is a list of ansible task
-
+- a **playbook** is a executable list of ansible task
 
 *playbook and play will often get used synonymously. A playbook is the yaml file which may container one or more plays. A play is seperated by --- in the yaml file)*
 
