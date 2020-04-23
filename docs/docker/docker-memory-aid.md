@@ -109,7 +109,9 @@ Java:
 
 EXPORT does not actually publish the given port. It is a documentation for the user. The user of a image needs to export the port via -p flag when running docker run.
 
-### --volume vs. --mount vs. VOLUME
+### --volume vs. VOLUME
+
+VOLUME creates a anonymous volume even when docker run does not specify a --volume parameter.
 
 ## user amd groups in container
 
