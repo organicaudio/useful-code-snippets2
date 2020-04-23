@@ -81,30 +81,36 @@ Namespaces:
 [kubectl reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
 
 basic commands:
-- `kubectl cluster-info`
+- `kubectl cluster-info` list masternodes and worker nodes
 - `kubectl create -f FILENAME` create objects and controllers from a yaml file
 - `kubectl get all`
     - `kubectl get nodes`
     - `kubectl get services`
     - `kubectl get deployments`
-    - `kubectl get rs`
+    - `kubectl get rs` list replica sets
     - `-l <label>` to load only resources with the given label
 
+update pod:
+- `kubectl set image deployments/<POD_NAME> <POD_NAME>=<IMAGE>:<VERSIONTAG>` set image of a pod to a newer version
+- `rubectl rollout undo deployments/<POD_NAME> ` rollback to previous version
+
+
 create resources without k8s file:
-- `kubectl run <pod_name> --image=<image_name>` starts a pod with the given image
-- `kubectl create deployment <deployment_name/pod_name> --image=<image_name>` creates a deployment which starts a pod with the given image
-- `kubectl expose <pod_name> --type=NodePort --port=80` creates a service on port 80 of the node.
-- `kubectl label pod <pod_name> <labelKey=labelValue>` cretes a label on a pod
-- 
+- `kubectl run <POD_NAME> --image=<IMAGE>` starts a pod with the given image
+- `kubectl create deployment <deployment_name/POD_NAME> --image=<IMAGE>` creates a deployment which starts a pod with the given image
+- `kubectl expose <POD_NAME> --type=NodePort --port=80` creates a service on port 80 of the node.
+- `kubectl label pod <POD_NAME> <labelKey=labelValue>` cretes a label on a pod
+- `kubectl scale deployments/<POD_NAME> --replicas=4` creates a replication set
+
 debug pod:
 - `kubectl proxy ` proxy into a cluster even when no services are exposed. Pods are accessible via there pod name or there internal ip address. Terminate with ctrl + c.
 - `kubectl describe <node/pods/deployment>`
-- `kubectl kubectl logs <pod_name>`
-- `kubectl exec <pod_name>` - execute a command on a container in a pod
-- `kubectl exec -ti <pod_name> bash` open bash in container
+- `kubectl kubectl logs <POD_NAME>`
+- `kubectl exec <POD_NAME>` - execute a command on a container in a pod
+- `kubectl exec -ti <POD_NAME> bash` open bash in container
 ## minicube cli
 
 - `minicube start`
-- `minicube service <pod_name>` shows the service in the browser
+- `minicube service <POD_NAME>` shows the service in the browser
 
 ## k8s yaml file
