@@ -24,7 +24,7 @@ Worker node:
 
 base objects:
 - pod - to run container
-- service - ro access pods
+- service - to access pods
 - volume - to persists data from pods
 - namespace - to separate objects 
 
@@ -46,9 +46,15 @@ Kind of controllers:
 - Services: allow communication between deployment controllers
 
 Services:
-- internal: pods can only communicate within k8s cluster over there IP (default behaviour of pods without a service)
-- external: pods can be accessed through the node ip and the so called NodePort
-- load balancer: to expose application to the internet
+- allows to manage how the pods can be accessed
+- defines a logical set of pods 
+- pods are selected via a LabelSelector 
+- modes:
+    - ClusterIP (default): pods can only communicate within k8s cluster over there IP
+    - NodePort: pods can be accessed through the node ip and the so called NodePort
+    - load balancer: to expose application to the internet
+    - ExternalName: expose a service by a name
+
 
 Labels:
 - added to objects like pods, services, deployments
@@ -82,12 +88,14 @@ basic commands:
     - `kubectl get services`
     - `kubectl get deployments`
     - `kubectl get rs`
+    - `-l <label>` to load only resources with the given label
 
 create resources without k8s file:
 - `kubectl run <pod_name> --image=<image_name>` starts a pod with the given image
 - `kubectl create deployment <deployment_name/pod_name> --image=<image_name>` creates a deployment which starts a pod with the given image
-- `kubectl expose <pod_name> --type=NodePort --port=80` creates a service on port 80 (of the node/host machine)
-
+- `kubectl expose <pod_name> --type=NodePort --port=80` creates a service on port 80 of the node.
+- `kubectl label pod <pod_name> <labelKey=labelValue>` cretes a label on a pod
+- 
 debug pod:
 - `kubectl proxy ` proxy into a cluster even when no services are exposed. Pods are accessible via there pod name or there internal ip address. Terminate with ctrl + c.
 - `kubectl describe <node/pods/deployment>`
