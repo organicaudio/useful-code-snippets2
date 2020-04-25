@@ -1,6 +1,6 @@
 # Kuberentes 
 
-Kubernetes (K8s) allows to deploy multiple containers on one or multiple host systems. The [offial documentation of k8s](https://kubernetes.io/docs/) is outstanding. There is also a [interactive tutorial]([offcial tutorial](https://kubernetes.io/docs/tutorials/kubernetes-basics/))
+Kubernetes (K8s) allows to deploy multiple containers on one or multiple host systems. The [offial documentation of k8s](https://kubernetes.io/docs/) is outstanding. There is also a [interactive tutorial](https://kubernetes.io/docs/tutorials/kubernetes-basics/).
 
 outline of features:
 - one master node and multiple worker nodes
@@ -79,6 +79,8 @@ Namespaces:
 ## kubectl cli
 
 [kubectl reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
+[cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+
 
 basic commands:
 - `kubectl cluster-info` list masternodes and worker nodes
@@ -112,7 +114,7 @@ debug pod:
 - `minicube start`
 - `minicube service <POD_NAME>` shows the service in the browser
 
-## k8s yaml file
+## k8s yaml file (manifests)
 
 [Overview](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/)
 
