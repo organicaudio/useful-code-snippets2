@@ -17,6 +17,7 @@ official overview of [docker cli commands](https://docs.docker.com/engine/refere
     - `-e VAR1=bla -e VAR2=blubb` defines environmental variables in the container
     - `—rm` remove container after it is stopped.
     - `—name` add name to the container.
+- `docker history --no-trunc <image>` show something similar to the original dockerfile
 - `docker exec -it container_name bash` connects to a running container with the name container_name
 - `docker ps −a` shows all running docker container on a client
 - `docker image / container / network / volumes / system`
