@@ -1,5 +1,17 @@
 # docker networking
 
+## access from ip
+
+If you want to access a docker container by its host ip address you either add its ip address before the port mapping when starting the container or you use the host network type. If you want to use ipv6 you may need to set some further configurations.
+
+```shell
+# maps port 80 of the container to localhost:8080 of host
+docker run -p 8080:80
+
+# maps port 80 of the container to 192.168.178.123:8080 of host
+docker run -p 192.168.178.123:8080:80
+```
+
 ## network types
 
 Copied from [network driver summary](https://docs.docker.com/network/):

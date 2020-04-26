@@ -10,7 +10,8 @@ official overview of [docker cli commands](https://docs.docker.com/engine/refere
 - `docker run <image>` starts a container from an image
     - `-d` run as daemon
     - `-it` runs interactively so you can execute commands in container (-t Allocate a pseudo-tty, -i Keep STDIN open )
-    - `-p 1000:1000` maps a port in container on a port on client
+    - `-p 1000:1000` maps a port of a container to the port of the host. Reachable under localhost on the host system.
+    - `-p 192.168.178.123:1000:1000` maps a port of a container to the port of the host. Reachable under the IP address of the host system.
     - `--mount` TODO
     - `-v` TODO
     - `-e VAR1=bla -e VAR2=blubb` defines environmental variables in the container
