@@ -6,6 +6,7 @@ Docker does not persist data when a container is shutdown. In order to do so you
 
 [official documentation](https://docs.docker.com/storage/volumes/)
 
+
 - preferred way to persist data
 - Are managed on host under: /var/lib/docker/volumes/
 - can be named or anonymous
@@ -14,6 +15,9 @@ Docker does not persist data when a container is shutdown. In order to do so you
     1.  first field is the name of the volume
     2.  path where the file or directory are mounted in the container.
     3.  optional comma-separated list of options
+
+**pitfall: the folder in the container will be overridden with the one from the host if it exists. When the folder on the host does not exists it will be created and the content of the folder on the docker container will be copied to the host.**
+
 
 ```shell
 # create a named volume
