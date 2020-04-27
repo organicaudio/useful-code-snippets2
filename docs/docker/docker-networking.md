@@ -1,6 +1,6 @@
 # docker networking
 
-## access from ip
+## access container from your hosts ip address
 
 If you want to access a docker container by its host ip address you either add its ip address before the port mapping when starting the container or you use the host network type. If you want to use ipv6 you may need to set some further configurations.
 
@@ -26,7 +26,7 @@ Copied from [network driver summary](https://docs.docker.com/network/):
 
 [official doc](https://docs.docker.com/network/bridge/)
 
-A user-defined bridge allow that two containers in this network can access each other via their container name (dns resolution). Container without a explicit network are in the defualt network bridge. The default bridge have no dns server so the containers need to address each other via their ip address. You can get the ip address of a container via `docker inspect <containerName>`.
+A user-defined bridge allow that two containers in this network can access each other via their container name (dns resolution). Container without a explicit network are in the default network bridge. The default bridge have no dns server so the containers need to address each other via their ip address. You can get the ip address of a container via `docker inspect <containerName>`.
 
 ```shell
 # create a new bridge network
