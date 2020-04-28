@@ -79,3 +79,9 @@ iptables-restore < ipconfig_rules_backup.txt
 # add new rule example
 TODO
 ```
+
+## generate a certificate
+
+```shell
+openssl req -x509 -newkey rsa:4096 -keyout ./key.pem -out ./cert.pem -days 365
+```
