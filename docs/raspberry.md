@@ -77,3 +77,11 @@ sudo kubectl get nodes
 - server node: `/usr/local/bin/k3s-uninstall.sh`
 - agent node: `/usr/local/bin/k3s-agent-uninstall.sh`
 
+## why i ditch my rp over a vls
+
+- i want a **public ip** e.g. to use GitHub webhooks
+  - via router can be tricky
+  - via ngrok you do not get a static url
+- many docker container wont run on **arm**
+- my rp (2b+) is **to weak** to run k3s kubernetes 
+- 
