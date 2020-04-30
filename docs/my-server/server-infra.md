@@ -17,6 +17,7 @@
 - [signup at cloudflare](https://dash.cloudflare.com/) and create a dns record. Cloudflare is used because it is free and it [supports multiple letsencrypt renewal clients](https://community.letsencrypt.org/t/dns-providers-who-easily-integrate-with-lets-encrypt-dns-validation/86438).
 - set the two cloudflare dns server addresses to be used by namecheap [Here is a how-to](https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-to-change-dns-for-a-domain)
 - create A and AAAA entries in cloudflare which map the domain name to the vls ipv4 and ipv6 address
+- (optional) create CNAME entry for every subdomain you want to use.
 
 ### cost
 1. vls: 35.52 €/year
@@ -34,13 +35,13 @@
 1. get **wildcard certificate** for domain and its subdomains with letsencrypt
 
 
-## setup certbot to get letsencrypt wildcard certificate 
+## get letsencrypt wildcard certificate 
 
 In order to use letsencrypt you need a acme compliant client. Certbot is the recommended one. So [setup certbot](https://certbot.eff.org/instructions) on your vls with **dns validation** (not http validation [see the differences](https://letsencrypt.org/de/docs/challenge-types/)) so you can create a **wildcard vertificate** for your domain.
 
 You can either install the cerbot on you host system or you use docker to start it.
 
-### setup via install
+### setup certbot via install
 
 ```shell
 # install certbot
@@ -54,14 +55,19 @@ sudo apt-get install python3-certbot-dns-cloudflare
 ## create a api token in cloudflare dashboard with the:
 ### Zone:Zone:Read and Zone:DNS:Edit permissions for all zones
 
-## save api your api key in a file
-echo "dns_cloudflare_api_token=<yourToken>" > ~/.secrets/certbot/cloudflare.ini
+## save api your api key, mail address and api token in a file
+touch ~/.certbot/cloudflare.ini
+##add to the file:
+#dns_cloudflare_email=<mail address>
+#dns_cloudflare_api_key=<api key>
+#dns_cloudflare_api_token=<created api token>
 
-## acquire wildcard certificate for weyrich.dev and save the cert in
-certbot certonly \
+
+## acquire wildcard certificate for weyrich.dev, save the certs under /etc/letsencrypt/live/weyrich.dev/ and start a nginx on port
+certbot \
   --dns-cloudflare \
-  --dns-cloudflare-credentials ~/.secrets/certbot/cloudflare.ini \
-  -i nginx
+  --dns-cloudflare-credentials ~/.certbot/cloudflare.ini \
+  -i nginx \
   -d *.weyrich.dev
 
 # test automatic renewal
@@ -70,8 +76,34 @@ sudo certbot renew --dry-run
 # check your domain with ssllab: https://www.ssllabs.com/ssltest/
 ```
 
-### setup via docker
+```shell
+# reload config
+sudo nginx -s reload
+
+# renew certificate
+certbot renew\
+  --dns-cloudflare \
+  --dns-cloudflare-credentials ~/.certbot/cloudflare.ini \
+  -d *.weyrich.dev
+
+# generate certificate
+certbot certonly\
+  --dns-cloudflare \
+  --dns-cloudflare-credentials ~/.certbot/cloudflare.ini \
+  -d *.weyrich.dev
+```
+
+### setup certbot via docker
 
 [Blog entry](https://medium.com/faun/docker-letsencrypt-dns-validation-75ba8c08a0d) which explains hot wo setup a letsencrypt client with docker. The [linuxserver/letsencrypt](https://hub.docker.com/r/linuxserver/letsencrypt) docker image is used and configured to generate a wildcard certificate via dns validation. 
 
 ## setup docker
+
+`curl -sSL https://get.docker.com | sh`
+
+## setup nginx as reverse proxy
+
+Base config is created with [this ui from digitalocean](https://www.digitalocean.com/community/tools/nginx). Afterwards for every subdomain a proxy_pass is configured. Remember to create a CNAME in the dns for every subdomain. See the page **nginx memory aid** for an overview of nginx config.
+
+**The browser will heavily use caching when serving static files so remember to delete the caches after changing proxy settings.**
+
