@@ -103,7 +103,6 @@ certbot certonly\
 
 ## setup nginx as reverse proxy
 
-Base config is created with [this ui from digitalocean](https://www.digitalocean.com/community/tools/nginx). Afterwards for every subdomain a proxy_pass is configured. Remember to create a CNAME in the dns for every subdomain. See the page **nginx memory aid** for an overview of nginx config.
+Base config is created with [this tool from digitalocean](https://www.digitalocean.com/community/tools/nginx). Afterwards for every subdomain a proxy_pass is configured. See the page **nginx memory aid** for an overview of nginx config. And remember to create a CNAME in the dns for every subdomain.
 
 **The browser will heavily use caching when serving static files so remember to delete the caches after changing proxy settings.**
-
