@@ -30,6 +30,7 @@ docker run \
   --env=DRONE_SERVER_HOST=ci.weyrich.dev \
   --env=DRONE_SERVER_PROTO=https \
   --env=DRONE_USER_FILTER=crowdsalat \
+  --env=DRONE_USER_CREATE=username:crowdsalat,admin:true \
   --env=DRONE_LOGS_PRETTY=true \
   --env=DRONE_LOGS_COLOR=true \
   --env=DRONE_LOGS_DEBUG=true \
