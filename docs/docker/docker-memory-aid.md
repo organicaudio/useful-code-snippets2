@@ -12,8 +12,8 @@ official overview of [docker cli commands](https://docs.docker.com/engine/refere
     - `-it` runs interactively so you can execute commands in container (-t Allocate a pseudo-tty, -i Keep STDIN open )
     - `-p 1000:1000` maps a port of a container to the port of the host. Reachable under localhost on the host system.
     - `-p 192.168.178.123:1000:1000` maps a port of a container to the port of the host. Reachable under the IP address of the host system.
-    - `--mount` TODO
-    - `-v` TODO
+    - `-v /var/logs/` binds /var/logs inside the container to a unnamed volume on the mount which resides in /var/lib/docker/volumes/
+    - `-v /var/run/docker.sock:/var/run/docker.sock` containers started inside of this container will be started on the host a not inside the container (sibling not a child). Useful in CI/CD pipelines wchih sue containers as runners see: https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
     - `-e VAR1=bla -e VAR2=blubb` defines environmental variables in the container
     - `—rm` remove container after it is stopped.
     - `—name` add name to the container.
