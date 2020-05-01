@@ -57,3 +57,16 @@ docker run -d \
   --network drone \
   drone/drone-runner-docker:1
   ```
+
+
+## noteworthy stuff
+
+- by convention drone build file is called .drone.yml
+- by convention drone resources are saved in .drone folder
+- parallel [pipelines](https://docs.drone.io/pipeline/configuration/) are separated by a document separator --- in the .drone.yml
+- dependent [pipelines](https://docs.drone.io/pipeline/configuration/) can be defined with the depends_on directive
+- steps in a pipeline share a (build-) [temporal volume](https://docs.drone.io/pipeline/docker/syntax/volumes/temporary/) which is called [workspace](https://docs.drone.io/pipeline/docker/syntax/workspace/) and allows to share state between the steps eventthought they are running in different containers.
+- to cache downloaded libraries between build you can create a [host volume](https://docs.drone.io/pipeline/docker/syntax/volumes/host/) and use map it in the build step to the directory e.g. /root/.m2/repository. Note that a admin user needs to mark the repository in which the pipelines runs to be 'trusted'.
+- it is important that the drone docker runner is started with the `-v /var/run/docker.sock:/var/run/docker.sock` argument. Every pipeline step starts a new container. Because of the mount of the docker.sock the stated container will run on the host not inside the docker container of the runner. 
+- i assume that every pipeline step is stareted with the `-v /var/run/docker.sock:/var/run/docker.sock` argument as well so that docker comamnds will trigger actions on the host not inside the pipeline step container. So you can use the 'docker' image which contains the docker cli to save and run images on the host. 
+- In order to use the drone cli you must configure the drone server address and a admin user access token. For convenience you can save two environment variables which are described when you run `drone` without parameters.
