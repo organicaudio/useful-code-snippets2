@@ -6,7 +6,7 @@
 
 official overview of [docker cli commands](https://docs.docker.com/engine/reference/commandline/docker/).
 
-- `docker build . -t crowdsalat/tag-name` creates a image based on a Dockerfile and the context/ working directory and subdirectories
+- `docker build . -t crowdsalat/imageName:tag` creates a image based on a Dockerfile and the context/ working directory and subdirectories
 - `docker run <image>` starts a container from an image
     - `-d` run as daemon
     - `-it` runs interactively so you can execute commands in container (-t Allocate a pseudo-tty, -i Keep STDIN open )
