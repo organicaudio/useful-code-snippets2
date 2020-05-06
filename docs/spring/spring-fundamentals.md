@@ -82,6 +82,22 @@ You can read profile via:
 
 1. Environment class
 2. @Value(spring.profiles.active)
+3. 
+
+Examples how to activate profile from cli:
+
+```shell
+# as jvm parameter
+java -jar -Dspring.profiles.active=dev app.jar
+
+# as application arguments
+java -jar app.jar --spring.profiles.active=dev
+
+# as maven profile
+mvn spring-boot:run -Dspring-boot.run.profiles=dev
+mvn spring-boot:run -Drun.profiles=dev
+
+```
 
 ### spring expression language SPELL
 
