@@ -56,7 +56,7 @@ docker run -d \
   --name drone_runner \
   --network drone \
   drone/drone-runner-docker:1
-  ```
+```
 
 
 ## noteworthy stuff
