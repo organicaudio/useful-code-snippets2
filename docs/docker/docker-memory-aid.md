@@ -31,6 +31,7 @@ official overview of [docker cli commands](https://docs.docker.com/engine/refere
     4. all dangling build cache
 - `docker network create --driver bridge <bridgeName>` create a new bridge network
 - `docker volume create <volumeName>` create a new bridge volume
+- `docker cp <containerName>:<pathInConainer> <pathOnHost>`  copies data from the container to the host. Helpful if volume were not set up correct 
 
 ## Dockerfile
 
