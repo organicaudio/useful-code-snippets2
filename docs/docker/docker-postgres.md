@@ -16,15 +16,15 @@ docker volume create --driver local --name=pgvolume
 docker run -d --rm \
 --name pg-container \
 -p 5432:5432 \
+-e POSTGRES_USER=postgres \
 -e POSTGRES_PASSWORD=postgres \
 --network=pgnetwork \
---volume=pgvolume:/pgdata \
+--volume=pgvolume:/var/lib/postgresql/data \
 postgres:latest
 
 
-# standard db name and user name is postgres. you can set it via:
+# standard db name is postgres. you can set it via:
 # -e POSTGRES_DB=postgres 
-# -e POSTGRES_USER=postgres 
 ```
 **NOTE**: if you restart this container with new passwords you may need to clear the volume.
 
