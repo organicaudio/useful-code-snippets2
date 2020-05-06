@@ -93,8 +93,10 @@ java -jar -Dspring.profiles.active=dev app.jar
 # as application arguments
 java -jar app.jar --spring.profiles.active=dev
 
-# as maven profile
+# as maven profile spring boot
 mvn spring-boot:run -Dspring-boot.run.profiles=dev
+
+# as maven profile spring 
 mvn spring-boot:run -Drun.profiles=dev
 
 ```
