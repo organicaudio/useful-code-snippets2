@@ -1,4 +1,10 @@
-# learning resources
+# urls
+
+## talks
+
+[GOTO 2019 • "Good Enough" Architecture]([GOTO 2019 • "Good Enough" Architecture](https://www.youtube.com/watch?v=PzEox3szeRc))
+
+## learning resources
 
 - [katacoda](https://www.katacoda.com/) has multiple free interative tutorials (mainly cloud or ci/cd topics)
 - [Learn git branching](https://learngitbranching.js.org/?locale=de_DE) interactivly
