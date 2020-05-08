@@ -3,29 +3,74 @@
 ## junit 5 + hamcrest static imports
 
 ```java
-package de.example;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.jupiter.api.*;
 
 class TestExample {
 
     ObjectUnderTest out;
 
+    @BeforeAll
+    public static void setup() {
+        System.out.println("BeforeAll");
+    }
+
     @BeforeEach
-    public void setUp() {
+    public void init() {
+        System.out.println("BeforeEach");
         this.out = new ObjectUnderTest();
+    }
+
+    @AfterEach
+    void terminate() {
+        System.out.println("AfterEach");
+    }
+
+    @AfterAll
+    public static void tearDown() {
+        System.out.println("AfterAll");
     }
 
     @Test
     void methodUnderTest_shouldReturnAllFields() {
+        System.out.println("methodUnderTest_shouldReturnAllFields");
         Integer count = out.methodUnderTest();
         assertNotNull(count);
         assertThat(count, is(greaterThan(300)));
     }
+
+    @Test
+    void methodUnderTest_expectsException() {
+        System.out.println("methodUnderTest_expectsException");
+        Exception exception = assertThrows(
+			RuntimeException.class,
+			() -> out.methodUnderTest("NOT VALID"));
+        assertTrue(exception.getMessage().contains("NOT VALID"));
+    }
+
+    @Disabled
+    @Test
+    void methodUnderTest_shouldNotRun() {
+        System.out.println("I will not run.");
+    }
+
+
+    // inner class
+    class ObjectUnderTest {
+
+        public int methodUnderTest(){
+            return 301;
+        }
+
+        public int methodUnderTest(String notValid) {
+            throw new RuntimeException(notValid);
+        }
+    }
+}
 }
 
 ```
+
