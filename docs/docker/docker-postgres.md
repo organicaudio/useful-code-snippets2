@@ -26,7 +26,7 @@ postgres:latest
 # standard db name is postgres. you can set it via:
 # -e POSTGRES_DB=postgres 
 ```
-**NOTE**: if you restart this container with new passwords you may need to clear the volume.
+**NOTE**: if you restart this container with new passwords you may need to clear the volume. Inside of the container you can use the psql to interact with the database.
 
 
 ## pgAdmin docker image
@@ -50,3 +50,9 @@ dpage/pgadmin4:4.20
    - host name address: pg-container
    - username: postgres
    - password: postgres
+
+
+## known issue
+
+1. An process named oka uses 100 of the cpu [see](https://dba.stackexchange.com/questions/44084/troubleshooting-high-cpu-usage-from-postgres-and-postmaster-services)
+2. When an application tries to connect to postgres for the second time the authentification fails because of an invalid password. 
