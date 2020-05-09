@@ -58,7 +58,6 @@ docker run -d \
   drone/drone-runner-docker:1
 ```
 
-
 ## noteworthy stuff
 
 - by convention drone build file is called .drone.yml
@@ -70,3 +69,4 @@ docker run -d \
 - it is important that the drone docker runner is started with the `-v /var/run/docker.sock:/var/run/docker.sock` argument. Every pipeline step starts a new container. Because of the mount of the docker.sock the stated container will run on the host not inside the docker container of the runner. 
 - If you want to build or start containers on the docker host you need to add a [host volume](https://docs.drone.io/pipeline/docker/syntax/volumes/host/) which points to `var/run/docker.sock` on the host and reference it in the pipline steps where docker is used.
 - In order to use the drone cli you must configure the drone server address and a admin user access token. For convenience you can save two environment variables which are described when you run `drone` without parameters.
+- [default environmental variables](https://docker-runner.docs.drone.io/configuration/environment/variables/)
