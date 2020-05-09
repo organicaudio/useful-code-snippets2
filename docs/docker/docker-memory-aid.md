@@ -1,6 +1,6 @@
 # docker memory aid
 
- [vs code plugin for docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) is pretty nice.
+[vs code plugin for docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) is pretty nice.
 
 ## docker cli useful commands
 
@@ -33,6 +33,8 @@ official overview of [docker cli commands](https://docs.docker.com/engine/refere
 - `docker volume create <volumeName>` create a new bridge volume
 - `docker cp <containerName>:<pathInConainer> <pathOnHost>`  copies data from the container to the host. Helpful if volume were not set up correct 
 
+
+**If you pull a image with the latest tag it will first try to download it from docker hub and only if it is not there it will use a local variant.**
 ## Dockerfile
 
 [Docker file reference](https://docs.docker.com/engine/reference/builder/)
