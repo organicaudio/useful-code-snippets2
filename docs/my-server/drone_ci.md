@@ -58,6 +58,20 @@ docker run -d \
   drone/drone-runner-docker:1
 ```
 
+## start containers on host
+
+- it is important that the drone docker runner is started with the `-v /var/run/docker.sock:/var/run/docker.sock` argument. Every pipeline step starts a new container. Because of the mount of the docker.sock the stated container will run on the host not inside the docker container of the runner. 
+- If you want to build or start containers on the docker host you need to add a [host volume](https://docs.drone.io/pipeline/docker/syntax/volumes/host/) which points to `var/run/docker.sock` on the host and reference it in the pipline steps where docker is used.
+
+## cache stuff
+
+To cache downloaded libraries between build you can create a [host volume](https://docs.drone.io/pipeline/docker/syntax/volumes/host/) and use map it in the build step to the directory e.g. /root/.m2/repository. Note that a admin user needs to mark the repository in which the pipelines runs to be 'trusted'.
+
+## variable resolution
+[default environmental variables](https://docker-runner.docs.drone.io/configuration/environment/variables/)
+
+You can us variables as following: ${VARIABLE_NAME}
+
 ## noteworthy stuff
 
 - by convention drone build file is called .drone.yml
@@ -65,8 +79,4 @@ docker run -d \
 - parallel [pipelines](https://docs.drone.io/pipeline/configuration/) are separated by a document separator --- in the .drone.yml
 - dependent [pipelines](https://docs.drone.io/pipeline/configuration/) can be defined with the depends_on directive
 - steps in a pipeline share a (build-) [temporal volume](https://docs.drone.io/pipeline/docker/syntax/volumes/temporary/) which is called [workspace](https://docs.drone.io/pipeline/docker/syntax/workspace/) and allows to share state between the steps eventthought they are running in different containers.
-- to cache downloaded libraries between build you can create a [host volume](https://docs.drone.io/pipeline/docker/syntax/volumes/host/) and use map it in the build step to the directory e.g. /root/.m2/repository. Note that a admin user needs to mark the repository in which the pipelines runs to be 'trusted'.
-- it is important that the drone docker runner is started with the `-v /var/run/docker.sock:/var/run/docker.sock` argument. Every pipeline step starts a new container. Because of the mount of the docker.sock the stated container will run on the host not inside the docker container of the runner. 
-- If you want to build or start containers on the docker host you need to add a [host volume](https://docs.drone.io/pipeline/docker/syntax/volumes/host/) which points to `var/run/docker.sock` on the host and reference it in the pipline steps where docker is used.
 - In order to use the drone cli you must configure the drone server address and a admin user access token. For convenience you can save two environment variables which are described when you run `drone` without parameters.
-- [default environmental variables](https://docker-runner.docs.drone.io/configuration/environment/variables/)
