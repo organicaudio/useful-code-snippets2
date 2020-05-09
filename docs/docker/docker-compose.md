@@ -3,7 +3,8 @@
 is useful:
 
 - when you need to start multiple containers which work together
-- when you are to lazy to fiddle around with multiple docker run command with mutliple arguments 
+  - it automatically creates shared network
+  - parameters are saved in a file instead of multiple positional arguments on multiple docker run commands
 - when your software runs on a single host and you do not want to bother with kubernetes 
 
 ## install
