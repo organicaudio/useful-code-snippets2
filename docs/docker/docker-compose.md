@@ -16,7 +16,32 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-## usage
+## usage cli
+
+```
+# start container in backround
+docker-compose up -d 
+
+# remove containers, network and (unnamed) volumes
+docker-compose down 
+
+# remove containers, networks and volumes
+docker-compose down -v
+
+# show logs of services
+docker-compose logs -f
+
+# if a new image for a service is avaiable update it
+docker-compose up -d --force-recreate
+
+# or with
+docker-compose pull
+docker-compose restart
+
+
+```
+
+## usage docker-file.yml
 
 [Docker compose file reference](https://docs.docker.com/compose/compose-file/)
 
