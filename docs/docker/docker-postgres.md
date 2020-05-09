@@ -1,8 +1,34 @@
-# docker setup postgres
+# containerized databases
 
-## postgres docker image
+## MySQL
 
-[Documentation for postgress image](https://hub.docker.com/_/postgres?tab=description)
+[Dockerhub](https://hub.docker.com/_/mysql)
+
+### mysql
+
+```
+docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=myql -e MYSQL_DATABASE=my-database -v mysql:/var/lib/mysql -p 3306:3306 mysql:latest
+```
+
+Access database from within the container via: `mysql -uroot -pmyql my-database`
+
+### admin
+
+```
+docker run -d --name sql-adminer -p 8080:8080 adminer:latest
+```
+
+Log in with:
+- Server= Internal Ip of Docker Container/ container name if they are on the same user defined network
+- user=root
+- password=myql
+- Database: my-database
+
+## PostgreSQL
+
+### Postgre docker image
+
+[Dockerhub](https://hub.docker.com/_/postgres?tab=description)
 [Nice tutorial](https://info.crunchydata.com/blog/easy-postgresql-10-and-pgadmin-4-setup-with-docker)
 
 ```shell
@@ -29,7 +55,7 @@ postgres:latest
 **NOTE**: if you restart this container with new passwords you may need to clear the volume. Inside of the container you can use the psql to interact with the database.
 
 
-## pgAdmin docker image
+### pgAdmin docker image
 
 [Documentation for pgAdmin image](https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html)
 
@@ -52,7 +78,7 @@ dpage/pgadmin4:4.20
    - password: postgres
 
 
-## known issue
+### known issue
 
 1. An process named oka uses 100 of the cpu [see](https://dba.stackexchange.com/questions/44084/troubleshooting-high-cpu-usage-from-postgres-and-postmaster-services)
 2. When an application tries to connect to postgres for the second time the authentification fails because of an invalid password. 
