@@ -4,7 +4,7 @@ Kubernetes (K8s) allows to deploy multiple containers on one or multiple host sy
 
 outline of features:
 - one master node and multiple worker nodes
-- creates self-healing clusters
+- creates self-healing clusters 
 - allows rolling upgrade and rollback
 - secret management and encapsulation via namespaces
 
@@ -12,10 +12,12 @@ outline of features:
 
 Master node:
 - API server
-- web ui (dashboard)
-- Scheduler
-- Controller
-- etcd DB
+  - web ui (dashboard)
+  - kubectl
+  - API
+- Controller Manager - keep track of state on workers
+- etcd DB - saves state of workers
+- Scheduler - placement of pod based on load and other factors
 
 Worker node:
 - kubelet (kubernetes node agent)
