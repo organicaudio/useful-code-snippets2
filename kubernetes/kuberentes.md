@@ -1,4 +1,4 @@
-# Kuberentes 
+# Kuberentes overview
 
 Kubernetes (K8s) allows to deploy multiple containers on one or multiple host systems. The [offial documentation of k8s](https://kubernetes.io/docs/) is outstanding. There is also a [interactive tutorial](https://kubernetes.io/docs/tutorials/kubernetes-basics/). There is also the really nice video [What is Kuberenetes - Techworld with NaNa](https://www.youtube.com/watch?v=VnvRFRk_51k) which gives an nicely animated overview of kubernetes.
 
