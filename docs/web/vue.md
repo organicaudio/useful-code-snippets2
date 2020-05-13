@@ -2,7 +2,6 @@
 
 [Vue style guide](https://vuejs.org/v2/style-guide/#Avoid-v-if-with-v-for-essential)
 [Vue instance properties](https://vuejs.org/v2/api/#Instance-Properties)
-[Overview of ES2015 features/syntax](https://babeljs.io/docs/en/learn)
 
 ## overview
 
