@@ -1,6 +1,7 @@
 # Vue JS
 
 [Vue style guide](https://vuejs.org/v2/style-guide/#Avoid-v-if-with-v-for-essential)
+[Vue instance properties](https://vuejs.org/v2/api/#Instance-Properties)
 
 ## overview
 
@@ -13,16 +14,16 @@
 - two way binding via `v-model` writable html fields
 - v-if for conditional rendering
 - v-for for loops
-- v-event for binding events to function. The feature here is that the functiondo not need to maniulate the dom directly.
+- v-event for binding events to function. The feature here is that the function do not need to manipulate the dom directly.
 - concept which works like Custom Elements of the web components standard
 
 ## vue instance
 
-- You need atleast one **Vue instance** to start a application.
-- Loosly coupled to the Model–view–viewmodel (MVVM) and the **Vue instance is the viewmodel(vm)** and the html the view.
+- You need at least one **Vue instance** to start a application.
+- Loosely coupled to the Model–view–viewmodel (MVVM) and the **Vue instance is the viewmodel(vm)** and the html the view.
 - The component system also use Vue instances
 - the **`data` property** of a Vue object is used to reactly injected into the dom. (you can not define new fields in data after the page was rendered)
-- Vue **instance properties** relevant ([full list][https://vuejs.org/v2/api/#Instance-Properties]):
+- Vue **instance properties** relevant ([full list](https://vuejs.org/v2/api/#Instance-Properties)):
     - data
     - el
     - computed
@@ -39,7 +40,7 @@
 
 - allows to declaratively bind the rendered DOM to the vue instance
 - Vue templates are valid HTML
-- Vue uses a virtual DOM to optimze the operations on the real DOM
+- Vue uses a virtual DOM to optimize the operations on the real DOM
 
 
 Syntax:
