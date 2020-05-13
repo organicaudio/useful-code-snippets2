@@ -2,7 +2,7 @@
 
 ## links to overviews
 
-- [overview of tools/services for web development](https://dev.to/davidepacilio/50-free-tools-and-resources-to-create-awesome-user-interfaces-1c1b)
+- [overview of tools/services/libraries for web development](https://dev.to/davidepacilio/50-free-tools-and-resources-to-create-awesome-user-interfaces-1c1b)
 
 ## screen recorder
 
