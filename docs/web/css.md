@@ -1,6 +1,6 @@
 # css
 
-## selectors 
+## selectors
 
 [List of css selectors](https://www.w3schools.com/cssref/css_selectors.asp)
 [List of css properties](https://css-tricks.com/almanac/properties/)
@@ -9,8 +9,6 @@
 - `#id`
 - `element`
 - `[attribute]`
-
-
 
 ```css
 selector {
@@ -25,7 +23,7 @@ selector {
 
 - preprocessor for css
 - .scss files
-- more structured code through 
+- more structured code through
   - variables
   - nesting
   - imports
@@ -64,7 +62,7 @@ img button {
 
 ```
 
-### Mixins
+### mixins
 
 Mixins allow to define reusable code which can be used in selector blocks with @include:
 
