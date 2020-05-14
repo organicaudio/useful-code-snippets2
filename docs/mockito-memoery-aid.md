@@ -1,8 +1,9 @@
 # Mockito memory aid
 
-rule of thumb: Do not mock types you don’t own
-
-[Overview of mockito annotations](https://www.baeldung.com/mockito-annotations)
+- rule of thumb: Do not mock types you don’t own
+- [Overview of mockito annotations](https://www.baeldung.com/mockito-annotations)
+- `import static org.mockito.Mockito.*;`
+- `import static org.mockito.ArgumentMatchers.*;`
 
 ## activate mockito annotations support
 
@@ -18,9 +19,15 @@ rule of thumb: Do not mock types you don’t own
 - with annotation: 
     - add @Mock on a object to mock the object
     - use @InjectMocks to mock all fields of the annotated object. All fields of the mocked class needs to be present in the testing class and be annotated with @Mock or 
-- define returned values:
-    - when()/given() to specify how a mock should behave
-    - define returned values: when(mockedList.get(0)).thenReturn("first");
+- define behaviour:
+    - given - preconidtion
+    - when() - action to call
+    - thenReturn() - returned values
+    - example: when(mockedList.get(1)).thenReturn("first");
+
+## ArgumentMatchers
+
+You can use the ArgumentMatchers in the package org.mockito.ArgumentMatchers to pass arbitrary arguments to the mocked method. Example: `when(mockedList.get(any())).thenReturn("first");`.
 
 ## intercept object/ partially mock
 
