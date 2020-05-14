@@ -27,7 +27,10 @@
 
 ## ArgumentMatchers
 
-You can use the ArgumentMatchers in the package org.mockito.ArgumentMatchers to pass arbitrary arguments to the mocked method. Example: `when(mockedList.get(any())).thenReturn("first");`.
+- You can use the ArgumentMatchers in the package org.mockito.ArgumentMatchers to pass arbitrary arguments to the mocked method. 
+- Example: `when(mockedList.get(any())).thenReturn("first");`.
+- When using matchers, all arguments have to be provided by matchers.
+- If you want to give some real arguments you need to use wrappers like `eq`
 
 ## intercept object/ partially mock
 
