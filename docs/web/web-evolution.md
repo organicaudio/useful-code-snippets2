@@ -3,10 +3,8 @@
 https://www.quora.com/What-are-the-pros-and-cons-of-server-side-rendering-vs-client-side-rendering-with-APIs-What-is-more-popular-when-building-web-apps
 
 
-- webpage - static website (HTML Seiten liegen bereits auf Server)
-- (Traditional) server-side Rendered Pages (Seiten per PHP, ASP, Servlets und HTML Templates bauen)
+- webpage - static website (HTML files are stored on server)
+- (Traditional) server-side rendered pages (use PHP, ASP, Servlets and HTML templates)
 - Client Side Rendering (Bootstrapping HTML via Javascript)
-- Symmetric server side Rendering (Client Side Rendering schon auf dem Server per NodeJS anstoßen)
-
-
-- static website again: JAMStack (HTML Seiten die REST Calls verwenden um Dinge nachzuladen)
+- Symmetric server side rendering (like client side rendering but on server via NodeJS before it is served to client)
+- static website (again): JAMStack (html pages which use javascript to call Rest Services.)
