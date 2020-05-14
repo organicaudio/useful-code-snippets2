@@ -10,7 +10,7 @@ official overview of [docker cli commands](https://docs.docker.com/engine/refere
 - `docker run <image>` starts a container from an image
     - `-d` run as daemon
     - `-it` runs interactively so you can execute commands in container (-t Allocate a pseudo-tty, -i Keep STDIN open )
-    - `-p 500:1000` maps the port 1000 of the container to the port of the host. Reachable under localhost on the host system.
+    - `-p 500:1000` maps the port 1000 of the container to the port 500 of the host. Reachable under localhost on the host system.
     - `-p 192.168.178.123:1000:500` maps the port 1000 of the container to the port of the host. Reachable under localhost on the host system. Reachable under the IP address of the host system.
     - `-v /var/logs/` binds /var/logs inside the container to a unnamed volume on the mount which resides in /var/lib/docker/volumes/
     - `-v /var/run/docker.sock:/var/run/docker.sock` containers started inside of this container will be started on the host a not inside the container (sibling not a child). Useful in CI/CD pipelines which uses containers as runners see: https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
