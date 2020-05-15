@@ -3,6 +3,25 @@
 [Vue style guide](https://vuejs.org/v2/style-guide/#Avoid-v-if-with-v-for-essential)
 [Vue instance properties](https://vuejs.org/v2/api/#Instance-Properties)
 
+## vue cli
+
+[Vue clie](https://cli.vuejs.org/) allows to easily scafffold a vue project:
+
+- install vie `npm install -g @vue/cli`
+- create project:
+  -  `vue ui` is ui guided
+  -  `vue create my-project` 
+
+To set [environmental variables in vue](https://cli.vuejs.org/guide/mode-and-env.html) during transpile time:
+
+- use `.env-XXX` files in the root of the project to define variables
+  -  `.env` global definition
+  -  `.env.local` ignored by git
+  -  `.env.development` default used by `npm serve`/`vue-cli-service serve`
+  -  `.env.production` default used by `npm build`/ `vue-cli-service build`
+- variables need to starts with `VUE_APP_`
+- usage in code with `process.env.VUE_APP_`
+
 ## overview
 
 - the vue core library focuses on view layer only
@@ -105,3 +124,4 @@ Syntax:
     - change event on the checked property for checkboxes and radiobuttons
     - change event on the value property for select fields
 - there are [modifiers](https://vuejs.org/v2/guide/forms.html#Modifiers) to add some behavoiur to the data binding (.lazy, .trim etc.)
+
