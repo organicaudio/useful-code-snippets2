@@ -71,7 +71,9 @@ When adding **spring-boot-starter-data-rest** as dependency to your spring boot 
     - ?size=5
     - ?page=2
     - ?sort=name,desc
-- you can configure your **custom query methods with @Param and @PathVariable** as you would do with regular methods in a RestController
+- custom query methods in Repository classes are exposed as well
+    - you can configure these  with @Param and @PathVariable as you would do with regular methods in a RestController 
+    - if you do not configure a @PathVariable they are exposed under `<host>/<entityPlural>/search/<queryMethodName>` (they appear in the hal browser!)
 
 ## evolving api
 
