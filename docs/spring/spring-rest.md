@@ -71,7 +71,7 @@ When adding **spring-boot-starter-data-rest** as dependency to your spring boot 
     - ?size=5
     - ?page=2
     - ?sort=name,desc
-- you can configure your custom query methods with @Param and @PathVariable as you would do with regular methods in a RestController
+- you can configure your **custom query methods with @Param and @PathVariable** as you would do with regular methods in a RestController
 
 ## evolving api
 
