@@ -81,6 +81,10 @@ When adding **spring-boot-starter-data-rest** as dependency to your spring boot 
 
 [Nice overview](https://www.baeldung.com/spring-date-parameters)
 
+## cache control
+
+[Nice overview](https://www.baeldung.com/spring-security-cache-control-headers)
+
 ## evolving api
 
 Add new fields to your JSON representations, but do not take any away (Never delete a column in a database)
