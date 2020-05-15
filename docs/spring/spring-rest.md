@@ -72,8 +72,14 @@ When adding **spring-boot-starter-data-rest** as dependency to your spring boot 
     - ?page=2
     - ?sort=name,desc
 - custom query methods in Repository classes are exposed as well
-    - you can configure these  with @Param and @PathVariable as you would do with regular methods in a RestController 
+    - you can configure these  with @RequestParam and @PathVariable as you would do with regular methods in a RestController 
+    - if you want to use a @Query annotation at the same time use @Param and reference the paramname with leading colons (e.g. :date).
     - if you do not configure a @PathVariable they are exposed under `<host>/<entityPlural>/search/<queryMethodName>` (they appear in the hal browser!)
+- you can define generic rest query urls for a spring data repository with [the Specification interface](https://www.baeldung.com/rest-api-search-language-spring-data-specifications)
+
+## parsing date parameters
+
+[Nice overview](https://www.baeldung.com/spring-date-parameters)
 
 ## evolving api
 
