@@ -1,8 +1,9 @@
 # Mockito memory aid
 
-rule of thumb: Do not mock types you don’t own
-
-[Overview of mockito annotations](https://www.baeldung.com/mockito-annotations)
+- rule of thumb: Do not mock types you don’t own
+- [Overview of mockito annotations](https://www.baeldung.com/mockito-annotations)
+- `import static org.mockito.Mockito.*;`
+- `import static org.mockito.ArgumentMatchers.*;`
 
 ## activate mockito annotations support
 
@@ -13,25 +14,33 @@ rule of thumb: Do not mock types you don’t own
 ## mock object
 
 - Inline
-  - mock an object: List mockedList = mock(List.class);
-  - static import: import static org.mockito.Mockito.*;
-  
+    - mock an object: List mockedList = mock(List.class);
+    - static import: import static org.mockito.Mockito.*; 
 - with annotation: 
-  - add @Mock on a object to mock the object
-  - use @InjectMocks to mock all fields of the annotated object. All fields of the mocked class needs to be present in the testing class and be annotated with @Mock or 
-- define returned values:
-  - when()/given() to specify how a mock should behave
-  - define returned values: when(mockedList.get(0)).thenReturn("first");
+    - add @Mock on a object to mock the object
+    - use @InjectMocks to mock all fields of the annotated object. All fields of the mocked class needs to be present in the testing class and be annotated with @Mock or 
+- define behaviour:
+    - given - preconidtion
+    - when() - action to call
+    - thenReturn() - returned values
+    - example: when(mockedList.get(1)).thenReturn("first");
+
+## ArgumentMatchers
+
+- You can use the ArgumentMatchers in the package org.mockito.ArgumentMatchers to pass arbitrary arguments to the mocked method. 
+- Example: `when(mockedList.get(any())).thenReturn("first");`.
+- When using matchers, all arguments have to be provided by matchers.
+- If you want to give some real arguments you need to use wrappers like `eq`
 
 ## intercept object/ partially mock
 
 The real methods of a spied object are invoked but the object can still be verified and stubbed, when needed.
 
 - Inline
-  - spy an object: List<String> spyList = Mockito.spy(new ArrayList<String>());
-  - static import: import static org.mockito.Mockito.*;
+    - spy an object: List<String> spyList = Mockito.spy(new ArrayList<String>());
+    - static import: import static org.mockito.Mockito.*;
 - with annotation: 
-  - add @Spy on a object to spy the object
+    - add @Spy on a object to spy the object
 - use doReturn/when to mock methods of a spied object
 
 ## check behaviour of object

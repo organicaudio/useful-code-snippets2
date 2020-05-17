@@ -10,7 +10,7 @@
 docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=myql -e MYSQL_DATABASE=my-database -v mysql:/var/lib/mysql -p 3306:3306 mysql:latest
 ```
 
-Access database from within the container via: `mysql -uroot -pmyql my-database`
+Access database from within the container via: `mysql -uroot -pmyql my-database`. [Getting Information About Databases and Tables](https://dev.mysql.com/doc/refman/8.0/en/getting-information.html).
 
 ### admin
 
