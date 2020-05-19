@@ -20,3 +20,9 @@ Most commonly used:
 - footer
 
 Use them instead of div as a container element.
+
+
+## design examples
+
+[UI examples for different tasks](http://collectui.com/designs)
+[Checklist for UI compponents](https://www.checklist.design/)
