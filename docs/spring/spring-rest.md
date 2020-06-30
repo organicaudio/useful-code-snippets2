@@ -44,7 +44,7 @@ Hypermedia as the Engine of Application State (HATEOAS): you can find all availa
     - @RequestBody binds the parameter to the body of the HTTP (usually used by http post)
     - note: *@PathParam and @QueryParam,* are the jax-rs annotations
 
-## spring hateoas
+## spring hateoas (HAL by default)
 
 - add **spring-boot-starter-hateoas** dependency to add HATEOAS support.
 - use EntityModel<T> or CollectionModel<T> as return type container
