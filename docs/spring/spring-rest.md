@@ -81,6 +81,13 @@ When adding **spring-boot-starter-data-rest** as dependency to your spring boot 
     - if you do not configure a @PathVariable they are exposed under `<host>/<entityPlural>/search/<queryMethodName>` (they appear in the hal browser!)
 - you can define generic rest query urls for a spring data repository with [the Specification interface](https://www.baeldung.com/rest-api-search-language-spring-data-specifications)
 
+## error handling 
+
+- @ControllerAdvice works on **global** level for all controller beans and allows to save all @ExceptionHandler in one place
+- ResponseStatusException allows to define error handling for one **method**
+- [@ExceptionHandler](https://spring.io/blog/2013/11/01/exception-handling-in-spring-mvc) works only for the **class** where a method is annotated with. 
+- HandlerExceptionResolver can be extended or just use [predefined implementations](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/servlet/HandlerExceptionResolver.html)
+
 ## parsing date parameters
 
 [Nice overview](https://www.baeldung.com/spring-date-parameters)
