@@ -47,7 +47,11 @@ Hypermedia as the Engine of Application State (HATEOAS): you can find all availa
 ## spring hateoas (HAL by default)
 
 - add **spring-boot-starter-hateoas** dependency to add HATEOAS support.
-- use EntityModel<T> or CollectionModel<T> as return type container
+- You have multiple options to create a RepresentationModel<T> which can hold links:
+    - create a class which extends **RepresentationModel<T>**
+    - wrap a collection in a **CollectionModel<T>** 
+    - use **EntityModel** to wraps an existing class (`EntityModel.of(person)`)
+- add a selfLink and optional further links to the RepresentationModels you want to return
 - use Methods from WebMvcLinkBuilder like linkTo() to return _links to relevant operations
 - implement RepresentationModelAssembler and the toModel method for every entity (in order to remove the code from the RestController)
 
