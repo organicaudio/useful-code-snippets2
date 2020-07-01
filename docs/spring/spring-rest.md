@@ -48,7 +48,7 @@ Hypermedia as the Engine of Application State (HATEOAS): you can find all availa
 
 - add **spring-boot-starter-hateoas** dependency to add HATEOAS support.
 - You have multiple options to create a RepresentationModel<T> which can hold links:
-    - create a class which extends **RepresentationModel<T>**
+    - create a class which extends **RepresentationModel<T>**. (to set the name of the entity in the representation  use the org.springframework.hateoas.server.core.Relation Annotation)
     - wrap a collection in a **CollectionModel<T>** 
     - use **EntityModel** to wraps an existing class (`EntityModel.of(person)`)
 - add a selfLink and optional further links to the RepresentationModels you want to return
