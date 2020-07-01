@@ -52,7 +52,7 @@ Hypermedia as the Engine of Application State (HATEOAS): you can find all availa
     - wrap a collection in a **CollectionModel<T>** 
     - use **EntityModel** to wraps an existing class (`EntityModel.of(person)`)
 - add a selfLink and optional further links to the RepresentationModels you want to return
-- use Methods from WebMvcLinkBuilder like linkTo() to return _links to relevant operations
+- use Methods from WebMvcLinkBuilder like linkTo() to return `_links` to relevant operations
 - implement RepresentationModelAssembler and the toModel method for every entity (in order to remove the code from the RestController)
 
 *LEGACY: Spring HATEOAS Version 1.0 dropped the [resourceSupport/Resource/Resources/PagedResources group of classes](https://docs.spring.io/spring-hateoas/docs/current/reference/html/#migrate-to-1.0)*
