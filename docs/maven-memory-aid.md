@@ -2,9 +2,10 @@
 
 ## useful commands
 
-``mvn help:system`` prints system properties and environment variables.
-``mvn help:effective-settings`` print settings.
-``mvn help:effective-pom`` creates a pom which is used after the interpolation, inheritance and use of active profiles.
+- ``mvn exec:java -Dexec.mainClass=de.weyrich.MainClassName`` 
+- ``mvn help:system`` prints system properties and environment variables.
+- ``mvn help:effective-settings`` print settings.
+- ``mvn help:effective-pom`` creates a pom which is used after the interpolation, inheritance and use of active profiles.
 
 ## local vs. remote Repo
 
@@ -19,12 +20,9 @@ The remote repository can be defined in the the ``~/settings.xml`` or in the ``p
 
 ## package vs install vs deploy
 
-``mvn package`` builds a project and save the artifacts in the target folder.
-
-``mvn install`` calls the package command and save the artifacts in the local .m2 repo.
-
-
-``mvn deploy`` calls the install command and save the artifacts in the remote repo, which is defined in the ``<distributionManagement>`` xml element in the settings.xml.
+- ``mvn package`` builds a project and save the artifacts in the target folder.
+- ``mvn install`` calls the package command and save the artifacts in the local .m2 repo.
+- ``mvn deploy`` calls the install command and save the artifacts in the remote repo, which is defined in the ``<distributionManagement>`` xml element in the settings.xml.
 
 In order to resolve dependencies they must exist in the local or the remote repo. The exception are dependencies on projects, which are build together.
 
