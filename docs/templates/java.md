@@ -95,5 +95,6 @@ String json = ow.writeValueAsString(object);
 String jsonWithType = String.format("\"%s\": %s", object.getClass().getSimpleName(), json);
 
 // json to java
+ObjectMapper objectMapper = new ObjectMapper();
 Object object2 = objectMapper.readValue(jsonWithType, Object.class);
 ```
