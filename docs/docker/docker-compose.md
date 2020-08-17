@@ -42,7 +42,7 @@ docker-compose restart
 
 ```
 
-## usage docker-file.yml
+## usage docker-compose.yml
 
 [Docker compose file reference](https://docs.docker.com/compose/compose-file/)
 
@@ -55,6 +55,6 @@ docker-compose restart
 - `volumes` can be defined on service level or shared for every container on root level of the yaml [see](https://docs.docker.com/compose/compose-file/#volumes).There is a long form where you can configure more things and a short form which works similar to the usual -v flag in docker run: `[SOURCE:]TARGET[:MODE]`.
 
 ## noteworthy
-
+By default Docker compose searches for a ./docker-compose.yml file 
 - By default Compose sets up a single network for your app, so that the containers can communicate with each other by their container name.
 - Valid top-level sections for a Compose file are: version, services, networks, volumes, and extensions starting with "x-"
