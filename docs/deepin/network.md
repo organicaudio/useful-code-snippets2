@@ -47,6 +47,9 @@ ssh -i ~/.ssh/id_rsa <user>@<ip or url>
 # local machine: check for open ports and which process is listening on them
 sudo netstat -lptu 
 
+# local machine: check which process listens on port
+lsof -i :8080
+
 # remote machine: check for open tcp ports (scans the first 1000 ports)
 nmap <ip_address>
 
