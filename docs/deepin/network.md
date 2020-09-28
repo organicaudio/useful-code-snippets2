@@ -39,6 +39,11 @@ ssh-copy-id -i ~/.ssh/id_rsa user@host
 # connect use rsa private key saved under ~/.ssh/ instead of password
 ssh -i ~/.ssh/id_rsa <user>@<ip or url>
 
+# Known hosts are saved in  following locatoins
+## as entry in /etc/ssh/ssh_known_hosts
+## as entry in /etc/ssh/ssh_config
+## as *.pub file in /etc/ssh/ folder
+
 ```
 
 ## check open ports
