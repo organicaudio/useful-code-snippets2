@@ -39,3 +39,9 @@ asciinema rec
 # press enter
 ```
 
+## boot usb
+
+- [rufus](https://rufus.ie/)
+- [etcher](https://www.balena.io/etcher/)
+- deepin boot maker
+
