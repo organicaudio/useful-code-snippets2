@@ -15,7 +15,9 @@
 ## up and running
 
 ### install
-[official guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-debian)
+
+- [official guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-debian)
+- (optional) For an ansible Web-UI you may want to take a look at Ansible Tower respective it open source version [AWX](https://github.com/ansible/awx) 
 
 #### control node:
 
