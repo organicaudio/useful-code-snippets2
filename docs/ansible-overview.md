@@ -105,8 +105,7 @@ install software via playbook:
       package: name='java-1.8.0-openjdk' state=latest
 ```
 
-*This example uses the [package](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/package_module.html) module with no arguments.
-*
+*This example uses the [package](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/package_module.html) module with no arguments.*
 
 start docker container via playbook:
 
@@ -134,8 +133,7 @@ start docker container via playbook:
       image: "{{ container_image }}"
       state: present
 ```
-*This example uses the [pip](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/pip_module.html), [docker_image](https://docs.ansible.com/ansible/latest/collections/community/general/docker_image_module.html) and the [docker_container](https://docs.ansible.com/ansible/latest/collections/community/general/docker_container_module.html) module with a set of arguments.
-*
+*This example uses the [pip](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/pip_module.html), [docker_image](https://docs.ansible.com/ansible/latest/collections/community/general/docker_image_module.html) and the [docker_container](https://docs.ansible.com/ansible/latest/collections/community/general/docker_container_module.html) module with a set of arguments.*
 
 **Note: there was an error while using dokcer_image module [No module named ssl_match_hostname](https://github.com/docker/docker-py/issues/1502). The solution was to run `sudo apt-get remove python-configparser`**
 
