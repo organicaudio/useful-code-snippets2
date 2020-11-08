@@ -6,9 +6,12 @@ Uses the Github Action [Deploy MkDocs](https://github.com/marketplace/actions/de
 
 ## Install
 
-``pip3 install mkdocs``
 
-``pip3 install mkdocs-material``
+``sudo pip3 install mkdocs``
+
+``sudo pip3 install mkdocs-material``
+
+sudo might be necessary to add mkdocs on the path.  
 
 ## Commands
 
