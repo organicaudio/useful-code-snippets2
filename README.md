@@ -10,7 +10,7 @@ Uses the Github Action [Deploy MkDocs](https://github.com/marketplace/actions/de
 
 ``sudo pip3 install mkdocs-material``
 
-sudo might be necessary to add mkdocs on the path. If you wnat to change color or the navigation refer to [mkdocs martial setup guide](https://squidfunk.github.io/mkdocs-material/setup/).
+sudo might be necessary to add mkdocs on the path. If you wnat to change color or the navigation refer to [mkdocs martial setup guide](https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/).
 
 ## Commands
 
