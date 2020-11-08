@@ -1,2 +1,7 @@
-theme: material
+theme: 
+    name: material
+    palette:
+        scheme: slate
+        primary: teal
 site_name: Technotes
+    
