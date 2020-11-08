@@ -10,6 +10,12 @@
 
 - [overview of tools/services/libraries for web development](https://dev.to/davidepacilio/50-free-tools-and-resources-to-create-awesome-user-interfaces-1c1b)
 
+## learn interactive online
+
+- [katacoda](https://www.katacoda.com/) has multiple free interative tutorials (mainly cloud or ci/cd topics)
+- [Learn git branching](https://learngitbranching.js.org/?locale=de_DE) interactivly
+- [Visualize git](http://git-school.github.io/visualizing-git/)
+
 ## boot usb
 
 - [rufus](https://rufus.ie/)
