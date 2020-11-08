@@ -1,7 +1,7 @@
 # Gitpod
 
 
-Is a online ide which utilizes theano. It allows to define ephemeral development workspaces based on a git repository and and a container image
+Gitpod is a online ide which is based on [Theia](https://theia-ide.org/). It allows to define ephemeral development workspaces based on a git repository and and a container image
 
 ## features
 
