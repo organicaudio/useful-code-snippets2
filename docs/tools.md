@@ -1,15 +1,29 @@
-# nice tools
+# helpful stuff
 
-## links to overviews
+## vs code pluings
+
+- Spellchecker for txt and md: TODO maybe [LanguageTool Linter](https://github.com/davidlday/vscode-languagetool-linter)  
+- Linters:
+    - md: [markdownlint](https://github.com/DavidAnson/vscode-markdownlint)
+
+## links to overview pages
 
 - [overview of tools/services/libraries for web development](https://dev.to/davidepacilio/50-free-tools-and-resources-to-create-awesome-user-interfaces-1c1b)
+
+## boot usb
+
+- [rufus](https://rufus.ie/)
+- [etcher](https://www.balena.io/etcher/)
+- deepin boot maker
 
 ## screen recorder
 
 To create documentation for an ui or demonstrate bugs.
 
 Windows: [Screen to gif](https://www.screentogif.com/)
-Linux: 
+
+Linux:
+
 - Deepin screen recorder
 - [Peek](https://github.com/phw/peek)
 
@@ -38,10 +52,3 @@ asciinema rec
 # exit via crlt + D
 # press enter
 ```
-
-## boot usb
-
-- [rufus](https://rufus.ie/)
-- [etcher](https://www.balena.io/etcher/)
-- deepin boot maker
-
