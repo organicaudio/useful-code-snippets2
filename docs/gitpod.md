@@ -29,4 +29,5 @@ Is a online ide which utilizes theano. It allows to define ephemeral development
     - .gitpod.Dockerfile is used to **define the container image** in which the workspace runs. Theres is a list of usable base images from gitpod which it recommend you.
     - **Use 'Test drive configuration' to test you setup**. It will create a branch in you repo and create a new theano workspace from it. If the workspace builds from this without errors this step can be seen as succesful.
     - if you are happy with you theano config changes **create a pull request** to remote master and merge it to master 
+4. [delete your old workspace container](https://gitpod.io/workspaces/) and create a new one from master
 4. Start developing as you are used to
