@@ -1,4 +1,4 @@
-# docker networking
+# Docker networking
 
 ## access container from your hosts ip address
 

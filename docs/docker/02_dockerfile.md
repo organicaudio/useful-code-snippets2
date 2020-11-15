@@ -1,46 +1,9 @@
-# docker memory aid
-
-[vs code plugin for docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) is pretty nice.
-
-## docker cli useful commands
-
-official overview of [docker cli commands](https://docs.docker.com/engine/reference/commandline/docker/).
-
-- `docker build . -t crowdsalat/imageName:tag` creates a image based on a Dockerfile and the context/ working directory and subdirectories
-- `docker run <image>` starts a container from an image
-    - `-d` run as daemon
-    - `-it` runs interactively so you can execute commands in container (-t Allocate a pseudo-tty, -i Keep STDIN open )
-    - `-p 500:1000` maps the port 1000 of the container to the port 500 of the host. Reachable under localhost on the host system.
-    - `-p 192.168.178.123:1000:500` maps the port 1000 of the container to the port of the host. Reachable under localhost on the host system. Reachable under the IP address of the host system.
-    - `-v /var/logs/` binds /var/logs inside the container to a unnamed volume on the mount which resides in /var/lib/docker/volumes/
-    - `-v /var/run/docker.sock:/var/run/docker.sock` containers started inside of this container will be started on the host a not inside the container (sibling not a child). Useful in CI/CD pipelines which uses containers as runners see: https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
-    - `-e VAR1=bla -e VAR2=blubb` defines environmental variables in the container
-    - `—rm` remove container after it is stopped.
-    - `—name` add name to the container.
-- `docker history --no-trunc <image>` show something similar to the original dockerfile
-- `docker exec -it container_name bash` connects to a running container with the name container_name
-- `docker ps −a` shows all running docker container on a client
-- `docker image / container / network / volumes / system`
-      - ls
-      - rm
-      - inspect
-- `docker system prune` removes:
-    1. all stopped containers (`docker container prune`)
-    2. all networks not used by at least one container (`docker network prune`)
-    3. all dangling images (`docker image prune`)
-    4. all dangling build cache
-- `docker network create --driver bridge <bridgeName>` create a new bridge network
-- `docker volume create <volumeName>` create a new bridge volume
-- `docker cp <containerName>:<pathInConainer> <pathOnHost>`  copies data from the container to the host. Helpful if volume were not set up correct 
-
-
-**If you pull a image with the latest tag it will first try to download it from docker hub and only if it is not there it will use a local variant.**
-## Dockerfile
+# Dockerfile
 
 [Docker file reference](https://docs.docker.com/engine/reference/builder/)
 [Nice summary of run, cmd and entypoint](https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/)
 
-### Create image form dockerfile
+## Create image form dockerfile
 
 - `docker build <context>`  builds Docker images from a Dockerfile and a 'context'.
 - context is the set of files located in the specified PATH or URL
@@ -56,7 +19,7 @@ COPY target/*.jar app.jar
 ENTRYPOINT["java", "-jar", "app.jar"]
 ```
 
-### shell form vs. exec form
+## shell form vs. exec form
 
 - the forms can be distinguished by their syntax. 
 - they differ in their behavior.
@@ -76,7 +39,7 @@ exec form:
 - preferred for CMD and ENTRYPOINT
 - no variable replacement ($PATH does not work)
 
-### dockerfile commands
+## dockerfile commands
 
 RUN, CMD and Entrypoint all execute a command, but:
 
@@ -96,7 +59,7 @@ COPY and ADD copy files to an image and create a new layer, but:
 - **ENV** sets a environment variable (`ENV path=/opt/`).
 - **ARG** defines parameters of a docker image which can be overridden when the images is build (e.g. `$ docker build --build-arg arg_name=blubb .`)
 
-### useful images
+## useful images
 
 A list of relatively small images. If present alpine images tend to be the smallest. Docker repositories mostly are organized via the tags (:8-jdk-alpine, :11-jdk-buster etc.).
 
@@ -108,12 +71,12 @@ Java:
 - [adoptopenjdk/openjdk8-openj9:alpine](https://hub.docker.com/r/adoptopenjdk/openjdk8-openj9)
 - [adoptopenjdk/openjdk11:alpine](https://hub.docker.com/r/adoptopenjdk/openjdk11)
 
-## dockerfile vs. command line
+# dockerfile vs. command line
 
-### -p vs EXPORT
+## -p vs EXPORT
 
 EXPORT does not actually publish the given port. It is a documentation for the user. The user of a image needs to export the port via -p flag when running docker run.
 
-### --volume vs. VOLUME
+## --volume vs. VOLUME
 
 VOLUME creates a anonymous volume even when docker run does not specify a --volume parameter.

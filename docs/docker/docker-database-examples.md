@@ -1,4 +1,4 @@
-# containerized databases
+# Examples for containerized databases
 
 ## MySQL
 
