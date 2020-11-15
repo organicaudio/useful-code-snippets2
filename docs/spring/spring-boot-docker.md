@@ -1,4 +1,4 @@
-# spring boot dockerize 
+# Spring Boot Dockerize 
 
 [official docker guide from spring.io](https://spring.io/guides/topicals/spring-boot-docker/). 
 [official docker getting started from spring.io](https://spring.io/guides/gs/spring-boot-docker/). 
