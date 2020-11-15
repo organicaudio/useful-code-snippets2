@@ -1,4 +1,4 @@
-# spring boot rest (with HATEOAS)
+# Spring Boot rest (with HATEOAS)
 
 ## rest general principles 
 
@@ -23,7 +23,7 @@ Hypermedia as the Engine of Application State (HATEOAS): you can find all availa
 [Official hands on guide with emphasis on hateoas](https://spring.io/guides/tutorials/rest/)
 [Nice overview of topic related to rest](https://www.baeldung.com/rest-with-spring-series)
 
-- needs **spring-boot-starter-web** as dependecy
+- needs **spring-boot-starter-web** as dependecy (not spring-boot-starter-jersey which is Jax_RS (Java EE))
 - annotate class with **@RestController** (shorthand for @ResponseBody and @Controller) and **@RequestMapping("/")**
 - use following annotations to mark a method to be exposed via 
     - @GetMapping
@@ -34,8 +34,8 @@ Hypermedia as the Engine of Application State (HATEOAS): you can find all availa
     - RequestMapping (generic mapper/ old way)
 - the @*Mapping annotations allow: 
     - to define which http verb is used
-    - to define under which path the method is called (based on the path defined in @RequestMapping on the class) 
-    - to define which representation formats are allowed
+    - `value=""`. to define under which path the method is called (based on the path defined in @RequestMapping on the class) 
+    - `produces=`: to define which representation formats are allowed
     - to to define path parameters e.g. @GetMapping("/{id}/specialpath")
 - @ResponseStatus on a method defines the http code for a successful call
 - On method parameters:
@@ -56,6 +56,52 @@ Hypermedia as the Engine of Application State (HATEOAS): you can find all availa
 - implement RepresentationModelAssembler and the toModel method for every entity (in order to remove the code from the RestController)
 
 *LEGACY: Spring HATEOAS Version 1.0 dropped the [resourceSupport/Resource/Resources/PagedResources group of classes](https://docs.spring.io/spring-hateoas/docs/current/reference/html/#migrate-to-1.0)*
+
+## error handling 
+
+- @ControllerAdvice works on **global** level for all controller beans and allows to save all @ExceptionHandler in one place
+- ResponseStatusException allows to define error handling for one **method**
+- [@ExceptionHandler](https://spring.io/blog/2013/11/01/exception-handling-in-spring-mvc) works only for the **class** where a method is annotated with. 
+- HandlerExceptionResolver can be extended or just use [predefined implementations](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/servlet/HandlerExceptionResolver.html)
+
+## parsing date query parameters
+
+### on parameter level
+
+- `@DateTimeFormat(pattern="MM/dd/yyyy")` before the parameter 
+- or `@DateTimeFormat( iso=DateTimeFormat.ISO.<>)`  before the parameter 
+
+### on application level
+
+```java
+@Configuration(proxyBeanMethods = false)
+class RestConfiguration {
+
+    public DateTimeFormatterRegistrar registrar() {
+        DateTimeFormatterRegistrar registrar = new DateTimeFormatterRegistrar()
+        registrar.setDateFormatter(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        registrar.setTimeFormatter(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        registrar.setDateTimeFormatter(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
+        return registrar;
+    }
+}
+```
+- Set default value for a LocalDate param
+    - `methodname(@RequestParam(defaultValue="#{T(java.time.LocalDate).now()}") LocalDate date)` 
+    - calls to `<resturl>?requestParam=` or `<resturl>?requestParam=&requestParam2=bla` or just `<resturl>` would trigger the default value
+
+
+## cache control
+
+[Nice overview](https://www.baeldung.com/spring-security-cache-control-headers)
+
+## evolving api
+
+Add new fields to your JSON representations, but do not take any away (Never delete a column in a database)
+
+## Test RestController
+
+Use TestRestTemplate and just call the endpoints. Only make rudimentary assertions or such which can only be done on Rest like error page. Test the real logic in the service classs which provides the information to the restcontroller.
 
 ## spring data rest
 
@@ -81,21 +127,28 @@ When adding **spring-boot-starter-data-rest** as dependency to your spring boot 
     - if you do not configure a @PathVariable they are exposed under `<host>/<entityPlural>/search/<queryMethodName>` (they appear in the hal browser!)
 - you can define generic rest query urls for a spring data repository with [the Specification interface](https://www.baeldung.com/rest-api-search-language-spring-data-specifications)
 
-## error handling 
+## add basic auth
 
-- @ControllerAdvice works on **global** level for all controller beans and allows to save all @ExceptionHandler in one place
-- ResponseStatusException allows to define error handling for one **method**
-- [@ExceptionHandler](https://spring.io/blog/2013/11/01/exception-handling-in-spring-mvc) works only for the **class** where a method is annotated with. 
-- HandlerExceptionResolver can be extended or just use [predefined implementations](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/servlet/HandlerExceptionResolver.html)
+```java
+@Configuration
+public class WebserviceConfig {
+    @Value("${})
+    private String user;
 
-## parsing date parameters
+    @Value("${})
+    private String password;
 
-[Nice overview](https://www.baeldung.com/spring-date-parameters)
+    // is used for all restTemplates! You need to name the bean if you want to call mltiple domains
+    @Bean
+    public RestTemplate myRestTemplate(RestTemplateBuilder builder) {
+        return builder.basicAuthorization(user, password).build();
+    }
 
-## cache control
+}
+```
 
-[Nice overview](https://www.baeldung.com/spring-security-cache-control-headers)
+## Misc
 
-## evolving api
-
-Add new fields to your JSON representations, but do not take any away (Never delete a column in a database)
+General adive on spell you can: 
+- call a static Method with spell: #{T(java.time.LocalDate).now()}
+- call a constructor with spell: #{new java.util Date()}

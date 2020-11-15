@@ -1,6 +1,7 @@
 # Mockito memory aid
 
 - rule of thumb: Do not mock types you don’t own
+- might seem obvious but do not mock the class under test.
 - [Overview of mockito annotations](https://www.baeldung.com/mockito-annotations)
 - `import static org.mockito.Mockito.*;`
 - `import static org.mockito.ArgumentMatchers.*;`

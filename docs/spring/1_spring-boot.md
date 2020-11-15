@@ -1,26 +1,9 @@
-# spring boot overview
-
-## official resources:
-
-- An overview of all spring boot [docs](https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/reference/html/)
-- Overview of all [spring boot features]([)https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/reference/html/spring-boot-features.html)
-- An overview of all [Guides](https://spring.io/guides)
-- There are helpful project sites for every spring module under projects in the navbar of [https://spring.io]
-- On the project sites there is always a **Reference Doc** and a **API Doc** per version under learn.
+# Spring Boot 
 
 ## helpful commands
 
 - `mvn spring-boot:run` compiles and run spring boot application in exploded form (from target directory)
 - To start a RestMock Server use the following [gist](https://gist.github.com/CrowdSalat/3a732442e96133595245af77dcc4fbb3) and start it with `spring run SpringRestMock.groovy`
-
-## helpful tools
-
-- [HTTPie](https://httpie.org/) is easier than wget or curl.
-- [spring cli](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-cli.html) to quickly develop spring applications with groovy scripts.
-- [Spring initializr](https://start.spring.io/)
-    - a website to scaffold spring projects
-    - also a backing service
-    - can be used as parent pom
 
 ## initiate example
 
@@ -67,7 +50,6 @@ set/overwrite predefined properties:
 - command line injections 
 - **Cloud configuration (most common)**
 
-
 **You can define a property file fo the test cases by adding a file to src/test/resources**
 
 ## Bean Configuration
@@ -77,7 +59,7 @@ set/overwrite predefined properties:
 - xml based config (legacy)
 - **component scanning (most common)** and implemented Interfaces
 
-## profiles
+## Profiles
 
 Profiles allow configuration based on environment (e.g. to set log-level or urls). They leverage the property-based-configuration feature. 
 When using files a Application.yml is more common to use to leverage profiles than aapplication.properties.
@@ -96,7 +78,7 @@ server:
   port: 9000
 ```
 
-When using application.properties you need to create one file per profile with the naming scheme: application-<profilename>.properties. You can set active profile via **spring.profiles.active** environment-variable/jvm-property or directly in the properties/yaml file.
+When using application.properties you need to create one file per profile with the naming scheme: application-<profilename>.properties. You can set active profile via **spring.profiles.active** environment-variable/jvm-property or directly in the properties/yaml file. Start spring with a specific profile `-Dspring.profiles.active=` e.g. (`java -jar -Dspring.profiles.active=default app.jar de.MainClass`)
 
 ## spring-boot-devtools
 
@@ -145,6 +127,36 @@ Also adds h2 console on http://localhost:8080/h2-console. You may need override 
     - To prevent overwrite set the property **spring.jpa.hibernate.ddl-auto=false**
 - In order to run test it is common to add **com.h2database.h2** dependency in maven.
 
+## actuator (spring-boot-starter-actuator)
+
+actuators...
+
+- give insight into an application
+- allow monitoring
+- allows to change configuration settings via jmx
+- libraries changed frequently in spring.
+- actuator endpoints can be configured via properties management.endpoint.*
+- **you should activate security (ENDPOINT_ADMIN)**
+- **only for dev** deactivate all actuators by adding management.endoints.web.exposure.include=* property
+
+Predefined endpoints:
+
+1. Health endpoint
+     - application status
+     - status of dependencies (db, etc.)
+2. Info endpoint:
+     - maintainer
+     - git commit
+     - build number
+  
+JXM Functions:
+
+- list of bean
+- state of environment
+- dumps
+- url mappings
+- metrics
+
 ## spring boot security (spring-boot-starter-security)
 
 General note: use **Bcrypt** for  password hashing.
@@ -177,40 +189,3 @@ General note: use **Bcrypt** for  password hashing.
     - @EnableOAuth2Client is used to config a client
     - @EnableAuthorizationServer is used to config a server
 - Client dependency spring-boot-starter-oauth2-client
-
-## rabbit mq
-
-- small messages are preferred when using asynchronous messaging (ID instead of entire object)
-- use string with json object inside:
-    - no implicit marshalling needed (better performance)
-    - string objects are readable in console
-
-## actuators
-
-actuators...
-
-- give insight into an application
-- allow monitoring
-- allows to change configuration settings via jmx
-- libraries changed frequently in spring.
-- actuator endpoints can be configured via properties management.endpoint.*
-- **you should activate security (ENDPOINT_ADMIN)**
-- **only for dev** deactivate all actuators by adding management.endoints.web.exposure.include=* property
-
-Predefined endpoints:
-
-1. Health endpoint
-     - application status
-     - status of dependencies (db, etc.)
-2. Info endpoint:
-     - maintainer
-     - git commit
-     - build number
-  
-JXM Functions:
-
-- list of bean
-- state of environment
-- dumps
-- url mappings
-- metrics

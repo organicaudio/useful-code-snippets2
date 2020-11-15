@@ -1,6 +1,6 @@
-# spring boot data
+# Spring Boot Data
 
-## Standard use
+## overview
 
 - Spring data is like a generic entity access object.
 - It functions as a layer above JPA or other ORM mapper specifications.

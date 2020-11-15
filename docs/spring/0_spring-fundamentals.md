@@ -1,4 +1,4 @@
-# spring fundamentals
+# Spring fundamentals
 
 ## general
 
