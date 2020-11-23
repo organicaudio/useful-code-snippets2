@@ -14,6 +14,8 @@ Gitpod is a online ide which is based on [Theia](https://theia-ide.org/). It all
 
 ## create a new workspace 
 
+Keep in mind that the gitpod copies every file of a git project into /workspace/<git_project_name>. So if your Docker image installs stuff you should do it globally or use a different Dockerfile for dev and for production.
+
 ### wihout config
 
 1. To start a **new theano workspace** open `https://www.gitpod.io/#<URL_TO_REPO>` in your browser e.g. `https://www.gitpod.io/#https://github.com/CrowdSalat/technotes`. You can also [address a specific branch or commit](https://www.gitpod.io/docs/context-urls/) 
