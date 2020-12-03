@@ -11,4 +11,4 @@ https://www.quora.com/What-are-the-pros-and-cons-of-server-side-rendering-vs-cli
 ## Framwork evolution
 
 - [JS](https://2019.stateofjs.com/)
--[CSS](https://2019.stateofcss.com/)
+- [CSS](https://2019.stateofcss.com/)
