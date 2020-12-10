@@ -1,6 +1,7 @@
 # yaml overview
 
-[Nice examples](https://en.wikipedia.org/wiki/YAML)
+- [Nice examples](https://en.wikipedia.org/wiki/YAML)
+- [Official ref card](https://yaml.org/refcard.html)
 
 - `#` for comments
 - indentation to indicate nesting (2 spaces)
