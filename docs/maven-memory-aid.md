@@ -11,12 +11,29 @@
 
 maven uses a local and a remote repository. 
 
-The local repo is located under: ``~/.m2/repository``
+By default the local repo is located under: ``~/.m2/repository``
 
 The default remote repo is located under: [https://repo.maven.apache.org/maven2/](https://repo.maven.apache.org/maven2/)
 
-The remote repository can be defined in the the ``~/settings.xml`` or in the ``pom.xml``.
+The remote repository can be defined in the the user ``~/.m2/settings.xml`` or in the ``pom.xml`` or the global `${maven.home}/conf/settings.xml`.
 
+The precedence of the defined repositories in a xml file is from top to down. The files have the following precedence:
+
+1. Global settings.xml 
+2. User settings.xml
+3. Local POM
+4. Parent POMs, recursively
+5. [Super POM](https://maven.apache.org/ref/3.6.3/maven-model-builder/super-pom.html) which depends on the used maven version
+
+
+You can define mirrors in the settings.xml which will redirect specific or wildcard repositories to another one. The `mirrorOf` element contains the id of the repository you want to redirect (or a wildcard `*`) and an `url` element which points to the target repository. 
+
+## repository mirrors
+
+https://maven.apache.org/guides/mini/guide-mirror-settings.html
+
+- is set in settings.xml
+- redirects traffic of an Repository via mirrorOf to another url
 
 ## package vs install vs deploy
 
