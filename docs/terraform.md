@@ -217,3 +217,7 @@ Google cloud backend example:
     bucket = "existing-bucket-name"
   }
 ```
+
+## expressions
+
+[Documentation](https://www.terraform.io/docs/configuration/expressions/index.html)
