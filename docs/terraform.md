@@ -156,6 +156,7 @@ resource "aws_instance" "example" {
 ## Output Variables
 `
 Output blocks can be pasted in any of the *.tf files. Output are printed after ``terraform output`` or ``terraform apply`` are run.
+In a rot module the label of the output block is showed to the user as the name of the variable. In a module the label can be used to reference the variable. You may need to prefix the variable with the terraform type like `data` or `var`.
 
 Example:
 ```hcl
