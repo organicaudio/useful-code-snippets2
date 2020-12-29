@@ -44,6 +44,11 @@ ssh -i ~/.ssh/id_rsa <user>@<ip or url>
 ## as entry in /etc/ssh/ssh_config
 ## as *.pub file in /etc/ssh/ folder
 
+
+# permisions of pub files
+chmod 700 ~/.ssh
+chmod 644 ~/.ssh/id_rsa.pub
+chmod 600 ~/.ssh/id_rsa
 ```
 
 ## check open ports
