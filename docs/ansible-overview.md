@@ -44,7 +44,7 @@ sudo apt install ansible
 
 [Official guide](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html)
 
-You can add managed nodes in the file **/etc/ansible/hosts** either via the ini format or via the yaml format.
+You can add managed nodes in the file **/etc/ansible/hosts** either via the ini format or via the yaml format. Or set path via the`-i` flag. Hostfiles need to have the following rights: `sudo chmod 744 /etc/ansible/hosts` and might otherwise clain that the file cannot be parsed ("Unable to parse /etc/ansible/hosts as an inventory source").
 
 A simple host file in ini format:
 
