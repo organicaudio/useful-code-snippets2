@@ -2,7 +2,7 @@
 
 - if you use a jenkins file it is called a multi branch pipeline (it uses the pipeline plugin)
 - there is a imperative and a declarative pipeline syntax
-- there is a vs code pipeline linter extension ['Jenkins Pipeline Linter Connector'](https://marketplace.visualstudio.com/items?itemName=janjoerke.jenkins-pipeline-linter-connector) which uses the jenkins build in pipeline linter: http://<JENKINS:PORT>/pipeline-model-converter/validate . You may need to configure the extension to ignore SSL errors.
+- there is a vs code pipeline linter extension ['Jenkins Pipeline Linter Connector'](https://marketplace.visualstudio.com/items?itemName=janjoerke.jenkins-pipeline-linter-connector) which uses the jenkins build in pipeline linter: `http://<JENKINS:PORT>/pipeline-model-converter/validate`. You may need to configure the extension to ignore SSL errors.
 - you can add (global) config files to the jenkins project like a settings.xml or property file with credentials
 - if you use blue ocean you might not get the real error of a pipeline so you should open the console in classic view if stuff seems to be missing
 - **do no use the variable name 'package' in jenkins file.**
