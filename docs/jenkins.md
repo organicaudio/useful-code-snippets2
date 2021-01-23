@@ -333,6 +333,31 @@ def getXmlSlurper(String xmlContentString){
 }
 ```
 
+### remove old builds
+
+- use buildDiscarder and logRotator api to remove old build artifacts
+- [see](https://stackoverflow.com/questions/39542485/how-to-write-pipeline-to-discard-old-builds)
+
+```groovy
+pipeline {
+    agent any
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '30', artifactNumToKeepStr: '30'))()
+    }
+
+      stage('build and save artifact'){
+        steps {
+            echo 'building project-a'
+            sh 'mvn -B -DskipTests clean package'
+            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+        }                    
+    }
+
+}
+
+```
+
 ### clean jenkins workspace
 
 - it may be that jenkins keep you workspace between two builds and you need to delete created folder
