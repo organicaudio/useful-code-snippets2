@@ -1,5 +1,7 @@
 # maven memory aid
 
+[CLI options reference](https://maven.apache.org/ref/3.1.0/maven-embedder/cli.html)
+
 ## useful commands
 
 - ``mvn exec:java -Dexec.mainClass=de.weyrich.MainClassName`` 
