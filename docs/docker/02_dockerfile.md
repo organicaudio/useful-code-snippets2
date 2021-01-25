@@ -56,8 +56,8 @@ COPY and ADD copy files to an image and create a new layer, but:
 
 --> use COPY for local files
 
-- **ENV** sets a environment variable (`ENV path=/opt/`).
-- **ARG** defines parameters of a docker image which can be overridden when the images is build (e.g. `$ docker build --build-arg arg_name=blubb .`)
+- **ENV** sets a environment variable (`ENV path=/opt/`) at docker build and during runtime.
+- **ARG** defines parameters of a docker image which can be overridden when the images is build (e.g. `$ docker build --build-arg arg_name=blubb .`). only available during build time.
 
 ## useful images
 
