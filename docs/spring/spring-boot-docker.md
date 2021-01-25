@@ -79,6 +79,8 @@ COPY --from=builder ${DEPENDENCY}/BOOT-INF/classes /app
 ENTRYPOINT ["java","-cp","app:app/lib/*","com.example.MyApplication"]
 ```
 
+the maven wrapper seems to ignore http proxies which are set with the http_proxy or the https_proxy environmental variable.Instead you can set a proxy for maven with MAVEN_OPTS environmental variables: `export MAVEN_OPTS=-Dhttp.proxyHost=bla - DhttpProxyPort=80 -Dhttps.proxyHost=bla - DhttpsProxyPort=80 `
+
 ## google jib (maven + gradle plugins)
 [google jib](https://github.com/GoogleContainerTools/jib/blob/master/README.md)
 [maven plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#quickstart)
