@@ -19,3 +19,10 @@ wsl --unregister Ubuntu-20.04
 # WORKAROUND: No Internet connection in WSL2
 
 Run: `sudo bash -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'` or add the command to you bashrc. 
+
+# symlink kubeconfig
+
+```
+mkdir -p ~/.kube
+ln -s /mnt/c/Users/__USER__/.kube/config ~/.kube/config
+```
