@@ -3,10 +3,10 @@
 ## file types
 
 - .pem: 
-  - contains as first line: `-----BEGIN CERTIFICATE-----`
-  - can be a private key or a public certificate
-  - can be read with text editor but is base64 encoded
-  - or with: `openssl x509 -in cert.pem -text`
+    - contains as first line: `-----BEGIN CERTIFICATE-----`
+    - can be a private key or a public certificate
+    - can be read with text editor but is base64 encoded
+    - or with: `openssl x509 -in cert.pem -text`
 - .der (.cer) binary encoded x509 certificate
 - .key private key in PEM format
 - .cert;.cer;.crt: certificate with private key (DER or PEM)
