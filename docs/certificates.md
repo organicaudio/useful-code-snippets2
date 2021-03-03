@@ -26,8 +26,8 @@ openssl req -x509 -newkey rsa:4096 -keyout my.key -out my.crt -days 365
 openssl req -x509 -newkey rsa:4096 -keyout my.key -out my.crt -days 365 -subj /CN=example.de
 
 # read 
-openssl x509 -in  my.crt -text
-openssl rsa -in my.crt -text
+openssl x509 -in  my.crt -text -noout
+openssl rsa -in my.crt -text -noout
 ```
 
 ### Java truststore and keystore
