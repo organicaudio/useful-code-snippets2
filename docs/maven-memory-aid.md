@@ -9,6 +9,12 @@
 - ``mvn help:effective-settings`` print settings.
 - ``mvn help:effective-pom`` creates a pom which is used after the interpolation, inheritance and use of active profiles.
 
+
+## maven and ci
+
+- [Maven revisions](https://maven.apache.org/maven-ci-friendly.html)
+- [Stackoverflow ](https://stackoverflow.com/questions/18456111/what-is-the-maven-way-for-automatic-project-versions-when-doing-continuous-deliv/41283661#41283661)
+  
 ## local vs. remote Repo
 
 maven uses a local and a remote repository. 
