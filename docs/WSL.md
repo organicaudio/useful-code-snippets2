@@ -26,3 +26,13 @@ Run: `sudo bash -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'` or add the co
 mkdir -p ~/.kube
 ln -s /mnt/c/Users/__USER__/.kube/config ~/.kube/config
 ```
+
+# Git under WSL
+
+[Official doc](https://docs.microsoft.com/de-de/windows/wsl/tutorials/wsl-git)
+
+Use the git credential manager:
+
+```
+git config --global credential.helper "/mnt/c/dev/Git/mingw64/libexec/git-core/git-credential-manager.exe"
+```
