@@ -42,6 +42,15 @@ sudo rm /etc/resolv.conf
 # start wsl and add new name server
 sudo bash -c 'echo "nameserver 1.1.1.1" > /etc/resolv.conf'
 ```
+# time not set correctly
+
+```shell
+# check time
+date
+
+# see https://github.com/microsoft/WSL/issues/4245
+sudo hwclock -s
+```
 
 # symlink kubeconfig
 
