@@ -16,11 +16,17 @@
 
 ## clear working directory (with untracked files)
 
-- To last commit including ignored files: `git stash --include-untracked && git stash drop`
-- To last commit: `git stash --all && git stash drop`
-- 
+With reset:
+
 - To last commit including ignored files: `git reset --hard && git clean -dfx`
 - To last commit: `git reset --hard && git clean -df`
+
+With stash. Allows to revert changes, but not recommended with many files: 
+
+- To last commit including ignored files: `git stash --all`
+- To last commit: `git stash --include-untracked `
+- Permanently deleting files: `git stash drop`
+- Revert changes: `git stash pop`
 
 ## clean files in history
 
