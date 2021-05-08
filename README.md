@@ -1,6 +1,31 @@
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/CrowdSalat/technotes)
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/organicaudio/technotes)
 
-# technotes
+# USEFUL CODE SNIPPETS [WIP]
+
+### Public Page:
+[http://organicaudio.github.io/useful-code-snippets/](http://organicaudio.github.io/useful-code-snippets/)
+
+
+## TO DO:
+1) Once complete merge the follow repos into this one and apply structure
+
+[https://github.com/organicaudio/iOS-Shortcuts-Reference](https://github.com/organicaudio/iOS-Shortcuts-Reference)
+[https://github.com/organicaudio/code-snippets-macos](https://github.com/organicaudio/code-snippets-macos)
+[https://github.com/organicaudio/shortcuts-ios-repo](https://github.com/organicaudio/shortcuts-ios-repo)
+
+
+2) Complete the Markdown formatting of this doc and prune the contents where appropriate to remove deprecated paths or repetative methods
+[https://github.com/organicaudio/useful-code-snippets/blob/master/docs/ios/Reference:%20iOS%20App%20URL%20Scheme%20Names%20%26%20Paths%20for%20Shortcuts.md](https://github.com/organicaudio/useful-code-snippets/blob/master/docs/ios/Reference:%20iOS%20App%20URL%20Scheme%20Names%20%26%20Paths%20for%20Shortcuts.md)
+
+
+### Site theme / backend
+[https://github.com/organicaudio/useful-code-snippets](https://github.com/organicaudio/useful-code-snippets) (this one)
+[https://github.com/organicaudio/devtools-snippets](https://github.com/organicaudio/devtools-snippets)
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+## Based on MkDocs & Material Theme
 
 Builds every time you push a change to the master branch. 
 
