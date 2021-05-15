@@ -18,6 +18,10 @@
 [https://github.com/organicaudio/useful-code-snippets/blob/master/docs/ios/Reference:%20iOS%20App%20URL%20Scheme%20Names%20%26%20Paths%20for%20Shortcuts.md](https://github.com/organicaudio/useful-code-snippets/blob/master/docs/ios/Reference:%20iOS%20App%20URL%20Scheme%20Names%20%26%20Paths%20for%20Shortcuts.md)
 
 
+3) integrate content from 
+- google-callback-urls.md
+- AppURLs.adoc
+
 ### Site theme / backend
 [https://github.com/organicaudio/useful-code-snippets](https://github.com/organicaudio/useful-code-snippets) (this one)
 [https://github.com/organicaudio/devtools-snippets](https://github.com/organicaudio/devtools-snippets)
