@@ -1,0 +1,1956 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>10 Alpine Linux apk Command Examples nixCraft - Useful Development Snippets & Guides</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#purpose" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="Useful Development Snippets &amp; Guides" class="md-header-nav__button md-logo" aria-label="Useful Development Snippets & Guides">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Useful Development Snippets & Guides
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              10 Alpine Linux apk Command Examples   nixCraft
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Useful Development Snippets &amp; Guides" class="md-nav__button md-logo" aria-label="Useful Development Snippets & Guides">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Useful Development Snippets & Guides
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../REST%20API%20-%20Homeassistant%20-%20Hue%20Sensor/" class="md-nav__link">
+      REST API   Homeassistant   Hue Sensor
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Default
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Default" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Default
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/WSL/" class="md-nav__link">
+      Linux Subsystem for Windows (WSL)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/ansible-overview/" class="md-nav__link">
+      ansible
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/certificates/" class="md-nav__link">
+      Certificates and encryption
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/git/" class="md-nav__link">
+      Git
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/gitpod/" class="md-nav__link">
+      Gitpod
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/jdbc/" class="md-nav__link">
+      jdbc
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/jenkins/" class="md-nav__link">
+      Jenkins (pipeline)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/maven-memory-aid/" class="md-nav__link">
+      maven memory aid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/mockito-memoery-aid/" class="md-nav__link">
+      Mockito memory aid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/nginx/" class="md-nav__link">
+      nginx memory aid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/raspberry/" class="md-nav__link">
+      raspberry pi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/terraform/" class="md-nav__link">
+      Terraform
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/tools/" class="md-nav__link">
+      helpful stuff
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/vscode/" class="md-nav__link">
+      VS Code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/yaml-overview/" class="md-nav__link">
+      yaml overview
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Docker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Docker" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Docker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/01_docker-memory-aid/" class="md-nav__link">
+      Docker CLI useful command
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/02_dockerfile/" class="md-nav__link">
+      Dockerfile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/03_docker-persisting-data/" class="md-nav__link">
+      Docker persisting data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/04_docker-networking/" class="md-nav__link">
+      Docker networking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20File%20Browser/" class="md-nav__link">
+      Docker Install   File Browser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20FileBot/" class="md-nav__link">
+      Docker Install   FileBot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20Hassio%20AppDaemon/" class="md-nav__link">
+      Docker Install   Hassio AppDaemon
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20LetsEncrypt/" class="md-nav__link">
+      Docker Install   LetsEncrypt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20Maloja%20%28Spotify%20Scrobbler%29/" class="md-nav__link">
+      Docker Install   Maloja (Spotify Scrobbler)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20Monit%20%26%20Mmonit%20-%20System%20Monitoring/" class="md-nav__link">
+      Docker Install   Monit & Mmonit   System Monitoring
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Dozzle%20-%20WebUI%20Log%20Viewer%20for%20Docker/" class="md-nav__link">
+      Dozzle - WebUI Log Viewer for Docker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-compose/" class="md-nav__link">
+      Docker compose
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-database-examples/" class="md-nav__link">
+      Examples for containerized databases
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-dozzle-logviewer/" class="md-nav__link">
+      Dozzle - WebUI Log Viewer for Docker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-file-browser/" class="md-nav__link">
+      Docker file browser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-filebot/" class="md-nav__link">
+      Docker filebot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-letsencrypt/" class="md-nav__link">
+      Docker letsencrypt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-maloja-spotify-scrobble/" class="md-nav__link">
+      Docker maloja spotify scrobble
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-mmonit-system-monitoring/" class="md-nav__link">
+      Docker mmonit system monitoring
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Homeassistant
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Homeassistant" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Homeassistant
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../homeassistant/hassio-appdaemon/" class="md-nav__link">
+      Hassio appdaemon
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../homeassistant/homeassistant-rest-api-sensor-state/" class="md-nav__link">
+      Homeassistant rest api sensor state
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Ios
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Ios" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Ios
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ios/Reference%3A%20iOS%20App%20URL%20Scheme%20Names%20%26%20Paths%20for%20Shortcuts/" class="md-nav__link">
+      Reference: iOS App URL Scheme Names & Paths for Shortcuts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ios/google-callback-urls/" class="md-nav__link">
+      Google serviced X-Callback URLs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ios/iOS%20Supervised%20Manage%20Devices%20MDM/" class="md-nav__link">
+      iOS Supervised Manage Devices / MDM
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Kubernetes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kubernetes" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Kubernetes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubernetes/kuberentes/" class="md-nav__link">
+      Kuberentes overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubernetes/kubernetes-networking/" class="md-nav__link">
+      kubernetes networking
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Linux (debian based)
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Linux (debian based)" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        Linux (debian based)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/desktop-files/" class="md-nav__link">
+      Application Interface
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/linux_filesystem/" class="md-nav__link">
+      Linux filesystem
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/network/" class="md-nav__link">
+      network stuff
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/set-path/" class="md-nav__link">
+      set path variable
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/set-python-version/" class="md-nav__link">
+      Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-6" type="checkbox" id="nav-8-6">
+    
+    <label class="md-nav__link" for="nav-8-6">
+      Deepin
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Deepin" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-6">
+        <span class="md-nav__icon md-icon"></span>
+        Deepin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/deepin/file-watchers/" class="md-nav__link">
+      not enough files watchers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/deepin/remove-firefox-titlebar/" class="md-nav__link">
+      remove titlebar form firefox
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/deepin/remove-vscode-titlebar/" class="md-nav__link">
+      remove titlebar form vscode
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/deepin/remove_ulauncher_black_frame/" class="md-nav__link">
+      remove black frame from ulauncher
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      My server
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="My server" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon"></span>
+        My server
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../my-server/drone_ci/" class="md-nav__link">
+      setup drone ci
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../my-server/server-infra/" class="md-nav__link">
+      my server setup
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Spring
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Spring" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon"></span>
+        Spring
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/0_spring-fundamentals/" class="md-nav__link">
+      Spring fundamentals
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/1_spring-boot/" class="md-nav__link">
+      Spring Boot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/2_spring-boot-data/" class="md-nav__link">
+      Spring Boot Data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/3_spring-rest/" class="md-nav__link">
+      Spring Boot rest (with HATEOAS)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/spring-boot-docker/" class="md-nav__link">
+      Spring Boot Dockerize
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/spring-helpful-properties/" class="md-nav__link">
+      Spring Boot useful properties
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/spring-test/" class="md-nav__link">
+      Spring Boot test
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11" checked>
+    
+    <label class="md-nav__link" for="nav-11">
+      Uncategorized
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Uncategorized" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon"></span>
+        Uncategorized
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      10 Alpine Linux apk Command Examples   nixCraft
+    </a>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Alpine%20Linux%20-%20Wikipedia/" class="md-nav__link">
+      Alpine Linux   Wikipedia
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Audio%20-%20BlackHole/" class="md-nav__link">
+      Audio   BlackHole
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Cloudflare%20domain%20setup%20guide%20-%20Ghost%28Pro%29/" class="md-nav__link">
+      Cloudflare domain setup guide   Ghost(Pro)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Configure%20Transmission%20for%20VPN%20Split%20Tunneling%20Ubuntu%2016.04%20%2B%20Debian%208%20%E2%80%A2/" class="md-nav__link">
+      Configure Transmission for VPN Split Tunneling Ubuntu 16.04 + Debian 8 •
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../File%20Sync%20-%20ChronoSync%204.9.8%20-%20Synchronize%2C%20backup%2C%20and%20create%20bootable%20backups/" class="md-nav__link">
+      File Sync   ChronoSync 4.9.8   Synchronize, backup, and create bootable backups
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Google%20domain%20setup%20guide%20-%20Ghost%28Pro%29/" class="md-nav__link">
+      Google domain setup guide   Ghost(Pro)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../How%20to%20get%20regular%20stuff%20working/" class="md-nav__link">
+      How to get regular stuff working
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../How%20to%20use%20NordVPN%20command-line%20utility%20%E2%80%93%20sleeplessbeastie%27s%20notes/" class="md-nav__link">
+      How to use NordVPN command line utility – sleeplessbeastie's notes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../WSL/" class="md-nav__link">
+      Linux Subsystem for Windows (WSL)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ansible-overview/" class="md-nav__link">
+      ansible
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../certificates/" class="md-nav__link">
+      Certificates and encryption
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-transmission-openvpn/" class="md-nav__link">
+      Docker transmission openvpn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../git/" class="md-nav__link">
+      Git
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../gitpod/" class="md-nav__link">
+      Gitpod
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vscode/" class="md-nav__link">
+      VS Code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../yaml-overview/" class="md-nav__link">
+      yaml overview
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Web
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Web" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon"></span>
+        Web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/css/" class="md-nav__link">
+      css
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/dom/" class="md-nav__link">
+      dom vs. virtual dom vs. shadow dom
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/javascript/" class="md-nav__link">
+      javascript
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/layout/" class="md-nav__link">
+      css layout techniques
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/planning-steps/" class="md-nav__link">
+      Webpage planning steps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/vue/" class="md-nav__link">
+      Vue JS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/web-evolution/" class="md-nav__link">
+      overlook over web evolution
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <p><img alt="apk-command" src="https://www.cyberciti.biz/media/new/faq/2017/05/apk.png" /></p>
+<p>I am new Alpine Linux system admin user. How do I use apk command line utility for the package management on Apline Linux server running in cloud or a Linux container? How can I use the apk command for the package management?  </p>
+<p>Alpine Linux is a free and open source Linux-based distro. It uses musl and busybox. It is designed with security in mind and targeted at power users who wants secure distro out of the box. It uses PaX and grsecurity for Linux kernel protection. All binaries are compiled with stack smashing protection. APK stands for Alpine Linux package manager. You use the apk command to delete, install, upgrade, or list software on a running Alpine Linux based system. Like most modern Linux distro all software packages for Alpine Linux are digitally signed to avoid security problems. You can install packages from local disk (such as CDROM or a USB stick) or the internet archive location (repositories) such as http://dl-cdn.alpinelinux.org/alpine/v3.5/main. The list of repositories is stored in /etc/apk/repositories configuration file. </p>
+<p>Use the [cat command] to view /etc/apk/repositories file i.e. type cat /etc/apk/repositories. Alpine Linux package often has the .apk extension and called as “a-packs”. The apk command is equivalent to [apt command] / [apt-get command]  on Debian/Ubuntu on [yum command] on CentOS Linux.</p>
+<h2 id="purpose">Purpose</h2>
+<blockquote>
+<p>Use apk for installing, upgrading, configuring, and removing apps/programs for an Alpine Linux operating system in a consistent manner.</p>
+</blockquote>
+<h2 id="syntax">Syntax</h2>
+<p>The basic syntax is as follows:</p>
+<p>apk [options] command<br />
+apk [options] command pkgName<br />
+apk [options] command pkgName1 pkgName2</p>
+<h2 id="alpine-linux-apk-command-examples">Alpine Linux apk command examples</h2>
+<p>Let us see how to use the apk command to install security updates or new set of packages on an Alpine Linux server.</p>
+<h2 id="how-to-update-the-package-list">How to update the package list</h2>
+<p>To update your package list, enter:<br />
+<code># apk update</code><br />
+Sample outputs:  </p>
+<p><img alt="Fig.01: How to update the package list in Alpine Linux" src="https://www.cyberciti.biz/media/new/faq/2017/05/apk-update-the-package.jpg" /></p>
+<p>Fig.01: How to update the package list in Alpine Linux</p>
+<h2 id="how-to-search-for-packages">How to search for package(s)</h2>
+<p>The syntax is:<br />
+<code># apk search pkgName</code><br />
+For example, search a package named htop, run:<br />
+<code># apk search htop</code><br />
+Sample outputs:</p>
+<p>htop-doc-2.0.2-r0
+htop-2.0.2-r0</p>
+<p>To search and display description:<br />
+<code># apk search -v -d 'htop'</code><br />
+Sample outputs:</p>
+<p>htop-doc-2.0.2-r0 - An interactive process viewer (documentation)
+htop-2.0.2-r0 - An interactive process viewer</p>
+<h3 id="to-list-all-packages-available-along-with-their-descriptions">To list all packages available, along with their descriptions</h3>
+<p><code># apk search -v</code><br />
+Sample outputs:</p>
+<p>gettext-0.19.8.1-r0 - GNU locale utilities
+gst-plugins-base0.10-dev-0.10.36-r3 - GStreamer Multimedia Framework Base Plugins (development files)
+xcb-util-keysyms-dev-0.4.0-r0 - Utility libraries for XC Binding - keysyms (development files)
+openlibm-0.5.4-r0 - High quality system independent, portable, open source libm implementation
+imapsync-doc-1.727-r1 - IMAP synchronisation, sync, copy or migration tool (documentation)
+evince-lang-3.22.1-r0 - Languages for package evince
+jack-1.9.10-r2 - The Jack Audio Connection Kit
+php7-intl-7.0.16-r0 - PHP7 extension: intl
+php5-5.6.30-r0 - The PHP language runtime engine
+samba-libs-4.5.7-r0 - Samba core libraries
+gst-plugins-bad1-1.8.3-r0 - GStreamer bad plugins
+docker-bash-completion-1.12.6-r0 - Bash completion for Docker
+mesa-gl-12.0.3-r0 - Mesa libGL runtime libraries
+nagios-plugins-mrtg-2.1.4-r2 - Nagios plugin check_mrtg
+.....
+..
+....
+nrpe-2.15-r4 - NRPE allows you to remotely execute Nagios plugins on other Linux/Unix machines.
+py2-psycopg2-2.6.2-r1 - A Python-PostgreSQL Database Adapter (for python2)
+perl-mime-types-2.13-r0 - Definition of MIME types
+perl-net-http-doc-6.09-r0 - Net::HTTP perl module (documentation)
+shared-mime-info-lang-1.8-r0 - Languages for package shared-mime-info
+altermime-0.3.11-r0 - alterMIME - MIME encoded email pack alteration tool
+at-3.1.20-r0 - AT and batch delayed command scheduling utility and daemon
+fbida-2.12-r0 - Few applications to display and elementary edit images</p>
+<h3 id="how-do-i-search-package-by-wildcards">How do I search package by wildcards?</h3>
+<p>The syntax is as follows to search all php7 packages or php5 packages:<br />
+`# apk search -v 'php5*'  </p>
+<h3 id="or">OR ###</h3>
+<h1 id="apk-search-v-php7">apk search -v 'php7*'`</h1>
+<p>Sample outputs:</p>
+<p>php7-intl-7.0.16-r0 - PHP7 extension: intl
+php7-openssl-7.0.16-r0 - PHP7 extension: openssl
+php7-dba-7.0.16-r0 - PHP7 extension: dba
+php7-sqlite3-7.0.16-r0 - PHP7 extension: sqlite3
+php7-pear-7.0.16-r0 - PHP Extension and Application Repository
+php7-phpdbg-7.0.16-r0 - Interactive PHP debugger
+php7-litespeed-7.0.16-r0 - PHP LiteSpeed SAPI
+php7-gmp-7.0.16-r0 - PHP7 extension: gmp
+php7-pdo_mysql-7.0.16-r0 - PHP7 extension: pdo_mysql
+php7-pcntl-7.0.16-r0 - PHP7 extension: pcntl
+php7-common-7.0.16-r0 - The PHP language runtime engine - 7th branch (common config)
+php7-xsl-7.0.16-r0 - PHP7 extension: xsl
+php7-fpm-7.0.16-r0 - PHP FastCGI Process Manager
+php7-mysqlnd-7.0.16-r0 - PHP7 extension: mysqlnd
+php7-enchant-7.0.16-r0 - PHP7 extension: enchant
+php7-pspell-7.0.16-r0 - PHP7 extension: pspell
+php7-snmp-7.0.16-r0 - PHP7 extension: snmp
+....
+..
+...
+php7-sockets-7.0.16-r0 - PHP7 extension: sockets
+php7-soap-7.0.16-r0 - PHP7 extension: soap
+php7-apcu-5.1.8-r0 - PHP extension APC User Cache
+php7-sysvmsg-7.0.16-r0 - PHP7 extension: sysvmsg
+php7-zlib-7.0.16-r0 - PHP7 extension: zlib
+php7-ftp-7.0.16-r0 - PHP7 extension: ftp
+php7-sysvsem-7.0.16-r0 - PHP7 extension: sysvsem
+php7-pdo-7.0.16-r0 - PHP7 extension: pdo
+php7-bz2-7.0.16-r0 - PHP7 extension: bz2
+php7-mysqli-7.0.16-r0 - PHP7 extension: mysqli</p>
+<h2 id="how-to-install-a-packages-by-name">How to install a package(s) by name</h2>
+<p>The syntax is:<br />
+`# apk add pkgName  </p>
+<h1 id="apk-add-pkgname1-pkgname2">apk add pkgName1 pkgName2`</h1>
+<p>To install a htop package, run:<br />
+<code># apk add htop</code><br />
+Sample outputs:</p>
+<p>(1/1) Installing htop (2.0.2-r0)
+Executing busybox-1.25.1-r0.trigger
+OK: 39 MiB in 28 packages</p>
+<p>To install Apache2 along with PHP7 and modules, run:<br />
+<code># apk add apache2 php7-apache2 php7-gd php7-mysqli</code><br />
+Sample outputs:</p>
+<p>(1/28) Installing libuuid (2.28.2-r1)
+(2/28) Installing apr (1.5.2-r1)
+(3/28) Installing expat (2.2.0-r0)
+(4/28) Installing apr-util (1.5.4-r2)
+(5/28) Installing pcre (8.39-r0)
+(6/28) Installing apache2 (2.4.25-r0)
+Executing apache2-2.4.25-r0.pre-install
+(7/28) Installing php7-common (7.0.16-r0)
+(8/28) Installing libedit (20150325.3.1-r3)
+(9/28) Installing libxml2 (2.9.4-r2)
+(10/28) Installing php7-apache2 (7.0.16-r0)
+(11/28) Installing libxau (1.0.8-r1)
+(12/28) Installing libxdmcp (1.1.2-r2)
+(13/28) Installing libxcb (1.12-r0)
+(14/28) Installing libx11 (1.6.4-r0)
+(15/28) Installing libxext (1.3.3-r1)
+(16/28) Installing libice (1.0.9-r1)
+(17/28) Installing libsm (1.2.2-r0)
+(18/28) Installing libxt (1.1.5-r0)
+(19/28) Installing libxpm (3.5.12-r0)
+(20/28) Installing libbz2 (1.0.6-r5)
+(21/28) Installing libpng (1.6.25-r0)
+(22/28) Installing freetype (2.7-r1)
+(23/28) Installing libjpeg-turbo (1.5.1-r0)
+(24/28) Installing libwebp (0.5.2-r0)
+(25/28) Installing php7-gd (7.0.16-r0)
+(26/28) Installing mariadb-common (10.1.22-r0)
+(27/28) Installing mariadb-client-libs (10.1.22-r0)
+(28/28) Installing php7-mysqli (7.0.16-r0)
+Executing busybox-1.25.1-r0.trigger
+OK: 64 MiB in 56 packages </p>
+<h3 id="interactive-install-or-upgrade">Interactive install or upgrade</h3>
+<p>We can force confirmation before performing certain operations by passing the -i option:<br />
+`# apk -i add nginx  </p>
+<h1 id="apk-i-upgrade">apk -i upgrade`</h1>
+<p>The following packages will be upgraded:
+  libcrypto1.1 libssl1.1 alpine-base linux-lts xtables-addons-lts openssh-keygen openssh-client openssh-sftp-server openssh-server-common openssh-server openssh openssl zfs-lts
+After this operation, 16 KiB of additional disk space will be used.
+Do you want to continue [Y/n]?</p>
+<h3 id="simulation-with-apk-command">Simulation with apk command</h3>
+<p>We can simulate the requested operation without making any changes. Helpful to see what packages will be upgrades or what will be done on the Alpine Linux system:<br />
+`# apk -s command  </p>
+<h1 id="apk-s-add-nginx">apk -s add nginx</h1>
+<h1 id="apk-s-upgrade">apk -s upgrade`</h1>
+<p>In other words, nothing was installed or upgraded on the system, but you will know precisely what apk was about to do.</p>
+<h3 id="how-to-hold-a-specific-package-back-and-not-upgrade-it">How to hold a specific package back and not upgrade it</h3>
+<p>If you want to upgrade Alpine Linux system, but keep or hold a specific package add version number. For instance, to hold the bash package to the version 5.0.0-r0 level or lower, run:<br />
+<code># apk add bash**=**5.0.0-r0</code><br />
+One can do regex based version matching to hold the version to a major/minor release. For example:<br />
+<code># apk add bash**=~**5.0</code><br />
+Now, upgrade the system. However, apk will upgrade the entire system, keeping the bash package at the 5.0.0-r0 or lower level:<br />
+<code># apk upgrade</code><br />
+It is possible to remove holding. For example, make sure upgrade bash to the current lastest version, run:<br />
+<code># apk add bash**&gt;**5.0.0-r0</code><br />
+<img alt="Alpine Linux apk Command Examples" src="https://www.cyberciti.biz/media/new/faq/2017/05/Alpine-Linux-apk-Command-Examples.png" /></p>
+<h3 id="how-do-install-a-local-apk-file-package">How do install a local .apk file package?</h3>
+<p>The syntax is as follows to add a local package named foo.apk:<br />
+<code># apk add --allow-untrusted /path/to/foo.apk  
+apk add --allow-untrusted pkg1.apk pkg2.apk</code></p>
+<h2 id="how-to-remove-or-delete-a-packages-by-name">How to remove or delete a package(s) by name</h2>
+<p>The syntax is:<br />
+`# apk del pkgName  </p>
+<h1 id="apk-del-pkgname1-pkgname2">apk del pkgName1 pkgName2`</h1>
+<p>To delete a htop package run:<br />
+<code># apk del htop</code><br />
+Sample outputs:</p>
+<p>(1/1) Purging htop (2.0.2-r0)
+Executing busybox-1.25.1-r0.trigger
+OK: 39 MiB in 27 packages</p>
+<h3 id="how-do-i-delete-old-packages-caches-on-alpine-linux">How do I delete old packages caches on Alpine Linux?</h3>
+<p>To remove out older versions of packages, run the clean command as follows:<br />
+`# apk cache clean  </p>
+<h2 id="or_1">or ##</h2>
+<h1 id="apk-v-cache-clean">apk -v cache clean`</h1>
+<p>One can also clean cache and download missing packages in one step:<br />
+<code># apk cache -v sync</code></p>
+<h2 id="how-to-upgrade-running-alpine-linux">How to upgrade running Alpine Linux</h2>
+<p>The syntax is:<br />
+<code># apk update &amp;&amp; apk upgrade</code><br />
+You <a href="https://www.cyberciti.biz/tips/bash-aliases-mac-centos-linux-unix.html">can create a bash shell alias as follows</a> in <a href="https://bash.cyberciti.biz/guide/~/.bashrc">~/.bashrc</a><br />
+<code># echo "alias update='apk update &amp;&amp; apk upgrade'" &gt;&gt; /.bashrc</code><br />
+Run it as follows:<br />
+<code># update</code></p>
+<h3 id="how-do-i-upgrade-selected-packages-only">How do I upgrade selected packages only?</h3>
+<p>The syntax is<br />
+<code># apk add -u pkgName</code><br />
+To upgrade a htop only package:<br />
+`# apk update  </p>
+<h1 id="apk-add-u-htop">apk add -u htop`</h1>
+<h2 id="how-do-i-list-installed-packages">How do I list installed packages?</h2>
+<p>The syntax is:<br />
+`# apk info  </p>
+<h1 id="apk-info-vv-grep-foo">apk info -vv | grep 'foo'</h1>
+<h1 id="apk-info-vv-sort">apk info -vv | sort`</h1>
+<p><img alt="Fig.02: How do I show/list installed packages in Alpine Linux" src="https://www.cyberciti.biz/media/new/faq/2017/05/apk-list-installed-packages.jpg" /></p>
+<p>Fig.02: How do I show/list installed packages in Alpine Linux</p>
+<h3 id="find-out-which-package-a-file-belongs-to">Find out which package a file belongs to..</h3>
+<p>to determine which package a file named /etc/passwd or /sbin/apk belongs to:<br />
+`# <strong>apk info --who-owns /etc/passwd</strong><br />
+/etc/passwd is owned by alpine-baselayout-3.0.4-r0  </p>
+<h1 id="apk-info-who-owns-sbinapk"><strong>apk info --who-owns /sbin/apk</strong></h1>
+<p>/sbin/apk is owned by apk-tools-2.6.8-r2`</p>
+<h3 id="list-contents-of-the-package">List contents of the PACKAGE</h3>
+<p>`# apk -L info pkgName  </p>
+<h1 id="apk-l-info-htop">apk -L info htop`</h1>
+<p>Sample outputs:</p>
+<p>htop-2.0.2-r0 contains:
+usr/bin/htop
+usr/share/applications/htop.desktop
+usr/share/pixmaps/htop.png</p>
+<h3 id="check-if-package-is-installed">Check if PACKAGE is installed</h3>
+<p>`# apk -e info pkgName  </p>
+<h6 id="_1">#######################################</h6>
+<h3 id="find-out-if-atop-package-is-installed">find out if atop PACKAGE is installed ###</h3>
+<h6 id="_2">#######################################</h6>
+<h1 id="apk-e-info-atop">apk -e info atop`</h1>
+<p>No output displayed if PACKAGE is NOT installed.</p>
+<h3 id="list-packages-that-the-package-depends-on">List packages that the PACKAGE depends on</h3>
+<p>`# apk -R info atop  </p>
+<h1 id="apk-r-info-atop">apk -R info atop`</h1>
+<p>Sample outputs:</p>
+<p>atop-2.2_p3-r0 depends on:
+so:libc.musl-x86_64.so.1
+so:libncursesw.so.6
+so:libz.so.1</p>
+<h3 id="list-all-packages-depending-on-package">List all packages depending on PACKAGE</h3>
+<p>`# apk info -r pkgName  </p>
+<h1 id="apk-info-r-bash">apk info -r bash`</h1>
+<p>Sample outputs:</p>
+<p>bash-completion-2.4-r0</p>
+<h3 id="show-installed-size-of-package">Show installed size of PACKAGE</h3>
+<p>`# apk info -s pkgName  </p>
+<h1 id="apk-info-s-atop">apk info -s atop`</h1>
+<p>Sample outputs:</p>
+<p>atop-2.2_p3-r0 installed size:
+520192</p>
+<h3 id="print-description-for-package">Print description for PACKAGE</h3>
+<p>`# apk info -d pkgName  </p>
+<h1 id="apk-info-d-bash">apk info -d bash`</h1>
+<p>Sample outputs:</p>
+<p>bash-4.3.46-r5 description:
+The GNU Bourne Again shell</p>
+<h3 id="print-all-information-about-package">Print all information about PACKAGE</h3>
+<p>`# apk info -a pkgName  </p>
+<h1 id="apk-info-a-bash">apk info -a bash`</h1>
+<p>Sample outputs:</p>
+<p>apk info -a bash
+bash-4.3.46-r5 description:
+The GNU Bourne Again shell</p>
+<p>bash-4.3.46-r5 webpage:
+http://www.gnu.org/software/bash/bash.html</p>
+<p>bash-4.3.46-r5 installed size:
+700416</p>
+<p>bash-4.3.46-r5 depends on:
+busybox
+so:libc.musl-x86_64.so.1
+so:libncursesw.so.6
+so:libreadline.so.6</p>
+<p>bash-4.3.46-r5 provides:</p>
+<p>bash-4.3.46-r5 is required by:
+bash-completion-2.4-r0</p>
+<p>bash-4.3.46-r5 contains:
+bin/bashbug
+bin/bash</p>
+<p>bash-4.3.46-r5 triggers:</p>
+<p>bash-4.3.46-r5 has auto-install rule:</p>
+<p>bash-4.3.46-r5 affects auto-installation of:
+bash-doc-4.3.46-r5</p>
+<p>bash-4.3.46-r5 replaces:</p>
+<p>bash-4.3.46-r5 license:
+GPL3+</p>
+<h2 id="how-do-i-see-statistics-about-repositories-and-installations">How do I see statistics about repositories and installations?</h2>
+<p>Run the command:<br />
+<code># apk stats</code><br />
+Sample outputs:</p>
+<p>installed:
+  packages: 28
+  dirs: 163
+  files: 7097
+  bytes: 41205760
+  triggers: 1
+available:
+  names: 11710
+  packages: 7961
+atoms:
+  num: 5934
+bash-4.3# 
+bash-4.3# apk stats
+installed:
+  packages: 28
+  dirs: 163
+  files: 7097
+  bytes: 41205760
+  triggers: 1
+available:
+  names: 11710
+  packages: 7961
+atoms:
+  num: 5934</p>
+<h2 id="apk-command-options-and-examples">apk command options and examples</h2>
+<p>Command</p>
+<p>Usage</p>
+<p>Example</p>
+<p>apk update</p>
+<p>Update the package list</p>
+<p>apk update</p>
+<p>apk upgrade</p>
+<p>Upgrade the system</p>
+<p>apk update<br />
+apt ugrade</p>
+<p>apk add pkg</p>
+<p>Add a package</p>
+<p>apk add apache</p>
+<p>apk del pkg</p>
+<p>Delete a package</p>
+<p>apk del nginx</p>
+<p>apk search -v</p>
+<p>Search for packages</p>
+<p>apk search -v<br />
+apk search -v -d ‘nginx*’<br />
+apk search -v ‘apache*’</p>
+<p>apk info</p>
+<p>List all installed pacakges</p>
+<p>apk info</p>
+<p>apk fix</p>
+<p>Repair package or upgrade it without modifying main dependencies</p>
+<p>apk fix</p>
+<p>apk policy pkg</p>
+<p>Show repository policy for packages</p>
+<p>apk policy bash</p>
+<p>apk stats</p>
+<p>Show statistics about repositories and installations</p>
+<p>apk stats</p>
+<h5 id="see-also">See also</h5>
+<ul>
+<li><strong>/etc/apk/repositories</strong> file.</li>
+<li>apk man page</li>
+</ul>
+<p>Category</p>
+<p>List of Unix and Linux commands</p>
+<p>File Management</p>
+<p><a href="https://www.cyberciti.biz/faq/linux-unix-appleosx-bsd-cat-command-examples/" title="cat command examples and syntax">cat</a> • <a href="https://www.cyberciti.biz/open-source/install-ncdu-on-linux-unix-ncurses-disk-usage/" title="ncdu command examples and syntax">ncdu</a></p>
+<p>Firewall</p>
+<p><a href="https://www.cyberciti.biz/faq/how-to-set-up-a-firewall-with-awall-on-alpine-linux/" title="Awall firewall on Alpine Linux examples and syntax">Alpine Awall</a> • <a href="https://www.cyberciti.biz/faq/how-to-set-up-a-firewall-using-firewalld-on-centos-8/" title="firewalld on CentOS 8 examples and syntax">CentOS 8</a> • <a href="https://www.cyberciti.biz/faq/set-up-a-firewall-using-firewalld-on-opensuse-linux/" title="firewalld on OpenSUSE Linux examples and syntax">OpenSUSE</a> • <a href="https://www.cyberciti.biz/faq/configure-set-up-a-firewall-using-firewalld-on-rhel-8/" title="firewalld on RHEL (Red Hat Enterprise Linux) 8 examples and syntax">RHEL 8</a> • <a href="https://www.cyberciti.biz/faq/howto-configure-setup-firewall-with-ufw-on-ubuntu-linux/" title="ufw on Ubuntu 16.04 LTS examples and syntax">Ubuntu 16.04</a> • <a href="https://www.cyberciti.biz/faq/how-to-setup-a-ufw-firewall-on-ubuntu-18-04-lts-server/" title="ufw on Ubuntu 18.04 LTS examples and syntax">Ubuntu 18.04</a> • <a href="https://www.cyberciti.biz/faq/how-to-configure-firewall-with-ufw-on-ubuntu-20-04-lts/" title="ufw on Ubuntu 20.04 LTS examples and syntax">Ubuntu 20.04</a></p>
+<p>Network Utilities</p>
+<p><a href="https://www.cyberciti.biz/faq/linux-find-out-what-process-is-using-bandwidth/" title="NetHogs - Monitor per process network bandwidth usage under Linux examples and syntax">NetHogs</a> • <a href="https://www.cyberciti.biz/faq/linux-unix-dig-command-examples-usage-syntax/" title="dig command examples and syntax">dig</a> • <a href="https://www.cyberciti.biz/faq/linux-unix-host-command-examples-usage-syntax/" title="host command examples and syntax">host</a> • <a href="https://www.cyberciti.biz/faq/linux-ip-command-examples-usage-syntax/" title="ip command in Linux examples and syntax">ip</a> • <a href="https://www.cyberciti.biz/security/nmap-command-examples-tutorials/" title="nmap command in Linux examples and syntax">nmap</a></p>
+<p>OpenVPN</p>
+<p><a href="https://www.cyberciti.biz/faq/centos-7-0-set-up-openvpn-server-in-5-minutes/" title="CentOS 7 Set Up OpenVPN Server In 5 Minutes examples and syntax">CentOS 7</a> • <a href="https://www.cyberciti.biz/faq/centos-8-set-up-openvpn-server-in-5-minutes/" title="CentOS 8 OpenVPN server in 5 mintues examples and syntax">CentOS 8</a> • <a href="https://www.cyberciti.biz/faq/debian-10-set-up-openvpn-server-in-5-minutes/" title="Debian 10 Set Up OpenVPN Server In 5 Minutes examples and syntax">Debian 10</a> • <a href="https://www.cyberciti.biz/faq/install-configure-openvpn-server-on-debian-9-linux/" title="OpenVPN server on Debian 9/8 examples and syntax">Debian 8/9</a> • <a href="https://www.cyberciti.biz/faq/ubuntu-18-04-lts-set-up-openvpn-server-in-5-minutes/" title="Ubuntu 18.04 LTS Set Up OpenVPN Server In 5 Minutes examples and syntax">Ubuntu 18.04</a> • <a href="https://www.cyberciti.biz/faq/ubuntu-20-04-lts-set-up-openvpn-server-in-5-minutes/" title="Ubuntu 20.04 LTS OpenVPN server in 5 mintues examples and syntax">Ubuntu 20.04</a></p>
+<p>Package Manager</p>
+<p>apk • <a href="https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/" title="apt command in Debian/Ubuntu Linux examples and syntax">apt</a></p>
+<p>Processes Management</p>
+<p><a href="https://www.cyberciti.biz/faq/unix-linux-bg-command-examples-usage-syntax/" title="bg command examples and syntax">bg</a> • <a href="https://www.cyberciti.biz/faq/unix-linux-chroot-command-examples-usage-syntax/" title="chroot command examples and syntax">chroot</a> • <a href="https://www.cyberciti.biz/faq/how-do-i-add-jobs-to-cron-under-linux-or-unix-oses/" title="cron and crontab command examples and syntax">cron</a> • <a href="https://www.cyberciti.biz/faq/unix-linux-disown-command-examples-usage-syntax/" title="disown command examples and syntax">disown</a> • <a href="https://www.cyberciti.biz/faq/unix-linux-fg-command-examples-usage-syntax/" title="fg command examples and syntax">fg</a> • <a href="https://www.cyberciti.biz/faq/unix-linux-jobs-command-examples-usage-syntax/" title="jobs command examples and syntax">jobs</a> • <a href="https://www.cyberciti.biz/faq/unix-linux-killall-command-examples-usage-syntax/" title="killall command examples and syntax">killall</a> • <a href="https://www.cyberciti.biz/faq/unix-kill-command-examples/" title="kill command examples and syntax">kill</a> • <a href="https://www.cyberciti.biz/faq/linux-pidof-command-examples-find-pid-of-program/" title="pidof command examples and syntax">pidof</a> • <a href="https://www.cyberciti.biz/faq/unix-linux-pstree-command-examples-shows-running-processestree/" title="pstree command examples and syntax">pstree</a> • <a href="https://www.cyberciti.biz/faq/unix-linux-pwdx-command-examples-usage-syntax/" title="pwdx command examples and syntax">pwdx</a> • <a href="https://www.cyberciti.biz/faq/unix-linux-time-command-examples-usage-syntax/" title="time command examples and syntax">time</a></p>
+<p>Searching</p>
+<p><a href="https://www.cyberciti.biz/faq/howto-use-grep-command-in-linux-unix/" title="grep command examples and syntax">grep</a> • <a href="https://www.cyberciti.biz/faq/unix-linux-whereis-command-examples-to-locate-binary/" title="whereis command examples and syntax">whereis</a> • <a href="https://www.cyberciti.biz/faq/unix-linux-which-command-examples-syntax-to-locate-programs/" title="which command examples and syntax">which</a></p>
+<p>User Information</p>
+<p><a href="https://www.cyberciti.biz/faq/unix-linux-groups-command-examples-syntax-usage/" title="groups command examples and syntax">groups</a> • <a href="https://www.cyberciti.biz/faq/unix-linux-id-command-examples-usage-syntax/" title="id command examples and syntax">id</a> • <a href="https://www.cyberciti.biz/faq/linux-unix-lastcomm-command-examples-usage-syntax/" title="lastcomm command examples and syntax">lastcomm</a> • <a href="https://www.cyberciti.biz/faq/linux-unix-last-command-examples/" title="last command examples and syntax">last</a> • <a href="https://www.cyberciti.biz/faq/linux-lid-command-examples-syntax-usage/" title="lid/libuser-lid command examples and syntax">lid/libuser-lid</a> • <a href="https://www.cyberciti.biz/faq/unix-linux-logname-command-examples-syntax-usage/" title="longname command examples and syntax">logname</a> • <a href="https://www.cyberciti.biz/faq/linux-members-command-examples-usage-syntax/" title="members command examples and syntax">members</a> • <a href="https://www.cyberciti.biz/faq/unix-linux-users-command-examples-syntax-usage/" title="users command examples and syntax">users</a> • <a href="https://www.cyberciti.biz/faq/unix-linux-whoami-command-examples-syntax-usage/" title="whoami command examples and syntax">whoami</a> • <a href="https://www.cyberciti.biz/faq/unix-linux-w-command-examples-syntax-usage-2/" title="who command examples and syntax">who</a> • <a href="https://www.cyberciti.biz/faq/unix-linux-w-command-examples-syntax-usage-2/" title="w command examples and syntax">w</a></p>
+<p>WireGuard VPN</p>
+<p><a href="https://www.cyberciti.biz/faq/how-to-set-up-wireguard-vpn-server-on-alpine-linux/" title="Alpine Linux set up WireGuard VPN server examples and syntax">Alpine</a> • <a href="https://www.cyberciti.biz/faq/centos-8-set-up-wireguard-vpn-server/" title="CentOS 8 set up WireGuard VPN server examples and syntax">CentOS 8</a> • <a href="https://www.cyberciti.biz/faq/debian-10-set-up-wireguard-vpn-server/" title="Debian 10 set up WireGuard VPN server examples and syntax">Debian 10</a> • <a href="https://www.cyberciti.biz/faq/how-to-set-up-wireguard-firewall-rules-in-linux/" title="WireGuard Firewall Rules in Linux examples and syntax">Firewall</a> • <a href="https://www.cyberciti.biz/faq/ubuntu-20-04-set-up-wireguard-vpn-server/" title="Ubuntu 20.04 set up WireGuard VPN server examples and syntax">Ubuntu 20.04</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../spring/spring-test/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Spring Boot test
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../Alpine%20Linux%20-%20Wikipedia/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Alpine Linux   Wikipedia
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

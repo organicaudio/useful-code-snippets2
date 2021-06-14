@@ -1,0 +1,1948 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>Configure Transmission for VPN Split Tunneling Ubuntu 16.04 + Debian 8 • - Useful Development Snippets & Guides</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configure-transmission-for-vpn-split-tunnel-on-ubuntu-1604-and-debian-8-including-minibian" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="Useful Development Snippets &amp; Guides" class="md-header-nav__button md-logo" aria-label="Useful Development Snippets & Guides">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Useful Development Snippets & Guides
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Configure Transmission for VPN Split Tunneling Ubuntu 16.04 + Debian 8 •
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Useful Development Snippets &amp; Guides" class="md-nav__button md-logo" aria-label="Useful Development Snippets & Guides">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Useful Development Snippets & Guides
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../REST%20API%20-%20Homeassistant%20-%20Hue%20Sensor/" class="md-nav__link">
+      REST API   Homeassistant   Hue Sensor
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Default
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Default" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Default
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/WSL/" class="md-nav__link">
+      Linux Subsystem for Windows (WSL)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/ansible-overview/" class="md-nav__link">
+      ansible
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/certificates/" class="md-nav__link">
+      Certificates and encryption
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/git/" class="md-nav__link">
+      Git
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/gitpod/" class="md-nav__link">
+      Gitpod
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/jdbc/" class="md-nav__link">
+      jdbc
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/jenkins/" class="md-nav__link">
+      Jenkins (pipeline)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/maven-memory-aid/" class="md-nav__link">
+      maven memory aid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/mockito-memoery-aid/" class="md-nav__link">
+      Mockito memory aid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/nginx/" class="md-nav__link">
+      nginx memory aid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/raspberry/" class="md-nav__link">
+      raspberry pi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/terraform/" class="md-nav__link">
+      Terraform
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/tools/" class="md-nav__link">
+      helpful stuff
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/vscode/" class="md-nav__link">
+      VS Code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/yaml-overview/" class="md-nav__link">
+      yaml overview
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Docker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Docker" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Docker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/01_docker-memory-aid/" class="md-nav__link">
+      Docker CLI useful command
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/02_dockerfile/" class="md-nav__link">
+      Dockerfile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/03_docker-persisting-data/" class="md-nav__link">
+      Docker persisting data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/04_docker-networking/" class="md-nav__link">
+      Docker networking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20File%20Browser/" class="md-nav__link">
+      Docker Install   File Browser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20FileBot/" class="md-nav__link">
+      Docker Install   FileBot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20Hassio%20AppDaemon/" class="md-nav__link">
+      Docker Install   Hassio AppDaemon
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20LetsEncrypt/" class="md-nav__link">
+      Docker Install   LetsEncrypt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20Maloja%20%28Spotify%20Scrobbler%29/" class="md-nav__link">
+      Docker Install   Maloja (Spotify Scrobbler)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20Monit%20%26%20Mmonit%20-%20System%20Monitoring/" class="md-nav__link">
+      Docker Install   Monit & Mmonit   System Monitoring
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Dozzle%20-%20WebUI%20Log%20Viewer%20for%20Docker/" class="md-nav__link">
+      Dozzle - WebUI Log Viewer for Docker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-compose/" class="md-nav__link">
+      Docker compose
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-database-examples/" class="md-nav__link">
+      Examples for containerized databases
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-dozzle-logviewer/" class="md-nav__link">
+      Dozzle - WebUI Log Viewer for Docker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-file-browser/" class="md-nav__link">
+      Docker file browser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-filebot/" class="md-nav__link">
+      Docker filebot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-letsencrypt/" class="md-nav__link">
+      Docker letsencrypt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-maloja-spotify-scrobble/" class="md-nav__link">
+      Docker maloja spotify scrobble
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-mmonit-system-monitoring/" class="md-nav__link">
+      Docker mmonit system monitoring
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Homeassistant
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Homeassistant" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Homeassistant
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../homeassistant/hassio-appdaemon/" class="md-nav__link">
+      Hassio appdaemon
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../homeassistant/homeassistant-rest-api-sensor-state/" class="md-nav__link">
+      Homeassistant rest api sensor state
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Ios
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Ios" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Ios
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ios/Reference%3A%20iOS%20App%20URL%20Scheme%20Names%20%26%20Paths%20for%20Shortcuts/" class="md-nav__link">
+      Reference: iOS App URL Scheme Names & Paths for Shortcuts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ios/google-callback-urls/" class="md-nav__link">
+      Google serviced X-Callback URLs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ios/iOS%20Supervised%20Manage%20Devices%20MDM/" class="md-nav__link">
+      iOS Supervised Manage Devices / MDM
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Kubernetes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kubernetes" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Kubernetes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubernetes/kuberentes/" class="md-nav__link">
+      Kuberentes overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubernetes/kubernetes-networking/" class="md-nav__link">
+      kubernetes networking
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Linux (debian based)
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Linux (debian based)" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        Linux (debian based)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/desktop-files/" class="md-nav__link">
+      Application Interface
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/linux_filesystem/" class="md-nav__link">
+      Linux filesystem
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/network/" class="md-nav__link">
+      network stuff
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/set-path/" class="md-nav__link">
+      set path variable
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/set-python-version/" class="md-nav__link">
+      Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-6" type="checkbox" id="nav-8-6">
+    
+    <label class="md-nav__link" for="nav-8-6">
+      Deepin
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Deepin" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-6">
+        <span class="md-nav__icon md-icon"></span>
+        Deepin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/deepin/file-watchers/" class="md-nav__link">
+      not enough files watchers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/deepin/remove-firefox-titlebar/" class="md-nav__link">
+      remove titlebar form firefox
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/deepin/remove-vscode-titlebar/" class="md-nav__link">
+      remove titlebar form vscode
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/deepin/remove_ulauncher_black_frame/" class="md-nav__link">
+      remove black frame from ulauncher
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      My server
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="My server" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon"></span>
+        My server
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../my-server/drone_ci/" class="md-nav__link">
+      setup drone ci
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../my-server/server-infra/" class="md-nav__link">
+      my server setup
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Spring
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Spring" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon"></span>
+        Spring
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/0_spring-fundamentals/" class="md-nav__link">
+      Spring fundamentals
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/1_spring-boot/" class="md-nav__link">
+      Spring Boot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/2_spring-boot-data/" class="md-nav__link">
+      Spring Boot Data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/3_spring-rest/" class="md-nav__link">
+      Spring Boot rest (with HATEOAS)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/spring-boot-docker/" class="md-nav__link">
+      Spring Boot Dockerize
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/spring-helpful-properties/" class="md-nav__link">
+      Spring Boot useful properties
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/spring-test/" class="md-nav__link">
+      Spring Boot test
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11" checked>
+    
+    <label class="md-nav__link" for="nav-11">
+      Uncategorized
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Uncategorized" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon"></span>
+        Uncategorized
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../10%20Alpine%20Linux%20apk%20Command%20Examples%20-%20nixCraft/" class="md-nav__link">
+      10 Alpine Linux apk Command Examples   nixCraft
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Alpine%20Linux%20-%20Wikipedia/" class="md-nav__link">
+      Alpine Linux   Wikipedia
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Audio%20-%20BlackHole/" class="md-nav__link">
+      Audio   BlackHole
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Cloudflare%20domain%20setup%20guide%20-%20Ghost%28Pro%29/" class="md-nav__link">
+      Cloudflare domain setup guide   Ghost(Pro)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Configure Transmission for VPN Split Tunneling Ubuntu 16.04 + Debian 8 •
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Configure Transmission for VPN Split Tunneling Ubuntu 16.04 + Debian 8 •
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configure-transmission-for-vpn-split-tunnel-on-ubuntu-1604-and-debian-8-including-minibian" class="md-nav__link">
+    Configure Transmission for VPN Split Tunnel on Ubuntu 16.04 and Debian 8 (including Minibian)
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure Transmission for VPN Split Tunnel on Ubuntu 16.04 and Debian 8 (including Minibian)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-overview" class="md-nav__link">
+    Installation Overview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-transmission-bittorrent-client-ubuntu-1604-lts" class="md-nav__link">
+    Install Transmission BitTorrent Client Ubuntu 16.04 LTS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-transmission-bittorrent-client-debian-8-minibian-raspbian" class="md-nav__link">
+    Install Transmission BitTorrent Client Debian 8 (Minibian, Raspbian)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-systemd-service-unit" class="md-nav__link">
+    Create Systemd Service Unit
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Systemd Service Unit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-transmission-for-vpn-split-tunnel" class="md-nav__link">
+    Configure Transmission for VPN Split Tunnel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-transmission-remote-access-with-nginx-reverse-proxy" class="md-nav__link">
+    Configure Transmission Remote Access with nginx Reverse Proxy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-transmission-settings-for-maximum-security" class="md-nav__link">
+    Recommended Transmission Settings for Maximum Security
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended Transmission Settings for Maximum Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#confirm-transmission-is-using-vpn-split-tunnel" class="md-nav__link">
+    Confirm Transmission is Using VPN Split Tunnel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resolve-permission-issues" class="md-nav__link">
+    Resolve Permission Issues
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../File%20Sync%20-%20ChronoSync%204.9.8%20-%20Synchronize%2C%20backup%2C%20and%20create%20bootable%20backups/" class="md-nav__link">
+      File Sync   ChronoSync 4.9.8   Synchronize, backup, and create bootable backups
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Google%20domain%20setup%20guide%20-%20Ghost%28Pro%29/" class="md-nav__link">
+      Google domain setup guide   Ghost(Pro)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../How%20to%20get%20regular%20stuff%20working/" class="md-nav__link">
+      How to get regular stuff working
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../How%20to%20use%20NordVPN%20command-line%20utility%20%E2%80%93%20sleeplessbeastie%27s%20notes/" class="md-nav__link">
+      How to use NordVPN command line utility – sleeplessbeastie's notes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../WSL/" class="md-nav__link">
+      Linux Subsystem for Windows (WSL)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ansible-overview/" class="md-nav__link">
+      ansible
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../certificates/" class="md-nav__link">
+      Certificates and encryption
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-transmission-openvpn/" class="md-nav__link">
+      Docker transmission openvpn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../git/" class="md-nav__link">
+      Git
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../gitpod/" class="md-nav__link">
+      Gitpod
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vscode/" class="md-nav__link">
+      VS Code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../yaml-overview/" class="md-nav__link">
+      yaml overview
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Web
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Web" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon"></span>
+        Web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/css/" class="md-nav__link">
+      css
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/dom/" class="md-nav__link">
+      dom vs. virtual dom vs. shadow dom
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/javascript/" class="md-nav__link">
+      javascript
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/layout/" class="md-nav__link">
+      css layout techniques
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/planning-steps/" class="md-nav__link">
+      Webpage planning steps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/vue/" class="md-nav__link">
+      Vue JS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/web-evolution/" class="md-nav__link">
+      overlook over web evolution
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configure-transmission-for-vpn-split-tunnel-on-ubuntu-1604-and-debian-8-including-minibian" class="md-nav__link">
+    Configure Transmission for VPN Split Tunnel on Ubuntu 16.04 and Debian 8 (including Minibian)
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure Transmission for VPN Split Tunnel on Ubuntu 16.04 and Debian 8 (including Minibian)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-overview" class="md-nav__link">
+    Installation Overview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-transmission-bittorrent-client-ubuntu-1604-lts" class="md-nav__link">
+    Install Transmission BitTorrent Client Ubuntu 16.04 LTS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-transmission-bittorrent-client-debian-8-minibian-raspbian" class="md-nav__link">
+    Install Transmission BitTorrent Client Debian 8 (Minibian, Raspbian)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-systemd-service-unit" class="md-nav__link">
+    Create Systemd Service Unit
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Systemd Service Unit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-transmission-for-vpn-split-tunnel" class="md-nav__link">
+    Configure Transmission for VPN Split Tunnel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-transmission-remote-access-with-nginx-reverse-proxy" class="md-nav__link">
+    Configure Transmission Remote Access with nginx Reverse Proxy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-transmission-settings-for-maximum-security" class="md-nav__link">
+    Recommended Transmission Settings for Maximum Security
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended Transmission Settings for Maximum Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#confirm-transmission-is-using-vpn-split-tunnel" class="md-nav__link">
+    Confirm Transmission is Using VPN Split Tunnel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resolve-permission-issues" class="md-nav__link">
+    Resolve Permission Issues
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Configure Transmission for VPN Split Tunneling Ubuntu 16.04 + Debian 8 •</h1>
+                
+                <p><img alt="transmission-bittorrent" src="https://www.htpcguides.com/wp-content/uploads/2014/12/transmission-bittorrent-200x200.png" />The next guide in the VPN Split Tunnel sequence is the Install <a href="https://www.transmissionbt.com/">Transmission</a> BitTorrent Client for VPN Split Tunneling on Ubuntu 16.04 and Debian 8, <a href="https://minibianpi.wordpress.com/">Minibian</a> and Raspbian Jessie (on Raspberry Pi).</p>
+<p>It is highly recommended to run your BitTorrent client over VPN to protect your online privacy, and one of the best ways to do this is by using <a href="https://www.htpcguides.com/force-torrent-traffic-vpn-split-tunnel-debian-8-ubuntu-16-04/">VPN Split Tunnel</a> where only Transmission's traffic will be routed over VPN connection and you will retain your direct connection to Internet for all the other users. This method also implements the Automatic Kill Switch option and prevents possible DNS leaks. To access Transmission you will need nginx Reverse Proxy (even on local network).</p>
+<h2 id="configure-transmission-for-vpn-split-tunnel-on-ubuntu-1604-and-debian-8-including-minibian">Configure Transmission for VPN Split Tunnel on Ubuntu 16.04 and Debian 8 (including Minibian)</h2>
+<p><strong>Part 1</strong> is to complete the guide <a href="https://www.htpcguides.com/force-torrent-traffic-vpn-split-tunnel-debian-8-ubuntu-16-04/">Force Torrent Traffic through VPN Split Tunnel Debian 8 + Ubuntu 16.04</a>. If you have already configured Split Tunnel, then you can continue with this <strong>Part 2</strong> guide to configure Transmission to use the VPN split tunnel. It is important that you have a working Split Tunnel on your server before you can proceed with configuring Transmission for VPN Split Tunneling, <strong>otherwise it will not work!</strong></p>
+<h3 id="installation-overview">Installation Overview</h3>
+<ul>
+<li>Install Transmission</li>
+<li>Configure Transmission to use the VPN split tunnel</li>
+<li>Verify Transmission is using the VPN</li>
+<li>Configure the nginx reverse proxy to keep remote access of Transmission</li>
+</ul>
+<p><strong>Important:</strong> This guide is written for Ubuntu Server 16.04 LTS and Debian 8 systems (like Minibian, Raspbian, Bananian) that uses systemd services. It might work on other Linux distributions, but it is guaranteed to work on Ubuntu Server 16.04 LTS and Debian 8. For  Ubuntu Server 14.04 LTS, upstart scripts are required instead of systemd services. If you are using Ubuntu Server 14.04 LTS, jump to the <a href="https://www.htpcguides.com/configure-transmission-for-vpn-split-tunneling-on-ubuntu-14-x/">Configure Transmission for VPN Split Tunneling on Ubuntu 14.x</a> guide.</p>
+<h3 id="install-transmission-bittorrent-client-ubuntu-1604-lts">Install Transmission BitTorrent Client Ubuntu 16.04 LTS</h3>
+<p>After configuring the VPN Split Tunnel in Part 1, we need to install Transmission and configure it to run as the vpn user so that only the Transmission torrent traffic goes through the VPN connection. In case of Ubuntu Server 16.04 we will use the official Transmission PPA to make sure the latest Transmission version is installed.</p>
+<p><strong>Note:</strong> If you are on Debian 8 (Minibian, Raspbian) then skip this part and go to the Debian 8 section of this guide.</p>
+<p>Add the Transmission Ubuntu repository</p>
+<pre><code>sudo add-apt-repository ppa:transmissionbt/ppa
+</code></pre>
+<p>Update packages and install Transmission</p>
+<pre><code>sudo apt-get update
+sudo apt-get install transmission-daemon -y
+</code></pre>
+<p>Transmission is now installed, you can proceed to the Create Systemd Service Unit part of the guide.</p>
+<h3 id="install-transmission-bittorrent-client-debian-8-minibian-raspbian">Install Transmission BitTorrent Client Debian 8 (Minibian, Raspbian)</h3>
+<p>After Part 1 of the Split Tunnel VPN guide is completed, and you have a working VPN Split Tunnel configured on your system, it is time to install Transmission.</p>
+<p>On Debian 8 (Minibian, Raspbian) it is simple as the following</p>
+<pre><code>apt-get update
+apt-get install transmission-daemon -y
+</code></pre>
+<h2 id="create-systemd-service-unit">Create Systemd Service Unit</h2>
+<p>First we need to modify the systemd service for transmission-daemon to run as the vpn user.</p>
+<p>Stop the Transmission service</p>
+<pre><code>sudo systemctl stop transmission-daemon
+</code></pre>
+<p>Next we will override the default systemd unit by creating a drop-in snippet which is applied on top of the original unit. It is the proper way to edit systemd unit files provided by packages. If Transmission is updated, the changes will remain and not be overwritten.</p>
+<p><strong>Note:</strong> on Minibian you don't need to use sudo</p>
+<p>Create the required folder and conf file</p>
+<pre><code>sudo mkdir -p /etc/systemd/system/transmission-daemon.service.d
+sudo nano /etc/systemd/system/transmission-daemon.service.d/local.conf
+</code></pre>
+<p>Copy and paste the following content. This will ensure Transmission is run as vpn user, and that the Transmission service is started after the VPN tunnel (<code>tun0</code>) is up.</p>
+<pre><code>[Unit]
+After=sys-devices-virtual-net-tun0.device
+Wants=sys-devices-virtual-net-tun0.device
+
+[Service]
+User=
+User=vpn
+Group=
+Group=vpn
+
+Type=simple
+
+ExecStart=
+ExecStart=/usr/bin/transmission-daemon -f --log-error -g /etc/transmission-daemon
+
+Restart=on-failure
+RestartSec=10
+</code></pre>
+<p>Ctrl+X, Y and Enter to Save.</p>
+<p>Finally, reload systemd to scan for new and changed units</p>
+<pre><code>sudo systemctl daemon-reload
+</code></pre>
+<h3 id="configure-transmission-for-vpn-split-tunnel">Configure Transmission for VPN Split Tunnel</h3>
+<p>We are going to run Transmission as vpn user, therefore we need to change the ownership of the Transmission configuration files</p>
+<pre><code>sudo chown -R vpn:vpn /etc/transmission-daemon/
+</code></pre>
+<p>Give the Transmission settings file write and execute permissions for the vpn user and group.</p>
+<pre><code>sudo chmod -R 775 /etc/transmission-daemon/
+</code></pre>
+<p>I strongly recommend to create a download folder for your torrents and set the required permissions. In this example we will create a folder <code>Downloads</code> in the regular user's home directory, in our case it is <code>htpcguides</code>. Of course, you should modify the path to fit your setup replacing <code>htpcguides</code> with your username.</p>
+<p>Create the download folder if it doesn't already exist</p>
+<pre><code>mkdir /home/htpcguides/Download
+</code></pre>
+<p>Now set the permissions of your download folders</p>
+<pre><code>sudo chown -R vpn:vpn /home/htpcguides/Download
+sudo chmod -R 775 /home/htpcguides/Download
+</code></pre>
+<p>The <code>rpc-whitelist</code> setting specifies which IP addresses may access the Web interface. We are going to use an nginx reverse proxy to retain remote access to the Transmission web interface. With this method it is sufficient to limit access to the localhost only – the default value. This will work just fine as long as Transmission and nginx are running on the same server. In addition, it is much more secure since only localhost will have access to Transmission.</p>
+<p><strong>Note:</strong> since we limit access to Transmission except the localhost (using iptables from the Part 1 of the guide), you can not access Transmission GUI even if you whitelist your home network range. You need to use nginx reverse proxy.</p>
+<p>Open up the Transmission configuration file for editing</p>
+<pre><code>sudo nano /etc/transmission-daemon/settings.json
+</code></pre>
+<p>Change the remote access <code>username</code> and <code>password</code> to your liking</p>
+<pre><code>&quot;rpc-password&quot;: &quot;password&quot;,
+&quot;rpc-username&quot;: &quot;username&quot;,
+</code></pre>
+<p>Change the download directory to where you want to store your torrent downloads. By default it is <code>/var/lib/transmission-daemon/downloads/</code> but if you created a new directory like described few lines before, make sure you enter that path.</p>
+<pre><code>&quot;download-dir&quot;: &quot;/home/htpcguides/Download&quot;,
+</code></pre>
+<p>Set umask to 002 to avoid permission issues, these are equal to 775</p>
+<pre><code>&quot;umask&quot;: 002,
+</code></pre>
+<p>Ctrl+X, Y and enter to save.</p>
+<p>Now you should start Transmission</p>
+<pre><code>sudo systemctl start transmission-daemon.service
+</code></pre>
+<h3 id="configure-transmission-remote-access-with-nginx-reverse-proxy">Configure Transmission Remote Access with nginx Reverse Proxy</h3>
+<p>At this point you should have a fully working VPN with Split Tunneling and a running Transmission client tunneled over the VPN connection. To access Transmission Web UI with a split tunnel you need to create a reverse proxy.</p>
+<p><a href="https://www.htpcguides.com/wp-content/uploads/2016/07/transmission-vpn-split-tunnel-nginx-proxy.png"><img alt="transmission-vpn-split-tunnel-nginx-proxy" src="https://www.htpcguides.com/wp-content/uploads/2016/07/transmission-vpn-split-tunnel-nginx-proxy-600x311.png" /></a></p>
+<p>The following section will show you how to configure nginx reverse proxy. Note this configuration uses plain, unencrypted http connection for nginx. If you plan to access Transmission from outside of your local network you should consider configuring nginx with a secure SSL certificate using our guide <a href="https://www.htpcguides.com/secure-nginx-reverse-proxy-with-lets-encrypt-on-ubuntu-16-04-lts/">Secure nginx Reverse Proxy with Let’s Encrypt</a>, or alternatively you can configure with a self-signed certificate following the guide <a href="https://www.htpcguides.com/enforce-ssl-secure-nginx-reverse-proxy-linux/">Enforce SSL for Secure nginx Reverse Proxy Linux</a> (now that <a href="https://letsencrypt.org/">Let's Encrypt</a> provides free valid certificates, I strongly recommend to use it).</p>
+<p>If you need access to Transmission (or other services) only from your local network, then you can use the following simple nginx configuration.</p>
+<p>Install nginx</p>
+<pre><code>sudo apt-get install nginx -y
+</code></pre>
+<p>Create a new nginx site</p>
+<pre><code>sudo nano /etc/nginx/sites-available/reverse
+</code></pre>
+<p>Add these lines, adjust your dynamic DNS address (mine is htpcguides.crabdance.com) and local IP address (mine is 192.168.40.100). If you changed your default Transmission port change <code>127.0.0.1:9091</code> to reflect your port. If you already have a reverse proxy virtual host configured then you only need to add the <code>blue</code> section.</p>
+<p>Note that the red curly bracket closes the server block so if you add more reverse proxies you will have to do so before the second curly bracket.</p>
+<pre><code>server {
+listen 80;
+server_name htpcguides.crabdance.com, 192.168.40.100;
+
+location /transmission {
+    proxy_pass http://127.0.0.1:9091;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+}
+</code></pre>
+<p>Ctrl+X, Y and Enter to Save and exit</p>
+<p>Disable the default nginx site</p>
+<pre><code>sudo unlink /etc/nginx/sites-enabled/default
+</code></pre>
+<p>Enable the reverse proxy site with Transmission enabled</p>
+<pre><code>sudo ln -s /etc/nginx/sites-available/reverse /etc/nginx/sites-enabled/reverse
+</code></pre>
+<p>Restart the nginx service</p>
+<pre><code>sudo service nginx restart
+</code></pre>
+<p>Restart the transmission-daemon</p>
+<pre><code>sudo systemctl restart transmission-daemon.service
+</code></pre>
+<p>You can now access Transmission using the reverse proxy at <code>http://ip.address/transmission</code> or using your dynamic DNS address <code>http://yourdns.address/transmission</code> (Remember, you can access Transmission only through the nginx reverse proxy).</p>
+<p>To access it outside the home network you will need to forward port 80 or in your router to the machine hosting nginx but beware of security risks like brute force attacks (<a href="https://www.htpcguides.com/enable-brute-force-protection-nginx-reverse-proxy-linux/">guide</a>). You can use the local IP address from within your home network, but when accessing it outside the home network you need to use the dynamic DNS address. As already mentioned, if you want to access nginx from outside of your local network, don't use plain, unencrypted http connection, but configure a secure TLS/SSL nginx configuration by following the guide <a href="https://www.htpcguides.com/secure-nginx-reverse-proxy-with-lets-encrypt-on-ubuntu-16-04-lts/">Secure nginx Reverse Proxy with Let’s Encrypt</a></p>
+<h2 id="recommended-transmission-settings-for-maximum-security">Recommended Transmission Settings for Maximum Security</h2>
+<p>In order to make sure that none of the services included in Transmission are going to leak your IP address, I recommend to set the following settings. These recommendations are based on  discussions of various forums. While disabling these settings might somewhat reduce the number of peers you can connect to, it is better to keep them disabled to minimize the chance of leaking your IP (if you are using a private tracker, you should disable these options anyway).</p>
+<p>In Transmission Web UI go to <strong>Settings</strong> and <strong>Peer</strong> tab.</p>
+<p>Set Encryption mode to <strong>Require encryption</strong>, and uncheck <strong>PEX</strong>, <strong>DHT</strong> and <strong>LPD</strong></p>
+<p><img alt="" src="https://www.htpcguides.com/wp-content/uploads/2016/07/transmission_peers-min-400x448.png" /></p>
+<p>In the <strong>Network</strong> tab, the Peer listening port is closed, which will limit the number of available peers you can connect to, but opening the port over VPN is not recommended as it greatly reduces security. Some VPN providers offer port forwarding like PIA do, but it requires additional configuration and it is better to avoid opening ports in terms of security. However, for private trackers an open port might be required, stay tuned for a guide for port forwarding with PIA and VPN Split Tunnel.</p>
+<p>Make sure <strong>Enable uTP for peer communication</strong> is disabled.</p>
+<p><img alt="transmission_network-min" src="https://www.htpcguides.com/wp-content/uploads/2016/07/transmission_network-min-400x448.png" /></p>
+<h3 id="confirm-transmission-is-using-vpn-split-tunnel">Confirm Transmission is Using VPN Split Tunnel</h3>
+<p>We want to make sure that Transmission is using the VPN tunnel. A great way to do this is to download a torrent file from <a href="https://torguard.net/checkmytorrentipaddress.php">TorGuard</a>. They have a great service called Check My Torrent IP Address. To download the torrent file click on</p>
+<p><a href="http://checkmytorrentip.net/torrentip/checkMyTorrentIp.png.torrent"><img alt="checkmytorrentIPDL" src="https://www.htpcguides.com/wp-content/uploads/2016/07/checkmytorrentIPDL.png" /></a></p>
+<p>Alternatively, you can <strong>Save Link Location</strong> in Firefox or <strong>Copy link address</strong> in Chrome and copy directly into Transmission's enter URL field.</p>
+<p><strong>Note:</strong> the “Tracker returned an error message” is normal. The important part is the IP address at the end of the line. It should be the VPN server's IP address.</p>
+<p><img alt="" src="https://www.htpcguides.com/wp-content/uploads/2016/07/Checkmyip-min-1.png" /></p>
+<p>You can copy the IP address and check with IP Tracker. Just paste the IP address and the result should show you the location. Make sure it matches the VPN server's location you use (in our case it is Sweden).</p>
+<p><img alt="iptrace_pia-min" src="https://www.htpcguides.com/wp-content/uploads/2016/07/iptrace_pia-min.png" /></p>
+<p>If the IP Lookup matches the VPN server's location, you successfully configured Transmission for VPN Split Tunneling.</p>
+<h2 id="resolve-permission-issues">Resolve Permission Issues</h2>
+<p>In <strong>Part 1</strong> the VPN Split Tunnel guide we recommended to add your regular user to the vpn group, and to add vpn user to your regular user's group. It is important to avoid any permission related issues with the downloaded torrents. We configured Transmission's permissions for downloaded torrents to be fully accessible (read, write, execute) by vpn user and members of the vpn group.</p>
+<p>If you use automation software like Sonarr or CouchPotato, the user who is running these services should be added to the vpn group. If you run the automation software as your regular user then you should not need to make any further changes to permissions beyond what you did in Part 1.</p>
+<pre><code>sudo usermod -aG vpn user-running-automation
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../Cloudflare%20domain%20setup%20guide%20-%20Ghost%28Pro%29/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Cloudflare domain setup guide   Ghost(Pro)
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../File%20Sync%20-%20ChronoSync%204.9.8%20-%20Synchronize%2C%20backup%2C%20and%20create%20bootable%20backups/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                File Sync   ChronoSync 4.9.8   Synchronize, backup, and create bootable backups
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

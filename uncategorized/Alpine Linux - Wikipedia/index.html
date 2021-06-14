@@ -1,0 +1,1827 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>Alpine Linux Wikipedia - Useful Development Snippets & Guides</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#historyedit" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="Useful Development Snippets &amp; Guides" class="md-header-nav__button md-logo" aria-label="Useful Development Snippets & Guides">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Useful Development Snippets & Guides
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Alpine Linux   Wikipedia
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Useful Development Snippets &amp; Guides" class="md-nav__button md-logo" aria-label="Useful Development Snippets & Guides">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Useful Development Snippets & Guides
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../REST%20API%20-%20Homeassistant%20-%20Hue%20Sensor/" class="md-nav__link">
+      REST API   Homeassistant   Hue Sensor
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Default
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Default" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Default
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/WSL/" class="md-nav__link">
+      Linux Subsystem for Windows (WSL)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/ansible-overview/" class="md-nav__link">
+      ansible
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/certificates/" class="md-nav__link">
+      Certificates and encryption
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/git/" class="md-nav__link">
+      Git
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/gitpod/" class="md-nav__link">
+      Gitpod
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/jdbc/" class="md-nav__link">
+      jdbc
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/jenkins/" class="md-nav__link">
+      Jenkins (pipeline)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/maven-memory-aid/" class="md-nav__link">
+      maven memory aid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/mockito-memoery-aid/" class="md-nav__link">
+      Mockito memory aid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/nginx/" class="md-nav__link">
+      nginx memory aid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/raspberry/" class="md-nav__link">
+      raspberry pi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/terraform/" class="md-nav__link">
+      Terraform
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/tools/" class="md-nav__link">
+      helpful stuff
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/vscode/" class="md-nav__link">
+      VS Code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../default/yaml-overview/" class="md-nav__link">
+      yaml overview
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Docker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Docker" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Docker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/01_docker-memory-aid/" class="md-nav__link">
+      Docker CLI useful command
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/02_dockerfile/" class="md-nav__link">
+      Dockerfile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/03_docker-persisting-data/" class="md-nav__link">
+      Docker persisting data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/04_docker-networking/" class="md-nav__link">
+      Docker networking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20File%20Browser/" class="md-nav__link">
+      Docker Install   File Browser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20FileBot/" class="md-nav__link">
+      Docker Install   FileBot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20Hassio%20AppDaemon/" class="md-nav__link">
+      Docker Install   Hassio AppDaemon
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20LetsEncrypt/" class="md-nav__link">
+      Docker Install   LetsEncrypt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20Maloja%20%28Spotify%20Scrobbler%29/" class="md-nav__link">
+      Docker Install   Maloja (Spotify Scrobbler)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Docker%20Install%20-%20Monit%20%26%20Mmonit%20-%20System%20Monitoring/" class="md-nav__link">
+      Docker Install   Monit & Mmonit   System Monitoring
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/Dozzle%20-%20WebUI%20Log%20Viewer%20for%20Docker/" class="md-nav__link">
+      Dozzle - WebUI Log Viewer for Docker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-compose/" class="md-nav__link">
+      Docker compose
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-database-examples/" class="md-nav__link">
+      Examples for containerized databases
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-dozzle-logviewer/" class="md-nav__link">
+      Dozzle - WebUI Log Viewer for Docker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-file-browser/" class="md-nav__link">
+      Docker file browser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-filebot/" class="md-nav__link">
+      Docker filebot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-letsencrypt/" class="md-nav__link">
+      Docker letsencrypt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-maloja-spotify-scrobble/" class="md-nav__link">
+      Docker maloja spotify scrobble
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/docker-mmonit-system-monitoring/" class="md-nav__link">
+      Docker mmonit system monitoring
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Homeassistant
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Homeassistant" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Homeassistant
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../homeassistant/hassio-appdaemon/" class="md-nav__link">
+      Hassio appdaemon
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../homeassistant/homeassistant-rest-api-sensor-state/" class="md-nav__link">
+      Homeassistant rest api sensor state
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Ios
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Ios" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Ios
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ios/Reference%3A%20iOS%20App%20URL%20Scheme%20Names%20%26%20Paths%20for%20Shortcuts/" class="md-nav__link">
+      Reference: iOS App URL Scheme Names & Paths for Shortcuts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ios/google-callback-urls/" class="md-nav__link">
+      Google serviced X-Callback URLs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ios/iOS%20Supervised%20Manage%20Devices%20MDM/" class="md-nav__link">
+      iOS Supervised Manage Devices / MDM
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Kubernetes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kubernetes" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Kubernetes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubernetes/kuberentes/" class="md-nav__link">
+      Kuberentes overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubernetes/kubernetes-networking/" class="md-nav__link">
+      kubernetes networking
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Linux (debian based)
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Linux (debian based)" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        Linux (debian based)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/desktop-files/" class="md-nav__link">
+      Application Interface
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/linux_filesystem/" class="md-nav__link">
+      Linux filesystem
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/network/" class="md-nav__link">
+      network stuff
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/set-path/" class="md-nav__link">
+      set path variable
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/set-python-version/" class="md-nav__link">
+      Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-6" type="checkbox" id="nav-8-6">
+    
+    <label class="md-nav__link" for="nav-8-6">
+      Deepin
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Deepin" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-6">
+        <span class="md-nav__icon md-icon"></span>
+        Deepin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/deepin/file-watchers/" class="md-nav__link">
+      not enough files watchers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/deepin/remove-firefox-titlebar/" class="md-nav__link">
+      remove titlebar form firefox
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/deepin/remove-vscode-titlebar/" class="md-nav__link">
+      remove titlebar form vscode
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%20%28debian%20based%29/deepin/remove_ulauncher_black_frame/" class="md-nav__link">
+      remove black frame from ulauncher
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      My server
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="My server" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon"></span>
+        My server
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../my-server/drone_ci/" class="md-nav__link">
+      setup drone ci
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../my-server/server-infra/" class="md-nav__link">
+      my server setup
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Spring
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Spring" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon"></span>
+        Spring
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/0_spring-fundamentals/" class="md-nav__link">
+      Spring fundamentals
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/1_spring-boot/" class="md-nav__link">
+      Spring Boot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/2_spring-boot-data/" class="md-nav__link">
+      Spring Boot Data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/3_spring-rest/" class="md-nav__link">
+      Spring Boot rest (with HATEOAS)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/spring-boot-docker/" class="md-nav__link">
+      Spring Boot Dockerize
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/spring-helpful-properties/" class="md-nav__link">
+      Spring Boot useful properties
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring/spring-test/" class="md-nav__link">
+      Spring Boot test
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11" checked>
+    
+    <label class="md-nav__link" for="nav-11">
+      Uncategorized
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Uncategorized" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon"></span>
+        Uncategorized
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../10%20Alpine%20Linux%20apk%20Command%20Examples%20-%20nixCraft/" class="md-nav__link">
+      10 Alpine Linux apk Command Examples   nixCraft
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Alpine Linux   Wikipedia
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Alpine Linux   Wikipedia
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#historyedit" class="md-nav__link">
+    History[edit]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release-historyedit" class="md-nav__link">
+    Release history[edit]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#featuresedit" class="md-nav__link">
+    Features[edit]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencesedit" class="md-nav__link">
+    References[edit]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-linksedit" class="md-nav__link">
+    External links[edit]
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Audio%20-%20BlackHole/" class="md-nav__link">
+      Audio   BlackHole
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Cloudflare%20domain%20setup%20guide%20-%20Ghost%28Pro%29/" class="md-nav__link">
+      Cloudflare domain setup guide   Ghost(Pro)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Configure%20Transmission%20for%20VPN%20Split%20Tunneling%20Ubuntu%2016.04%20%2B%20Debian%208%20%E2%80%A2/" class="md-nav__link">
+      Configure Transmission for VPN Split Tunneling Ubuntu 16.04 + Debian 8 •
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../File%20Sync%20-%20ChronoSync%204.9.8%20-%20Synchronize%2C%20backup%2C%20and%20create%20bootable%20backups/" class="md-nav__link">
+      File Sync   ChronoSync 4.9.8   Synchronize, backup, and create bootable backups
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Google%20domain%20setup%20guide%20-%20Ghost%28Pro%29/" class="md-nav__link">
+      Google domain setup guide   Ghost(Pro)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../How%20to%20get%20regular%20stuff%20working/" class="md-nav__link">
+      How to get regular stuff working
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../How%20to%20use%20NordVPN%20command-line%20utility%20%E2%80%93%20sleeplessbeastie%27s%20notes/" class="md-nav__link">
+      How to use NordVPN command line utility – sleeplessbeastie's notes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../WSL/" class="md-nav__link">
+      Linux Subsystem for Windows (WSL)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ansible-overview/" class="md-nav__link">
+      ansible
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../certificates/" class="md-nav__link">
+      Certificates and encryption
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-transmission-openvpn/" class="md-nav__link">
+      Docker transmission openvpn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../git/" class="md-nav__link">
+      Git
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../gitpod/" class="md-nav__link">
+      Gitpod
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vscode/" class="md-nav__link">
+      VS Code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../yaml-overview/" class="md-nav__link">
+      yaml overview
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Web
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Web" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon"></span>
+        Web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/css/" class="md-nav__link">
+      css
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/dom/" class="md-nav__link">
+      dom vs. virtual dom vs. shadow dom
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/javascript/" class="md-nav__link">
+      javascript
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/layout/" class="md-nav__link">
+      css layout techniques
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/planning-steps/" class="md-nav__link">
+      Webpage planning steps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/vue/" class="md-nav__link">
+      Vue JS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/web-evolution/" class="md-nav__link">
+      overlook over web evolution
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#historyedit" class="md-nav__link">
+    History[edit]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release-historyedit" class="md-nav__link">
+    Release history[edit]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#featuresedit" class="md-nav__link">
+    Features[edit]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencesedit" class="md-nav__link">
+    References[edit]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-linksedit" class="md-nav__link">
+    External links[edit]
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Alpine Linux   Wikipedia</h1>
+                
+                <p>Alpine Linux</p>
+<p><a href="https://en.wikipedia.org/wiki/File:Alpine_Linux.svg"><img alt="Alpine Linux.svg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Alpine_Linux.svg/250px-Alpine_Linux.svg.png" /></a></p>
+<p><a href="https://en.wikipedia.org/wiki/Software_developer" title="Software developer">Developer</a></p>
+<p>Alpine Linux development team</p>
+<p>OS family</p>
+<p><a href="https://en.wikipedia.org/wiki/Linux" title="Linux">Linux</a> (<a href="https://en.wikipedia.org/wiki/Unix-like" title="Unix-like">Unix-like</a>)</p>
+<p>Working state</p>
+<p>Active</p>
+<p>Source model</p>
+<p><a href="https://en.wikipedia.org/wiki/Open-source_software" title="Open-source software">Open source</a></p>
+<p>Initial release</p>
+<p>August 2005; 15 years ago<a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-osdir-history-1">[1]</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Software_release_life_cycle" title="Software release life cycle">Latest release</a></p>
+<p>3.13.5 / 14 April 2021; 18 days ago<a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-lastrelease-2">[2]</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Repository_(version_control)" title="Repository (version control)">Repository</a></p>
+<ul>
+<li><a href="https://gitlab.alpinelinux.org/">gitlab.alpinelinux.org</a></li>
+</ul>
+<p><a href="https://www.wikidata.org/wiki/Q4033826#P1324" title="Edit this at Wikidata"><img alt="Edit this at Wikidata" src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/10px-OOjs_UI_icon_edit-ltr-progressive.svg.png" /></a></p>
+<p>Marketing target</p>
+<p>Developers, power users</p>
+<p><a href="https://en.wikipedia.org/wiki/Natural_language" title="Natural language">Available in</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Multilingualism" title="Multilingualism">Multilingual</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Package_manager" title="Package manager">Package manager</a></p>
+<p>APK</p>
+<p>Platforms</p>
+<p><a href="https://en.wikipedia.org/wiki/X86" title="X86">x86</a>, <a href="https://en.wikipedia.org/wiki/X86-64" title="X86-64">x86-64</a>, <a href="https://en.wikipedia.org/wiki/ARMhf" title="ARMhf">ARMhf</a>, <a href="https://en.wikipedia.org/wiki/AArch64" title="AArch64">AArch64</a>, <a href="https://en.wikipedia.org/wiki/Ppc64le" title="Ppc64le">ppc64le</a>, <a href="https://en.wikipedia.org/wiki/S390x" title="S390x">s390x</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Kernel_(operating_system)" title="Kernel (operating system)">Kernel</a> type</p>
+<p><a href="https://en.wikipedia.org/wiki/Monolithic_kernel" title="Monolithic kernel">Monolithic</a> (<a href="https://en.wikipedia.org/wiki/Linux_kernel" title="Linux kernel">Linux</a>)</p>
+<p><a href="https://en.wikipedia.org/wiki/User_space#USERLAND" title="User space">Userland</a></p>
+<p><a href="https://en.wikipedia.org/wiki/BusyBox" title="BusyBox">BusyBox</a> (<a href="https://en.wikipedia.org/wiki/GNU_Core_Utilities" title="GNU Core Utilities">GNU Core Utilities</a> are optional)</p>
+<p>Default <a href="https://en.wikipedia.org/wiki/User_interface" title="User interface">user interface</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Command-line_interface" title="Command-line interface">Command-line interface</a></p>
+<p>Official website</p>
+<p><a href="https://alpinelinux.org/">alpinelinux.org</a></p>
+<p><strong>Alpine Linux</strong> is a <a href="https://en.wikipedia.org/wiki/Linux_distribution" title="Linux distribution">Linux distribution</a> based on <a href="https://en.wikipedia.org/wiki/Musl">musl</a> and <a href="https://en.wikipedia.org/wiki/BusyBox" title="BusyBox">BusyBox</a>, designed for security, simplicity, and resource efficiency.<a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-infoworld-3">[3]</a><a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-linuxbsdos-4">[4]</a><a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-softpedia-5">[5]</a><a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-fossbytes-6">[6]</a><a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-networkworld-7">[7]</a> It uses <a href="https://en.wikipedia.org/wiki/OpenRC" title="OpenRC">OpenRC</a> for its <a href="https://en.wikipedia.org/wiki/Init_system" title="Init system">init system</a> and compiles all <a href="https://en.wikipedia.org/wiki/User_space" title="User space">user-space</a> binaries as <a href="https://en.wikipedia.org/wiki/Position-independent_executable" title="Position-independent executable">position-independent executables</a> with <a href="https://en.wikipedia.org/wiki/Stack-smashing_protection" title="Stack-smashing protection">stack-smashing protection</a>.<a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-about-8">[8]</a></p>
+<p>Because of its small size, it is commonly used in <a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization" title="Operating-system-level virtualization">containers</a> providing quick boot-up times.<a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-thenewstack-9">[9]</a></p>
+<h2 id="historyedit">History[<a href="https://en.wikipedia.org/w/index.php?title=Alpine_Linux&amp;action=edit&amp;section=1" title="Edit section: History">edit</a>]</h2>
+<p>Originally, Alpine Linux began as a fork of the <a href="https://en.wikipedia.org/wiki/LEAF_Project" title="LEAF Project">LEAF Project</a>.<a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-osdir-history-1">[1]</a> The members of LEAF wanted to continue making a Linux distribution that could fit on a single floppy disk, whereas the Alpine Linux wished to include some more heavyweight packages: <a href="https://en.wikipedia.org/wiki/Squid_(software)" title="Squid (software)">Squid</a> and <a href="https://en.wikipedia.org/wiki/Samba_(software)" title="Samba (software)">Samba</a>. They also add security features and a newer kernel.</p>
+<h2 id="release-historyedit">Release history[<a href="https://en.wikipedia.org/w/index.php?title=Alpine_Linux&amp;action=edit&amp;section=2" title="Edit section: Release history">edit</a>]</h2>
+<p>Version<a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-10">[10]</a></p>
+<p>Release date</p>
+<p><a href="https://en.wikipedia.org/wiki/Linux_Kernel" title="Linux Kernel">Kernel</a><a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-11">[11]</a></p>
+<p>End of support</p>
+<p>2.1.0</p>
+<p>2010-11-01</p>
+<p>2012-11-01</p>
+<p>2.2.0</p>
+<p>2011-05-06</p>
+<p>2.6.38</p>
+<p>2013-05-01</p>
+<p>2.3.0</p>
+<p>2011-11-01</p>
+<p>3.0</p>
+<p>2013-11-01</p>
+<p>2.4.0</p>
+<p>2012-05-03</p>
+<p>3.3</p>
+<p>2014-05-01</p>
+<p>2.5.0</p>
+<p>2012-11-07</p>
+<p>3.6.6</p>
+<p>2014-11-01</p>
+<p>2.6.0</p>
+<p>2013-05-17</p>
+<p>3.9.2</p>
+<p>2015-05-01</p>
+<p>2.7.0</p>
+<p>2013-11-08</p>
+<p>3.10.18</p>
+<p>2015-11-01</p>
+<p>3.0.0</p>
+<p>2014-06-04</p>
+<p>3.14.5</p>
+<p>2016-05-01</p>
+<p>3.1.0</p>
+<p>2014-12-10</p>
+<p>2016-11-01</p>
+<p>3.2.0</p>
+<p>2015-05-26</p>
+<p>3.18</p>
+<p>2017-05-01</p>
+<p>3.3.0</p>
+<p>2015-12-18</p>
+<p>4.1</p>
+<p>2017-11-01</p>
+<p>3.4.0</p>
+<p>2016-05-31</p>
+<p>4.4</p>
+<p>2018-05-01</p>
+<p>3.5.0</p>
+<p>2016-12-22</p>
+<p>2018-11-01</p>
+<p>3.6.0</p>
+<p>2017-05-24</p>
+<p>2019-05-01</p>
+<p>3.7.0</p>
+<p>2017-11-30</p>
+<p>2019-11-01</p>
+<p>3.8.0</p>
+<p>2018-06-26</p>
+<p>4.14</p>
+<p>2020-05-01</p>
+<p>3.9.0</p>
+<p>2019-01-29</p>
+<p>4.19</p>
+<p>2020-11-01</p>
+<p>3.10.0</p>
+<p>2019-06-13</p>
+<p>4.19.53</p>
+<p>2021-05-01</p>
+<p>3.11.0</p>
+<p>2019-12-19</p>
+<p>5.4.5</p>
+<p>2021-11-01</p>
+<p>3.12.0</p>
+<p>2020-05-29</p>
+<p>5.4.43</p>
+<p>2022-05-01</p>
+<p><strong>3.13.0</strong></p>
+<p>2021-01-14</p>
+<p>5.10.7</p>
+<p>2022-11-01</p>
+<p>edge</p>
+<p><strong>Legend:</strong></p>
+<p>Old version</p>
+<p><strong>Latest version</strong></p>
+<p>Latest preview version</p>
+<h2 id="featuresedit">Features[<a href="https://en.wikipedia.org/w/index.php?title=Alpine_Linux&amp;action=edit&amp;section=3" title="Edit section: Features">edit</a>]</h2>
+<p>Alpine uses its own <a href="https://en.wikipedia.org/wiki/Package_management" title="Package management">package-management</a> system, apk-tools,<a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-12">[12]</a> which originally was a collection of <a href="https://sourceforge.net/projects/apk-tools/">shell scripts</a> but was later <a href="https://git.alpinelinux.org/cgit/apk-tools/">rewritten</a> in C. Alpine currently contains most commonly used packages such as <a href="https://en.wikipedia.org/wiki/GNOME" title="GNOME">GNOME</a>, <a href="https://en.wikipedia.org/wiki/Xfce" title="Xfce">Xfce</a>, <a href="https://en.wikipedia.org/wiki/Firefox" title="Firefox">Firefox</a>, and others.</p>
+<p>Alpine Linux can be installed as a <a href="https://en.wikipedia.org/wiki/RAM_drive" title="RAM drive">run-from-RAM</a> operating system. The LBU (Alpine Local Backup)<a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-13">[13]</a> tool optionally allows all configuration files to be backed up to an APK overlay file (usually shortened to <em>apkovl</em>), a tar.gz file that by default stores a copy of all changed files in /etc (with the option to add more directories). This allows Alpine to work reliably in demanding embedded environments or to (temporarily) survive partial disk failures as sometimes experienced in public cloud environments.</p>
+<p>A hardened kernel was included in the default distribution for up to and including Alpine 3.7, which aids in reducing the impact of exploits and vulnerabilities. All packages are also compiled with stack-smashing protection to help mitigate the effects of userland <a href="https://en.wikipedia.org/wiki/Buffer_overflow" title="Buffer overflow">buffer overflows</a>.</p>
+<p>By default, it includes patches that allow using efficient meshed VPNs using the <a href="https://en.wikipedia.org/wiki/DMVPN" title="DMVPN">DMVPN</a> standard.</p>
+<p>It has reliably had excellent support of Xen hypervisors in up-to-date versions, which avoids issues as experienced with Enterprise Distributions. (The standard Linux hypervisor KVM, is also available.)</p>
+<p>It allows very small <a href="https://en.wikipedia.org/wiki/Linux_containers" title="Linux containers">Linux containers</a>, around 8 MB in size, while a minimal installation to disk might be around 130 MB.<a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-14">[14]</a></p>
+<p>Alpine Configuration Framework (ACF): While optional, ACF is an application for configuring an Alpine Linux machine, with goals similar to <a href="https://en.wikipedia.org/wiki/Debian" title="Debian">Debian's</a> <a href="https://en.wikipedia.org/wiki/Debconf_(software_package)" title="Debconf (software package)">debconf</a>. It is a standard framework based on simple Lua scripts.<a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-15">[15]</a></p>
+<p>It previously used <a href="https://en.wikipedia.org/wiki/UClibc" title="UClibc">uClibc</a> as its <a href="https://en.wikipedia.org/wiki/C_standard_library" title="C standard library">C standard library</a> instead of the traditional <a href="https://en.wikipedia.org/wiki/GNU_C_Library" title="GNU C Library">GNU C Library</a> (glibc) most commonly used. Although it is more lightweight, it does have the significant drawback of being <a href="https://en.wikipedia.org/wiki/Binary_code_compatibility" title="Binary code compatibility">binary incompatible</a> with glibc. Thus, all software must be compiled for use with uClibc to work properly. As of 9 April 2014,<a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-16">[16]</a> Alpine Linux switched to <a href="https://en.wikipedia.org/wiki/Musl" title="Musl">musl</a>, which is partially binary compatible with glibc.<a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-17">[17]</a></p>
+<p>The lightweight <a href="https://en.wikipedia.org/wiki/OpenRC" title="OpenRC">OpenRC</a> is the <a href="https://en.wikipedia.org/wiki/Init_system" title="Init system">init system</a> currently used by Alpine Linux.<a href="https://en.wikipedia.org/wiki/Alpine_Linux#cite_note-18">[18]</a> Unlike many distributions, including <a href="https://en.wikipedia.org/wiki/Debian" title="Debian">Debian</a>, <a href="https://en.wikipedia.org/wiki/Ubuntu_(operating_system)" title="Ubuntu (operating system)">Ubuntu</a>, <a href="https://en.wikipedia.org/wiki/RHEL" title="RHEL">RHEL</a>, <a href="https://en.wikipedia.org/wiki/Arch_Linux" title="Arch Linux">Arch Linux</a> and <a href="https://en.wikipedia.org/wiki/CentOS" title="CentOS">CentOS</a>, Alpine does not use <a href="https://en.wikipedia.org/wiki/Systemd" title="Systemd">systemd</a>.</p>
+<h2 id="referencesedit">References[<a href="https://en.wikipedia.org/w/index.php?title=Alpine_Linux&amp;action=edit&amp;section=4" title="Edit section: References">edit</a>]</h2>
+<h2 id="external-linksedit">External links[<a href="https://en.wikipedia.org/w/index.php?title=Alpine_Linux&amp;action=edit&amp;section=5" title="Edit section: External links">edit</a>]</h2>
+<ul>
+<li><a href="https://alpinelinux.org/">Official website</a></li>
+<li><a href="https://alpinelinux.org/releases/">Supported release branches and version history</a></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../10%20Alpine%20Linux%20apk%20Command%20Examples%20-%20nixCraft/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                10 Alpine Linux apk Command Examples   nixCraft
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../Audio%20-%20BlackHole/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Audio   BlackHole
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
